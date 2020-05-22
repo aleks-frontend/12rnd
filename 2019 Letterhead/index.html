@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html data-sign="OSM">
+  <head>
+    <title>Template title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="css/minireset.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/placeholder-controller.css">
+
+    <style>
+      @import url("https://outfit-assets-production.s3.amazonaws.com/fonts/Gotham/stylesheet.css"); 
+
+      :root {
+        --green: {{account.colors.green}};
+        --dark-grey: rgba(35, 31, 32, 1);
+        --white: {{account.colors.white}};
+      }
+
+      html {
+        font-family: 'Gotham';
+        font-size: 0.26rem;
+        color: var(--white);
+        font-weight: 600;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header {
+        display: flex;
+        flex: 1;
+        justify-content: flex-end;
+        align-items: flex-start;
+        padding: 41pt 38.2pt 0pt 38.2pt;
+      }
+
+      .logo {
+        width: 116.7pt;
+      }
+
+      .footer {
+        display: flex;
+        padding: 0pt 167pt 33.7pt 37pt;
+        color: var(--dark-grey);
+      }
+
+      .infoContainer {
+        max-width: 365pt;
+        margin-right: 52.4pt;
+      }
+
+      .location {
+        font-size: 8pt;
+        text-transform: uppercase;
+      }
+
+      .address {
+        margin-top: 4.4pt;
+        width: 115pt;
+        font-size: 8.2pt;
+        font-family: 'Gotham';
+        line-height: 1.25em;
+        letter-spacing: -0.1pt;
+      }
+
+      .contact {
+        display: flex;
+        margin-top: 3.9pt;
+        font-size: 8.1pt;
+        line-height: 1.55em;
+        font-family: 'Gotham';
+      }
+
+      .contact__label {
+        margin-right: 2.9pt;
+        color: var(--green);
+      }
+
+      .contact__value {
+        margin-right: 7pt;
+        font-size: 8pt;
+        letter-spacing: 0pt;
+      }
+
+      .social {
+        display: flex;
+        flex-direction: column;
+        color: var(--green);
+        flex: 1;
+        justify-content: flex-end;
+        padding-bottom: 5.5pt;
+      }
+
+      .social__item {
+        display: flex;
+        align-items: center;
+        margin-top: 4.2pt;
+      }
+
+      .social__icon {
+        width: 12.6pt;
+        margin-right: 5.3pt;
+      }
+
+      .social__label {
+        align-self: center;
+        font-size: 6.7pt;
+      }
+
+      .site {
+        position: absolute;
+        right: 43.6pt;
+        bottom: 41.1pt;
+        font-size: 11pt;
+        color: var(--white);
+      }
+
+      .triangle {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 166pt;
+        height: 233pt;
+        /*   clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
+        background: var(--dark-grey);*/
+      }
+
+      .socialLinks--hide .social__label{
+        display: none;
+      }
+
+      .shape {
+        position: absolute;    
+        max-width: unset;
+      }
+
+      .shape--triangleBlack {
+        bottom: 0;
+        right: 0;
+        width: 3.85rem;
+      }  
+      
+      .hide {
+        display: none;
+      }
+
+
+      /* ANY OTHER STYLES THAT NEED MUSTACHE.JS CAPABILITIES */
+    </style>
+  </head>
+  <body style="background: white" class="u-placeholder-{{ placeholder-toggle-new }}{{^placeholder-toggle-new}}hide{{/placeholder-toggle-new}}" data-crop="{{show-crop}}">
+    <div class="placeholderMaster" data-opacity="{{ placeholder-opacity }}">
+      {{#placeholder-image-1}}
+      <div class="placeholderMaster__item" data-bg="{{ placeholder-image-1 }}"></div>
+      {{/placeholder-image-1}}
+    </div><!-- end placeholderMaster -->
+
+    <div class="page">
+
+      <div class="bleed">
+
+        <div class="container fit">
+
+          <div class="header">
+            <img class="logo" src="{{account.logos.primary}}" alt=""><!--end logo-->                
+          </div><!--end header-->
+          <div class="footer">
+            <div class="infoContainer">
+              <div class="location">12rnd {{{team.name}}}{{^team.name}}Team Name Here{{/team.name}}</div><!--end location-->
+              <div class="address">{{{team.address}}}{{^team.address}}Gym Address Here,<br>over 2 lines{{/team.address}}</div><!--end address-->
+              <div class="contact">
+                <div class="contact__label">P: </div><!--end contact__label-->
+                <div class="contact__value">{{team.phone}}{{^team.phone}}Team Phone Here{{/team.phone}}</div><!--end contact__value-->
+                <div class="contact__label">E: </div><!--end contact__label-->
+                <div class="contact__value">{{{account.snippets.info-email}}}</div><!--end contact__value-->
+              </div><!--end contact-->
+            </div><!--end infoContainer-->
+            <div class="social ">
+              <div class="social__item">
+                <img class="social__icon" src="https://files.outfit.io/media_library_items/63027/fb%2520green.svg" alt=""><!--end social__icon-->
+                <div class="social__label {{{showHideSocialLinks}}}">/{{team.facebook-link}}{{^team.facebook-link}}Facebook Link Here{{/team.facebook-link}}</div> <!--end social__label-->
+              </div><!--social__item-->
+              <div class="social__item">
+                <img class="social__icon" src="https://files.outfit.io/media_library_items/63026/insta%2520green.svg" alt=""><!--end social__icon-->
+                <div class="social__label {{{showHideSocialLinks}}}">@{{team.instagram-link}}{{^team.instagram-link}}Instagram Link Here{{/team.instagram-link}}</div> <!--end social__label-->
+              </div><!--social__item-->
+            </div><!--social-->
+          </div><!--end footer-->       
+          <div class="triangle">
+            <img src="https://files.outfit.io/media_library_items/69703/bottom%2520triangle.svg" alt="" class="shape shape--triangleBlack"> 
+            <div class="site">{{account.snippets.website-url}}</div>
+          </div><!--end triangle-->
+
+        </div><!--container fit-->
+
+      </div><!--bleed-->
+
+    </div><!--page-->
+
+
+    <script>
+      window.showCrop = {{show-crop}}{{^show-crop}}true{{/show-crop}};
+    </script>
+    <script src="js/main.js"></script>   
+    <script src="js/prefixfree.js"></script>
+    <script src="js/placeholder-controller.js"></script>
+    <script src="js/char-limit.js"></script>
+    <script src="js/check-export-mode.js"></script>
+    <script src="js/max-line-check.js"></script>
+    <script src="js/max-height-check.js"></script>
+    <script src="https://outfit-assets-production.s3-accelerate.amazonaws.com/scripts/textfit.0.0.4.min.js" type="text/javascript"></script>
+    <script>
+
+      // Tracking text changes and firing text restriction functions (mutationObserver)
+      const overflowObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          maxLineCheck();
+          maxHeightCheck();
+          charLimit();
+        });
+      });
+
+      overflowObserver.observe(document.body, {
+        attributes: false,
+        characterData: true,
+        childList: true,
+        subtree: true,
+        attributeOldValue: false,
+        characterDataOldValue: true
+      });
+
+      // Calling text size restriction functions once the fonts are loaded
+      document.fonts.ready.then(() => {
+        maxLineCheck();
+        maxHeightCheck();
+      });
+
+      placeholderController();
+      checkCrop();
+      checkExport();
+      charLimit();
+
+      // TextFit function decreases the font of the selected element to make it fit in single line (if needed, uncomment the code bellow)
+      TextFit.fit({
+        selector: '.textFit'
+      });
+
+      //Remove the br tags from address
+      //var StrippedString = OriginalString.replace(/(<([^>]+)>)/ig,"");
+      var addressString = "{{{team.address}}} {{{team.state}}} {{{team.postcode}}}{{^team.address}}Team Address Here<br>over 2 lines{{/team.address}}";
+      var addressStrippedString = addressString.replace(/(<([^>]+)>)/ig,", ");
+      var addressDiv = document.getElementById('address');
+      addressDiv.innerHTML = addressStrippedString;
+    </script>
+
+
+  </body>
+</html>
