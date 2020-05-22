@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html data-sign="OSL">
+  <head>
+    <title>Template title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="css/minireset.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/placeholder-controller.css">
+
+    <style>
+
+      @import url("https://outfit-assets-production.s3.amazonaws.com/fonts/Gotham/stylesheet.css"); 
+
+      :root {
+        --green: {{account.colors.green}};
+        --black: #352733;
+        --white: #fff;
+      }
+
+      html {
+        font-family: 'Gotham';
+        font-size: 11pt;
+        color: var(--white);
+      }
+
+      h1,h2,h3,h4,h5,h6 {
+        font-family: 'Gotham';
+        font-weight: 600;
+        margin-bottom: 0.4em;
+      }
+
+      h1 {
+        font-size: 45pt;
+        line-height: 1em;
+      }
+
+      h2 {
+        font-size: 22pt;
+        line-height: 1.1em;
+      }      
+
+      h3 {
+        font-size: 15.9pt; 
+        line-height: 1.15em;
+      }
+
+      h4 {
+        font-size: 14.1pt;
+        line-height: 1.3em;
+      }
+
+      h5 {
+        font-size: 12pt; 
+        line-height: 1.3em;      
+      }
+
+      h6 {  
+        font-size: 10pt; 
+        line-height: 1.3em;
+      }
+
+      h1:last-child,
+      h2:last-child,
+      h3:last-child,
+      h4:last-child,
+      h5:last-child,
+      h6:last-child,
+      p:last-child {
+        margin-bottom: 0;
+      }
+
+      p {
+        font-family: 'Gotham';
+        margin-bottom: 0.4em;
+        font-size: 10.5pt;
+        font-weight: normal;
+        line-height: 1.4em;    
+      }
+
+      ul {
+        margin-bottom: 10pt;
+        margin-top: 10pt;
+        padding-left: 16.5pt;
+      }
+
+      li {
+        margin-bottom: 11pt;
+        position: relative;
+        font-size: 12pt;
+        line-height: 1.2em;
+      }
+
+      li::before {
+        content: "";
+        position: absolute;
+        left: -16pt;
+        top: 6pt;
+        width: 4px;
+        height: 4px;
+        background: var(--green);
+        border-radius: 50%;    
+      }
+
+      em {
+        border: 1pt solid white;
+        padding: 0.1em;
+        font-style: normal !important;
+        background-color: white;
+        display: inline-block;
+      }  
+
+      .tinymce_style--light {
+        color: var(--white);
+      }
+
+      .tinymce_style--dark {
+        color: var(--green);
+      }
+
+      .fit {
+        display: flex;
+        flex-direction: column;
+        padding: 32.1pt 26.8pt 38.7pt 35.6pt;
+        background: var(--black);
+      }
+
+      .fit--secondary  {
+        padding-bottom: 20pt;
+      }
+
+      .backgroundImage {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        overflow: hidden;
+      }
+
+      .backgroundImage div {
+        width: auto !important;
+        height: auto !important;
+        right: 0;
+        bottom: 0;
+      }   
+
+      .header {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        height: 166pt;
+        padding-right: 6pt;
+      }
+
+      .header--secondary {
+        height: 83pt;
+      }
+
+      .logo {
+        position: relative;
+        width: 98pt;
+      }
+
+      .body {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        justify-content: space-between;
+      }
+
+      .heading {        
+        position: relative;
+        margin-bottom: 26pt;
+        padding-bottom: 18pt;
+        border: 1px solid transparent;
+        text-transform: uppercase;
+        z-index: 1;
+      } 
+
+      .heading:after {
+        content: "";
+        position: absolute;
+        bottom: 0pt;
+        left: 0;
+        width: 67pt;
+        height: 4pt;
+        background: var(--green);
+      }
+
+      .body__bottom {
+        padding-right: 100pt;
+        position: relative;
+        z-index: 1;
+        color: var(--black);
+      }
+
+      .cta {
+        text-transform: uppercase;
+      }
+
+      .cta--secondary {
+        position: relative;
+        margin-bottom: 18pt;
+        padding-bottom: 11pt;
+        border: 1px solid transparent;       
+      }
+
+      .cta--secondary:after {
+        content: "";
+        position: absolute;
+        bottom: 2pt;
+        left: 0;
+        width: 46pt;
+        height: 2pt;
+        background: var(--green);
+      }
+
+      .footer {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        width: 130pt;
+        height: 181pt;   
+        padding: 26pt 28pt;
+        clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+        color: #000;
+        background: var(--white);
+      }
+
+      .website {
+        font-family: 'Gotham';
+        font-size: 9.7pt;
+        font-weight: 600;
+        color: var(--black);
+      }
+
+      .flyerBlurb {
+        margin-bottom: 21pt;       
+      }
+
+      .contact {
+        font-size: 10pt;
+        width: 175pt;
+      }
+
+      .contact__heading {
+        font-family: 'Gotham';
+        text-transform: uppercase;
+        margin-bottom: 8pt;
+        font-size: 10pt;
+        font-weight: 600;   
+        line-height: 1.1em;
+        color: var(--green)
+      }
+
+      .contact__subheading {
+        margin-bottom: 7pt;
+        line-height: 1.6em;
+        max-height: 48px;
+      }
+
+      .contact__value {
+        overflow: hidden;
+      }
+
+      .social {
+        margin-left: -1.4pt;
+        font-size: 10pt;
+        color: var(--green);
+      }
+
+      .contact__item {
+        display: flex;        
+        margin-bottom: 5pt;
+        font-size: 10pt;
+        text-transform: uppercase;
+        font-family: 'Gotham';
+        font-weight: 600;
+        width: 6.5rem;
+      }
+
+      .contact__label {
+        margin-right: 3pt;
+        color: var(--green);
+      }
+
+      .social__item {
+        display: flex;
+        align-items: center;
+        margin-top: 6pt;
+
+      }
+
+      .social__icon {
+        width: 15.5pt;
+        height: 15.5pt;
+        flex-shrink: 0;
+        margin-right: 7pt;
+      }
+
+      .social__text {
+        font-size: 7.9pt;
+        font-weight: 500;
+      }
+
+
+      .offerDetails {
+        position: relative;
+        z-index: 1;
+      }
+      
+      .hide {
+        display: none;
+      }
+      
+      .contact__address {
+        line-height: 1.2;
+      }
+     
+      .insagram .facebook {
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ANY OTHER STYLES THAT NEED MUSTACHE.JS CAPABILITIES */
+    </style>
+  </head>
+  <body style="background: white" class="u-placeholder-{{ placeholder-toggle-new }}{{^placeholder-toggle-new}}hide{{/placeholder-toggle-new}}" data-crop="{{show-crop}}">
+    <div class="placeholderMaster" data-opacity="{{ placeholder-opacity }}">
+      {{#placeholder-image-1}}
+      <div class="placeholderMaster__item" data-bg="{{ placeholder-image-1 }}"></div>
+      {{/placeholder-image-1}}
+      {{#placeholder-image-2}}
+      <div class="placeholderMaster__item" data-bg="{{ placeholder-image-2 }}"></div>
+      {{/placeholder-image-2}}
+    </div><!-- end placeholderMaster -->
+    <div class="page">
+
+      <div class="bleed">
+
+        <div class="container fit">
+
+          <div class="backgroundImage">{{{ 12R_background-image--dlf }}}</div><!--backgroundImage-->
+          <div class="header">
+            <img src="{{account.logos.untitled}}" class="logo"><!--logo-->
+          </div><!--header-->
+          <div class="body">
+            <div class="body__top" data-max-height="420">
+              {{#12R_heading--dlf}}<div class="heading">{{{ 12R_heading--dlf }}}</div><!--heading-->{{/12R_heading--dlf}}
+              <div class="offerDetails">{{{ 12R_offer-details--dlf }}}</div><!--offerDetails-->
+            </div><!--body__top-->
+            <div class="body__bottom">
+              <div class="cta cta--primary" data-max-height="76">{{{ 12R_call-to-action--dlf }}}</div><!--cta-->
+            </div><!--body__bottom-->
+          </div><!--body-->
+          <div class="footer">
+            <div class="website">{{{account.snippets.website-url}}}</div><!--website-->
+          </div><!--footer-->
+
+        </div><!--container fit-->
+
+      </div><!--bleed-->
+
+    </div><!--page-->
+
+    <div class="page">
+
+      <div class="bleed">
+
+        <div class="container fit fit--secondary">
+
+          <div class="header header--secondary">
+            <img src="{{account.logos.untitled}}" class="logo"><!--logo-->
+          </div><!--header-->
+          <div class="body">
+            <div class="body__top" data-max-height="620">
+              <div class="flyerBlurb">{{{ 12R_flyer-blurb--dlf }}}</div><!--flyerBlurb-->
+              <div class="cta cta--secondary">{{{ 12R_call-to-action-flyer-back--dlf }}}</div><!--cta cta--secondary-->
+              <div class="contact">
+                <div class="contact__heading">{{{team.name}}}</div><!--contact__heading-->
+                <div class="contact__subheading">
+                  <!--<div class="textFit-vertical">-->
+                  <div class="contact__address">
+                    {{{team.address}}}
+                  </div><!-- end textFit-vertical -->
+                </div><!--contact__subheading-->
+                <div class="contact__item">
+                  <div class="contact__label">Phone:</div><!--contact__label-->
+                  <div class="contact__value"><span class="textFit">{{{team.phone}}}</span></div><!--contact__value-->
+                </div><!--contact__item-->
+                <div class="contact__item">
+                  <div class="contact__label">Email:</div><!--contact__label-->
+                  <!--<div class="contact__value">{{{team.email}}}</div><!--contact__value-->
+                </div><!--contact__item-->
+                <div class="contact__item">
+                	<div class="contact__value" style="font-size:9pt">{{{team.email}}}</div><!--contact__value-->
+                </div>
+              </div><!--contact-->
+            </div><!--body__top-->
+            <div class="body__bottom">
+              <div class="social {{^gym-facebook}}facebook{{/gym-facebook}} {{^gym-instagram}}instagram{{/gym-instagram}} {{{showHideSocialLinks}}}">
+                <div class="social__item">
+                  <img src="https://files.outfit.io/media_library_items/55479/fb%2520icon.svg" class="social__icon"><!--social__icon-->
+                  <div class="social__text {{{showHideSocialLinks}}}">/{{team.facebook-link}}{{^team.facebook-link}}Facbook Link Here{{/team.facebook-link}}</div><!--social__text-->
+                </div><!--social__item-->
+                <div class="social__item insta">
+                  <img src="https://files.outfit.io/media_library_items/55478/inst%2520icon.svg" class="social__icon ="><!--social__icon-->
+                  <div class="social__text {{{showHideSocialLinks}}}">@{{team.instagram-link}}{{^team.instagram-link}}Instagram Link Here{{/team.instagram-link}}</div><!--social__text-->
+                </div><!--social__item-->
+              </div><!--social-->
+            </div><!--body__bottom-->
+          </div><!--body-->
+          <div class="footer">
+            <div class="website">{{{account.snippets.website-url}}}</div><!--website-->
+          </div><!--footer-->
+
+        </div><!--container fit-->
+
+      </div><!--bleed-->
+
+    </div><!--page-->
+
+
+    <script>
+      window.showCrop = {{show-crop}}{{^show-crop}}true{{/show-crop}};                                      
+    </script>
+    <script src="js/main.js"></script>   
+    <script src="js/prefixfree.js"></script>
+    <script src="js/placeholder-controller.js"></script>
+    <script src="js/char-limit.js"></script>
+    <script src="js/check-export-mode.js"></script>
+    <script src="js/max-line-check.js"></script>    
+    <script src="js/max-height-check.js"></script>    
+    <script src="https://outfit-assets-production.s3-accelerate.amazonaws.com/scripts/textfit.0.0.4.min.js" type="text/javascript"></script>
+    <script src="https://outfit-assets-production.s3-accelerate.amazonaws.com/scripts/textfit.0.0.4.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+      // Add many fallbacks for Print Ready
+      document.addEventListener('DOMContentLoaded', function(event) {
+        document.dispatchEvent(new Event('printready'));
+      });
+
+      setTimeout(function() {
+        document.dispatchEvent(new Event('printready'));
+      }, 1500);
+
+      document.dispatchEvent(new Event('printready'));
+    </script>
+    <script>
+
+      // Tracking text changes and firing text restriction functions (mutationObserver)
+      const overflowObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          maxLineCheck(); 
+          maxHeightCheck(); 
+          charLimit();
+        });
+      });
+
+      overflowObserver.observe(document.body, {
+        attributes: false,
+        characterData: true,
+        childList: true,
+        subtree: true,
+        attributeOldValue: false,
+        characterDataOldValue: true
+      });         
+
+      // Calling text size restriction functions once the fonts are loaded
+      document.fonts.ready.then(() => {
+        maxLineCheck(); 
+        maxHeightCheck();         
+      });
+
+      placeholderController();
+      checkCrop();  
+      checkExport(); 
+      charLimit();
+      
+
+      
+
+
+    </script>
+
+
+  </body>
+</html>
