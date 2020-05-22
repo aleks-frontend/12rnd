@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html class="{{crop-marks}}-crop-marks {{^crop-marks}}show-crop-marks{{/crop-marks}}">
+  <head>
+    <title>High Way - Banner</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/stylesheets/main.css">
+
+    <style>
+      
+      	@import url("https://outfit-assets-production.s3.amazonaws.com/fonts/Gotham/stylesheet.css");
+      
+      .test-background-image {
+        background-image: url('https://outfit-v2-exports-production.s3-ap-southeast-2.amazonaws.com/media_library_items/eb3552d010a4a59ead13bff6f56c473f/Screen%20Shot%202017-04-20%20at%203.25.34%20PM.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0.7;
+        z-index: 100;
+      }
+
+      .show-crop-marks .test-background-image {
+        top: 0.5in;
+        left: 0.5in;
+        right: 0.5in;
+        bottom: 0.5in;
+      }
+
+      
+
+      html {
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Gotham', helvetica, arial, sans-serif;
+        color: brand-color;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        font-weight: 600;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+	em {
+        color: rgba(109, 196, 33, 1) !important;
+        font-style: normal !important;
+        background-color: white;
+        padding: 0em 0.15em;
+        text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+        color: black !important;
+        font-style: normal !important;
+        padding: 0em 0.15em;
+        text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+      }
+
+      .greyscale em {
+        color: black !important;
+        font-style: normal !important;
+        background-color: white !important;
+        padding: 0em 0.15em;
+        text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+      }
+
+      .greyscale-green em {
+        color: black !important;
+        font-style: normal !important;
+        background-color: rgba(109, 196, 33, 1) !important;
+        padding: 0em 0.15em;
+        text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+      }
+      
+      .headline {
+        font-size: 1.4em;
+        color: #fff;
+      }
+      
+      .logo {
+        position: absolute;
+        top: 90pt;
+        right: 0;
+        width: 25%;
+        height: 38%;
+        background-image: url('{{{account.logos.primary}}}');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+      }
+    </style>
+    
+  </head>
+  <body class="{{crop-marks}}-crop-marks {{^crop-marks}}show-crop-marks{{/crop-marks}} {{value-props-visibility}}">
+    <div class='page'>
+      <div class='document'>
+        <div class='content'>
+          
+          <div class="headline">
+            {{{ headline }}}
+            <h2>{{{ subheading }}}</h2>
+          </div>
+          
+          <div class="logo"></div>
+          <div class="triangle"></div>
+                    
+          <div class="text">
+            <h2>
+              FUNCTIONAL <strong>STRENGTH</strong><br>
+              TRAINING & BOXING
+            </h2>
+            <h2>
+              BURN <strong>750 CAL</strong><br>
+              IN 45 MINUTES
+            </h2>
+            <h2>
+              NO SET START TIMES<br>
+              <strong>UNLIMITED</strong>WORKOUTS
+            </h2>
+          </div>
+          
+          <div class="website">
+            <h3>{{{account.snippets.website-url}}}</h3>
+          </div>
+          
+        </div><!--content-->
+      </div><!--document-->
+
+    </div><!--page-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/javascripts/main.js"></script>
+  </body>
+</html>
