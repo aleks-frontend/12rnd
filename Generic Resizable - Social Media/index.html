@@ -1,0 +1,111 @@
+<!DOCTYPE>
+<html class="{{font}}{{^font}}open-sans{{/font}}">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="assets/stylesheets/main.css">
+  <script type="text/javascript">
+
+    var vminsize = 1.8
+    var vmaxsize = 1.2
+    var vhsize   = 1.8
+
+    window.addEventListener("resize", setSize);
+    document.addEventListener("DOMContentLoaded", setSize);
+
+    function setSize() {
+      var vw   = window.innerWidth / 100
+      var vh   = window.innerHeight / 100
+      var vmin = Math.min(vw, vh)
+      var vmax = Math.max(vw, vh)
+      document.documentElement.style.fontSize =  (( vmin * vminsize ) + ( vmax * vmaxsize ) + ( vh * vhsize ))  + "px";
+    }
+
+  </script>
+
+  <!-- Any css that contains mustache tags must be in the head of the index.mst file  -->
+  <style type="text/css">
+
+    html {
+      color: #D13D3D;
+      {{#brand-color-hex-code}}color: {{{brand-color-hex-code}}};{{/brand-color-hex-code}}
+    }
+
+    .content {
+      font-size: {{font-size}};
+      /*template is designed for 1em to be used as a base font size*/
+    }
+
+    {{#background-image}}
+
+    .background-image {
+      background-image: url('{{{background-image}}}');
+      background-blend-mode: normal;
+    }
+
+    .reversed .background-image.soft-light {
+      opacity: 1;
+      background-blend-mode: soft-light;
+    }
+
+    .background-image.soft-light {
+      opacity: 0.15;
+      background-blend-mode: normal;
+    }
+
+    .reversed .background-image.multiply {
+      background-color: currentColor;
+      background-blend-mode: multiply;
+    }
+
+    .background-image.multiply {
+      opacity: 1;
+      background-color: #343434;
+      background-blend-mode: multiply;
+    }
+
+    .background-image.exclusion{
+      background-blend-mode: exclusion;
+    }
+
+    {{/background-image}}
+
+    {{#reversed-logo}}
+      .reversed .logo {
+        background-image: url('{{{reversed-logo}}}');
+      }
+    {{/reversed-logo}}
+    
+    {{^reversed-logo}}{{^logo}}
+      .reversed .logo {
+        background-image: url('http://johnm.io/logos-that-i-gone-and-done/outfit-logo-white.svg');
+      }
+    {{/logo}}{{/reversed-logo}}
+    
+
+    .logo {      
+      {{^logo}}background-image: url('http://johnm.io/logos-that-i-gone-and-done/outfit-logo-red.svg');{{/logo}}
+      {{#logo}}background-image: url('{{{logo}}}');{{/logo}}
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: right;
+    }
+
+    .vertical-center .logo, .vertical-bottom .logo {
+       background-position: left;
+    }
+
+  </style>
+</head>
+<body class="{{#reversed}}{{reversed}}{{/reversed}}{{^reversed}}reversed{{/reversed}} {{button-style}} {{layout}} {{text-align}}">
+  <div class="background-image {{background-blend-mode}}"></div>
+  <div class="content">
+    <div class="logo">
+    </div>
+    <div class="text">
+      <h1 class="headline">{{^headline}}Example Headline.{{/headline}}{{{headline}}}</h1>
+      {{#headline}}<h2 class="subheading">{{{subheading}}}</h2>{{/headline}}
+    </div>
+    {{#call-to-action}} <a class="call-to-action" href="{{{call-to-action-url}}}"><span class="cta-text">{{{call-to-action}}}</span></a>{{/call-to-action}}
+  </div>
+</body>
+</html>
