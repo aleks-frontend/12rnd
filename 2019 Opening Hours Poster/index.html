@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html data-sign="OSM">
+  <head>
+    <title>Template title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="css/minireset.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/placeholder-controller.css">
+
+    <style>
+      @import url("https://outfit-assets-production.s3.amazonaws.com/fonts/Gotham/stylesheet.css"); 
+
+      :root {
+        --green: {{account.colors.green}};
+        --light-grey: #352733;
+        --dark-grey: rgba(55, 53, 53, 1);
+        --white: {{account.colors.white}};
+        --black: {{{account.colors.black}}};
+      }            
+
+      html {
+        font-family: 'Gotham';
+        font-weight: 600;
+        font-size: 0.26rem;
+        color: var(--white);
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        background: var(--dark-grey);
+      }
+
+      .backgroundImage {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+
+      .header {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+        position: relative;
+        height: 7.43rem;
+        padding: 0.96rem 0.89rem 0 0.89rem;
+      }
+
+      .logo {
+        width: 2.73rem;
+        z-index: 1;
+      }
+
+      .hero {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+      }
+
+      .subheading {
+        position: absolute;
+        bottom: 0.34rem;
+        left: 1.23rem;
+        right: 1.23rem;
+        font-size: 0.86rem;
+        font-weight: 500;
+        line-height: 1.2em;
+        color: var(--green);
+        text-transform: uppercase;
+        letter-spacing: 0.1pt;
+      }
+
+      .subheading.white {
+        color: var(--white);
+      }
+
+      .subheading.black {
+        color: var(--black);
+      }
+
+      .subheading.green {
+        color: var(--green);
+      }
+
+      @media (min-width: 1100px) {
+        .subheading {
+          bottom: 0.3rem;
+          letter-spacing: 0.6pt;
+        }
+      }
+
+      .body {
+        flex: 1;
+        padding: 0.30rem 0.60rem 0pt 1.21rem;
+      }
+
+      @media (min-width: 1100px) {
+        .body {
+          padding-top: 0.36rem;
+        }
+      }
+
+      .heading {
+        position: relative;
+        margin-bottom: 1.64rem;
+        text-transform: uppercase;
+        font-size: 1.73rem;
+        max-height: 4.20rem;
+      }
+
+      .heading__inner {
+        line-height: 1em;
+      }
+
+      @media (min-width: 1100px) {
+        .heading {
+          margin-bottom: 1.65rem;
+          font-size: 1.75rem;
+        }
+      }
+
+      .heading__line {
+        margin-top: -1.15rem;
+        margin-bottom: 1.03rem;
+        width: 2.34rem;
+        height: 0.12rem;
+        background-color: var(--green);
+      }
+
+      .openHours__heading {
+        margin-bottom: 0.09rem;
+        font-size: 0.34rem;
+        letter-spacing: 0.2pt;
+        text-transform: uppercase;
+        color: var(--green);
+      }
+
+      .openHours__table {
+        font-size: 0.34rem;
+      }
+
+      .openHours {
+        font-family: 'Gotham';
+        font-weight: 400;
+      }
+
+      .openHours__row {
+        height: 0.61rem;
+      }
+
+      @media (min-width: 1100px) {
+        .openHours__row {
+          height: 0.63rem;
+          margin-bottom: 0.62rem;
+          padding-right: 0.18rem;
+          letter-spacing: 0.2pt;
+        }
+      }
+
+      .openHours__label {
+        padding-right: 0.19rem;
+      }
+
+      .footer {
+        padding: 0pt 2.57rem 0.94rem 1.22rem;
+      }
+
+      @media (min-width: 1100px) {
+        .footer {
+          padding: 0 2.57rem 0.9rem 1.19rem;
+        }
+      }
+
+      .address {
+        font-size: 0.24rem;
+      }
+
+      .contact {
+        font-size: 0.34rem;
+        line-height: 1.55em;
+        text-transform: uppercase;
+      }
+
+      @media (min-width: 1100px) {
+        .contact__value {
+          font-size: 0.35rem;
+        }
+      }
+
+      .contact__label {
+        color: var(--green);
+      }
+
+      .address {
+        font-family: 'Gotham';
+        margin-top: 0.24rem;
+        line-height: 1.5em;
+        font-size: 0.343rem;
+      }     
+
+      @media (min-width: 1100px) {
+        .address {
+          font-size: 0.35rem;
+        }
+      }     
+
+      .phoneNumber {
+        font-size: 0.343rem;
+        font-family: 'Gotham';
+      }
+
+      @media (min-width: 1100px) {
+        .phoneNumber {
+          font-size: 0.35rem;
+        }
+      }  
+
+      .social {
+        display: flex;
+        margin-top: 0.41rem;
+        height: 0.77rem;
+      }
+
+      .social__item {
+        display: flex;
+        margin-right: 0.41rem;
+      }
+
+      @media (min-width: 1100px) {
+        .social__item {
+          margin-right: 0.43rem;
+          font-size: 0.287rem;
+        }
+      }
+
+      .social__icon {
+        width: 0.56rem;
+        margin-right: 0.20rem;
+      }
+
+      .social__label {
+        align-self: center;
+        font-size: 0.283rem;
+        font-weight: 500;
+        color: var(--green);
+      }
+
+      @media (min-width: 1100px) {
+        .social__label {
+          font-size: 0.288rem;
+        }
+      }
+
+      .site {
+        position: absolute;
+        right: 1.17rem;
+        bottom: 1.13rem;
+        font-size: 0.296rem;
+        font-weight: 500;
+        color: var(--light-grey);
+      }
+
+      @media (min-width: 1100px) {
+        .site {
+          bottom: 1.07rem;
+        }
+      }
+
+      .triangle {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 4.53rem;
+        height: 6.31rem;
+      }
+      
+      .shape {
+        position: absolute;
+        display: none;
+        max-width: unset;
+      }
+      
+      .shape--triangleWhite {
+        display: block;
+        bottom: -2.686rem;
+        right: -0.163rem;
+        width: 6.610rem;
+      }      
+
+      .show .social__label {
+        display: block;
+      }
+
+      .hide .social__label {
+        display: none;
+      }
+
+      .hide .social__item {
+        margin-right: 0.152rem;
+      }
+      
+      .hide  {
+        display: none;
+      }
+
+
+      /* ANY OTHER STYLES THAT NEED MUSTACHE.JS CAPABILITIES */
+    </style>
+  </head>
+  <body style="background: white" class="u-placeholder-{{ placeholder-toggle-new }}{{^placeholder-toggle-new}}hide{{/placeholder-toggle-new}}" data-crop="{{show-crop}}">
+    <div class="placeholderMaster" data-opacity="{{ placeholder-opacity }}">
+      {{#placeholder-image-1}}
+      <div class="placeholderMaster__item" data-bg="{{ placeholder-image-1 }}"></div>
+      {{/placeholder-image-1}}
+    </div><!-- end placeholderMaster -->
+
+    <div class="page">
+
+      <div class="bleed">
+
+        <div class="container fit">
+
+          <div class="header">
+            <img class="logo" src="{{account.logos.primary}}" alt=""><!--end logo-->
+            <div class="hero">{{{12rnd_background-image--ohp}}}</div><!--end logo-->
+            <div class="subheading {{12rnd_club-name-colour--ohp}}{{^12rnd_club-name-colour--ohp}}green{{/12rnd_club-name-colour--ohp}}">{{{team.name}}}{{^team.name}}Location Here{{/team.name}}</div><!--end logo-->
+          </div><!--end header-->
+          <div class="body">
+            {{#12rnd_headline--ohp}} 
+            <div class="heading" data-max-line="1">
+              <div class="heading__inner" style="font-size: {{12rnd_headline-size--ohp}}%;">
+                {{{12rnd_headline--ohp}}}
+              </div><!--heading__inner-->
+            </div>
+            <div class="heading__line"></div><!--end heading__line-->
+            {{/12rnd_headline--ohp}}
+            {{#12rnd_spreadsheet-heading--ohp}}<div class="openHours__heading" data-max-line="1">{{{12rnd_spreadsheet-heading--ohp}}}</div><!--end openHours__heading-->{{/12rnd_spreadsheet-heading--ohp}}
+            <table class="openHours__table">
+              {{#spreadsheet.12rnd_hours--ohp}}
+              <tr class="openHours__row">  
+                <td class="openHours__label">{{{12rnd_day--ohp}}}</td><!--end openHours__label-->
+                <td class="openHours">{{{12rnd_opening-hours--ohp}}}</td><!--end openHours-->          
+              </tr><!--end openHours__row-->
+              {{/spreadsheet.12rnd_hours--ohp}}        
+            </table><!--end table-->
+          </div><!--end body-->
+          <div class="footer">
+            <div class="contact">
+              {{#12rnd_contact-heading--ohp}}<div class="contact__label" data-max-line="1">{{{12rnd_contact-heading--ohp}}}</div><!--end contact__label-->{{/12rnd_contact-heading--ohp}}
+              <div class="contact__value">{{{team.email}}}{{^team.email}}info@12round.com{{/team.email}}</div><!--end contact__value-->
+              <div class="contact__label" data-max-line="1">Phone</div><!--end contact__label-->
+              <div class="contact__value">{{{team.phone}}}{{^team.phone}}0412 345 678{{/team.phone}}</div><!--end contact__value-->
+            </div><!--end contact-->
+            <div id="address" class="address"><!--Level 1/83 Albert St, Brisbane City QLD 4000--></div><!--end address-->
+            <div class="social ">
+              <div class="social__item">
+                <img class="social__icon" src="https://files.outfit.io/media_library_items/63027/fb%2520green.svg" alt=""><!--end social__icon-->
+                <div class="social__label {{{showHideSocialLinks}}}">/{{team.facebook-link}}{{^team.facebook-link}}Facbook Link Here{{/team.facebook-link}}</div> <!--end social__label-->
+              </div><!--social__item-->
+              <div class="social__item">
+                <img class="social__icon" src="https://files.outfit.io/media_library_items/63026/insta%2520green.svg" alt=""><!--end social__icon-->
+                <div class="social__label {{{showHideSocialLinks}}}">@{{team.instagram-link}}{{^team.instagram-link}}Instagram Link Here{{/team.instagram-link}}</div> <!--end social__label-->
+              </div><!--social__item-->
+            </div><!--social-->
+          </div><!--end footer-->
+          <div class="triangle">
+            <img src="https://files.outfit.io/media_library_items/69671/bottom%2520triangle.svg" alt="" class="shape shape--triangleWhite"> 
+            <div class="site">{{account.snippets.website-url}}</div>
+          </div><!--end triangle-->
+
+        </div><!--container fit-->
+
+      </div><!--bleed-->
+
+    </div><!--page-->
+
+
+    <script>
+      window.showCrop = {{show-crop}}{{^show-crop}}true{{/show-crop}};
+    </script>
+    <script src="js/main.js"></script>   
+    <script src="js/prefixfree.js"></script>
+    <script src="js/placeholder-controller.js"></script>
+    <script src="js/char-limit.js"></script>
+    <script src="js/check-export-mode.js"></script>
+    <script src="js/max-line-check.js"></script>
+    <script src="js/max-height-check.js"></script>
+    <script src="https://outfit-assets-production.s3-accelerate.amazonaws.com/scripts/textfit.0.0.4.min.js" type="text/javascript"></script>
+    <script>
+
+      // Tracking text changes and firing text restriction functions (mutationObserver)
+      const overflowObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          maxLineCheck();
+          maxHeightCheck();
+          charLimit();
+        });
+      });
+
+      overflowObserver.observe(document.body, {
+        attributes: false,
+        characterData: true,
+        childList: true,
+        subtree: true,
+        attributeOldValue: false,
+        characterDataOldValue: true
+      });
+
+      // Calling text size restriction functions once the fonts are loaded
+      document.fonts.ready.then(() => {
+        maxLineCheck();
+        maxHeightCheck();
+      });
+
+      placeholderController();
+      checkCrop();
+      checkExport();
+      charLimit();
+
+      // TextFit function decreases the font of the selected element to make it fit in single line (if needed, uncomment the code bellow)
+      TextFit.fit({
+        selector: '.textFit'
+      });
+
+      //Remove the br tags from address
+      //var StrippedString = OriginalString.replace(/(<([^>]+)>)/ig,"");
+      var addressString = "{{{team.address}}} {{{team.state}}} {{{team.postcode}}}{{^team.address}}Team Address Here<br>over 2 lines{{/team.address}}";
+      var addressStrippedString = addressString.replace(/(<([^>]+)>)/ig,", ");
+      var addressDiv = document.getElementById('address');
+      addressDiv.innerHTML = addressStrippedString;
+    </script>
+
+
+  </body>
+</html>
