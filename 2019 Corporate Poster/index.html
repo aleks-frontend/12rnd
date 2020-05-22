@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html data-sign="OSL">
+  <head>
+    <title>Template title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="css/minireset.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/placeholder-controller.css">
+
+    <style>
+      @import url("https://outfit-assets-production.s3.amazonaws.com/fonts/Gotham/stylesheet.css"); 
+
+      :root {
+        --white: {{account.colors.white}};
+        --black: {{account.colors.black}};
+        --green: {{account.colors.green}};
+        --light-grey: #352733;
+        --dark-grey: #231f20;
+      }
+
+      html {
+        font-family: 'Gotham';
+        font-weight: 600;
+        font-size: 0.26rem;
+        color: var(--dark-grey);
+      }
+
+      a {
+        text-decoration: none;
+        color: var(--dark-grey);
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header {
+        position: relative;
+        height: 397pt;
+        padding: 50.6pt 50pt;
+      }
+
+      .heading {
+        position: relative;
+        width: 125pt;
+        margin-bottom: 19pt;
+        text-transform: uppercase;
+        color: var(--white);     
+      }
+
+      .heading strong {
+        color: var(--green);
+      }
+
+      .heading h1 {
+        font-size: 42pt;
+        line-height: 0.9em;
+      }
+
+      .heading h2 {
+        font-size: 30.5pt;
+        line-height: 1.05em;
+      }
+      
+      .heading h3{
+        font-size: 25pt;
+        line-height: 1.05em;
+      }
+      
+      .heading h4{
+        font-size: 20pt;
+        line-height: 1.05em;
+      }
+
+      .heading__line {
+        position: relative;
+        margin-left: 3pt;
+        width: 61pt;
+        height: 4pt;  
+        background: var(--green);      
+      }
+
+      .logo {
+        position: absolute;
+        width: 100pt; 
+        right: 34pt;
+        top: 35pt;     
+      }
+
+      .header__image {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        overflow: hidden;
+            height: 9.52em;
+      }
+
+      .triangle {
+        position: absolute;
+        /*  background: var(--black);*/
+      }
+
+      .triangle--primary {
+        top: 0;
+        left: 0;
+        width: 292pt;
+        bottom: 0pt;
+        /*  clip-path: polygon(0% 0%, 100% 0%, 3% 100%, 0% 100%);*/
+      }
+
+      .triangle--secondary {
+        bottom: 0;
+        right: 0;
+        width: 145pt;
+        height: 202pt;
+        /*  clip-path: polygon(100% 0%, 100% 100%, 0% 100%);  
+        background: var(--dark-grey);*/
+      }
+
+      .body {
+        flex-grow: 1;       
+      }
+
+      .column__container {
+        flex-grow: 1;
+        display: flex;     
+      }
+
+      .column {
+        position: relative;
+        display: flex;
+        flex-direction: column;    
+      }      
+
+      .column--primary {
+        justify-content: space-between;
+        width: 318pt;
+        padding: 25pt 20pt 0pt 53pt;   
+      }
+
+      .column--secondary {
+        flex: 1;
+        padding: 18.2pt 39pt 0 0;
+      }
+
+      .column__section {
+        font-size: 10pt;
+      }
+
+      .headerCopy1 {
+        margin-bottom: 6pt;
+        font-size: 10.3pt;
+        line-height: 1.4em;     
+        color: var(--green);
+      }
+
+      .headerCopy2 {
+        margin-bottom: 8pt;
+        font-family: 'Gotham';      
+        font-size: 10pt;
+        line-height: 1.4em;        
+      }
+
+      .headerCopy2 p {
+        font-weight: 400;
+      }
+
+      .offerUrl {
+        margin-bottom: 10pt;
+        font-size: 9.7pt;     
+      }
+
+      .offerUrl br {
+        display: none;
+      }
+
+      .offerFeatures {
+        margin: 22pt 0 18pt;
+        font-size: 14.3pt;    
+      }
+
+      .offerFeatures ul {
+        padding: left;
+        padding-left: 25pt;
+      }
+
+      .offerFeatures li {
+        position: relative;
+        margin-bottom: 10.3pt;     
+        font-size: 1em;      
+      }
+
+      .offerFeatures li:before {
+        content: "";
+        position: absolute;
+        left: -23pt;
+        top: 4pt;
+        width: 9pt;
+        height: 9pt;
+        background: var(--green);
+      }
+
+      .offerFeatures p {
+        font-size: 1em;
+        line-height: 1.3em;
+      }
+
+      .moreInfo {
+        font-size: 9.7pt;
+      }
+
+      .moreInfo__label {
+        font-family: 'Gotham';
+        font-weight: 400;
+      }
+
+      .contact {
+        margin-top: 14pt;
+        font-size: 10.2pt;
+        line-height: 1.52em;
+        font-size: 12.4pt;     
+      }
+
+      .contact__label {
+        text-transform: uppercase;
+        color: var(--green);
+      }
+
+      .social {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10pt;    
+      }
+
+      .social__item {
+        display: flex;
+        align-items: flex-end;
+        margin-top: 7pt;
+      }
+
+      .social__icon {
+        width: 17.9pt;
+        margin-right: 7pt;
+      }
+
+
+      .social__label {
+        align-self: center;
+        font-size: 9pt;
+        font-weight: 500;
+        letter-spacing: 0pt;   
+        color: var(--green);   
+        text-transform: none;
+      }
+
+      .copy1Header {
+        margin-bottom: 6pt;
+        font-size: 15pt;
+        text-transform: uppercase;     
+      }
+
+      .copy1Header__line {
+        width: 62pt;
+        height: 3pt;
+        margin-bottom: 7pt;
+        background: var(--green);      
+      }
+
+      .copy1Body {
+        margin-bottom: 11pt;
+      }
+
+      .copy1Body p {
+        font-size: 9.2pt;
+        font-family: 'Gotham';
+        font-weight: 400;
+        line-height: 1.1em;
+      }
+
+      .copy1Body p strong {
+        font-family: 'Gotham';
+        font-weight: 600;
+      }
+
+      .copy2Header {
+        margin-bottom: 9pt;
+        text-transform: uppercase;
+        font-size: 10.3pt;    
+        color: var(--green);
+      }
+
+      .copy2Body {
+        margin-bottom: 14pt;
+        font-size: 10pt;   
+      }
+
+      .copy2Body ul {
+        margin-bottom: 10pt;
+        padding-left: 19pt;
+      }
+
+      .copy2Body ul:last-child {
+        margin-bottom: 0;
+      }
+
+      .copy2Body li {
+        position: relative;
+        margin-bottom: 5pt;    
+      }
+
+      .copy2Body li:before {
+        content: "";
+        position: absolute;
+        left: -19pt;
+        top: 1.5pt;
+        width: 9pt;
+        height: 9pt;
+        background-image: url(https://files.outfit.io/media_library_items/63712/strelica.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;      
+      }
+
+      .copy3Header {
+        margin-bottom: 5pt;
+        font-size: 10.3pt;
+        text-transform: uppercase;
+        color: var(--green);     
+      }
+
+      .trainingCamp {
+        margin-bottom: 4.8pt;
+      }
+
+      .trainingCamp__header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2pt;
+        font-size: 10pt;       
+      }
+
+      .trainingCamp__img {
+        width: 29pt;
+        margin-right: 2pt;
+      }
+
+      .trainingCamp__item {
+        padding-left: 39pt;
+        font-size: 8pt;
+      }
+
+      .trainingCamp__section {
+        position: relative;
+        margin-bottom: 3pt;    
+      }
+
+      .trainingCamp__section:before {
+        content: "•";
+        position: absolute;
+        left: -7pt;
+      }
+
+      .programCopy {
+        margin-bottom: 14pt;
+        font-family: 'Gotham';
+        font-size: 8pt;
+      }
+
+      .programCopy p {
+        font-weight: 400;       
+      }
+
+      .programInclusions h1 {
+        margin-bottom: 6pt;
+        font-size: 9pt;     
+      }
+
+      .programInclusions p {
+        font-size: 8pt; 
+        font-family: 'Gotham';
+        font-weight: 400;
+      }
+
+      .programInclusions ul {
+        position: relative;   
+        padding-left: 8pt;        
+      }
+
+      .programInclusions li {
+        margin-bottom: 5pt;
+        font-size: 8pt;
+        font-family: 'Gotham';
+        font-weight: 400;
+        position: relative; 
+      }
+
+      .programInclusions li:before {
+        content: "•";
+        position: absolute;
+        left: -8pt;
+        color: var(--green);
+      }
+
+      .footer {
+        display: flex;
+        align-items: flex-end;
+        height: 65pt;
+        padding: 0 163pt 26pt 51pt;       
+      }
+
+      .disclaimer {
+        font-family: 'Gotham';
+        font-weight: 400;
+        font-size: 7.2pt;
+        line-height: 1.6em;
+      }
+
+      .site {  
+        position: absolute;
+        right: 33pt;
+        bottom: 35pt;
+        font-size: 10pt;
+        color: var(--white);
+      }  
+
+      .is-firefox .container {
+
+      }
+
+      .show .social__label {
+        display: block;
+      }
+
+      .hide .social__label {
+        display: none;
+      }
+
+      .hide .social {
+        flex-direction: row;
+        margin-bottom: 20px;
+      }
+
+      .shape {
+        position: absolute;    
+        max-width: unset;
+      }
+
+      .shape--triangleBlack {
+        top: -17pt;
+        left: -19pt;
+        width: 7.05rem;
+        transform: rotate(3.6deg);
+      }    
+
+      .shape--triangleBlack2 {
+        bottom: 0;
+        right: 0;
+        width: 3.35rem;
+      }    
+      
+      .hide {
+        display: none;
+      }
+
+      /* ANY OTHER STYLES THAT NEED MUSTACHE.JS CAPABILITIES */
+    </style>
+  </head>
+  <body style="background: white" class="u-placeholder-{{ placeholder-toggle-new }}{{^placeholder-toggle-new}}hide{{/placeholder-toggle-new}} " data-crop="{{show-crop}}">
+    <div class="placeholderMaster" data-opacity="{{ placeholder-opacity }}">
+      {{#placeholder-image-1}}
+      <div class="placeholderMaster__item" data-bg="{{ placeholder-image-1 }}"></div>
+      {{/placeholder-image-1}}
+    </div><!-- end placeholderMaster -->
+    <div class="page">
+
+      <div class="bleed">
+
+        <div class="container fit">
+
+          <div class="header">                    
+            <div class="header__image">{{{ 12rnd_header-image--cp }}}</div><!--header__image-->
+            <!--<div class="triangle triangle--primary"></div><!--triangle triangle--primary-->
+            <img src="https://files.outfit.io/media_library_items/69697/top%2520triangle%2520small.svg" alt="" class="shape shape--triangleBlack"> 
+            {{#12rnd_headline--cp}}
+            <div class="heading" data-max-height="160">{{{ 12rnd_headline--cp }}}</div><!--heading-->
+            <div class="heading__line"></div><!--heading__line-->
+            {{/12rnd_headline--cp}}
+            <img class="logo" src="{{account.logos.primary}}"><!--logo-->       
+          </div><!--heading-->
+          <div class="body column__container">
+            <div class="column column--primary">
+              <div class="column__section">
+                {{#12rnd_header-copy-1--cp}}<div class="headerCopy1" data-max-line="2">{{{ 12rnd_header-copy-1--cp }}}</div><!--headerCopy1-->{{/12rnd_header-copy-1--cp}}
+                {{#12rnd_header-copy-2--cp}}<div class="headerCopy2" data-max-line="4">{{{ 12rnd_header-copy-2--cp }}}</div><!--headerCopy2-->{{/12rnd_header-copy-2--cp}}
+                {{#12rnd_offer-url--cp}}<div class="offerUrl" data-max-height="20">{{{ 12rnd_offer-url--cp }}}</div><!--offerUrl-->{{/12rnd_offer-url--cp}}
+                {{#12rnd_offer-features--cp}}<div class="offerFeatures" data-max-height="160">{{{ 12rnd_offer-features--cp }}}</div><!--offerFeatures-->{{/12rnd_offer-features--cp}}
+              </div><!--column__section-->
+              <div class="column__section">
+                {{#12rnd_call-to-action-1--cp}}
+                <div class="moreInfo" data-max-line="2">
+                  <span class="moreInfo__label">{{{ 12rnd_call-to-action-1--cp }}}</span><!--moreInfo__label-->
+                  <span class="moreInfo__value">{{{team.email}}}{{^team.email}}Gym Email Here{{/team.email}}</span><!--moreInfo__value-->
+                </div><!--moreInfo-->
+                {{/12rnd_call-to-action-1--cp}}
+                <div class="contact">
+                  {{#12rnd_call-to-action-2--cp}}<div class="contact__label" data-max-line="1">{{{ 12rnd_call-to-action-2--cp }}}</div><!--contact__label-->{{/12rnd_call-to-action-2--cp}}
+                  <div class="contact__value">{{{account.snippets.website-url}}}</div><!--contact__value-->
+                </div><!--contact-->
+                <div class="social">
+                  <div class="social__item">
+                    <img class="social__icon" src="https://files.outfit.io/media_library_items/63027/fb%2520green.svg" alt="">
+                    <div class="social__label {{{showHideSocialLinks}}}">/{{team.facebook-link}}{{^team.facebook-link}}Facebook Link Goes Here{{/team.facebook-link}}</div>
+                  </div><!--social__item-->
+                  <div class="social__item">
+                    <img class="social__icon" src="https://files.outfit.io/media_library_items/63026/insta%2520green.svg" alt=""><!--end social__icon-->
+                    <div class="social__label {{{showHideSocialLinks}}}">@{{team.instagram-link}}{{^team.instagram-link}}Instagram Link Goes Here{{/team.instagram-link}}</div> <!--end social__label-->
+                  </div><!--social__item-->
+                  <!--end social__item-->
+                </div><!--social-->
+              </div><!--column__section-->
+            </div><!--column-->
+            <div class="column column--secondary" data-max-height="530">
+              {{#12rnd_copy-1-header--cp}}
+              <div class="copy1Header" data-max-line="1">{{{ 12rnd_copy-1-header--cp }}}</div><!--copy1Header-->
+              <div class="copy1Header__line"></div><!--copy1Header__line-->
+              {{/12rnd_copy-1-header--cp}}
+              {{#12rnd_copy-1-body--cp}} <div class="copy1Body" data-max-height="40">{{{ 12rnd_copy-1-body--cp }}}</div><!--copy1Body-->{{/12rnd_copy-1-body--cp}}
+              {{#12rnd_copy-2-header--cp}}<div class="copy2Header" data-max-line="1">{{{ 12rnd_copy-2-header--cp }}}</div><!--copy2Header-->{{/12rnd_copy-2-header--cp}}
+              {{#12rnd_copy-2-body--cp}}<div class="copy2Body" data-max-height="55">{{{ 12rnd_copy-2-body--cp }}}</div><!--copy2Body-->{{/12rnd_copy-2-body--cp}}
+              {{#12rnd_copy-3-header--cp}}<div class="copy3Header" data-max-line="1">{{{ 12rnd_copy-3-header--cp }}}</div><!--copy3Header-->{{/12rnd_copy-3-header--cp}}
+              <div class="trainingCamp">
+                {{#12rnd_program-header--cp}}
+                <div class="trainingCamp__header">
+                  <img class="trainingCamp__img" src="https://files.outfit.io/media_library_items/63023/icon.svg" alt=""><!--trainingCamp__img-->
+                  <div class="trainingCamp__text" data-max-line="1">{{{ 12rnd_program-header--cp }}}</div><!--trainingCamp__text-->
+                </div><!--trainingCamp__header-->
+                {{/12rnd_program-header--cp}}
+                {{#collection.12rnd_program-dates--cp}}
+                {{#block.12rnd_program-date-block--cp}}
+                <ul class="trainingCamp__item">
+                  <li class="trainingCamp__section" data-max-line="1">
+                    <span class="trainingCamp__section" style="color: {{ 12rnd_feature-colour--cp }}">
+                      {{{ 12rnd_program-number1--cp }}} // {{{ 12rnd_program-season1--cp }}}
+                    </span><!--trainingCamp__section-->
+                    12RND TRAINING CAMP {{{ 12rnd_program-date1--cp }}}
+                  </li>
+                </ul><!--trainingCamp__item-->
+                {{/block.12rnd_program-date-block--cp}}
+                {{/collection.12rnd_program-dates--cp}}
+              </div><!--trainingCamp-->
+              {{#12rnd_program-copy--cp}}<div class="programCopy" data-max-line="2">{{{ 12rnd_program-copy--cp }}}</div><!--programCopy-->{{/12rnd_program-copy--cp}}
+              {{#12rnd_program-inclusions--cp}}<div class="programInclusions" data-max-height="170">{{{ 12rnd_program-inclusions--cp }}}</div><!--programInclusions-->{{/12rnd_program-inclusions--cp}}
+            </div><!--column column--secondary-->
+          </div><!--body column__container-->
+          <div class="footer">
+            {{#12rnd_disclaimer--cp}}
+            <div class="disclaimer" data-max-line="4">
+              {{{ 12rnd_disclaimer--cp }}}
+            </div><!--disclaimer-->
+            {{/12rnd_disclaimer--cp}}
+          </div><!--footer-->
+          <div class="triangle triangle--secondary">
+            <img src="https://files.outfit.io/media_library_items/69703/bottom%2520triangle.svg" alt="" class="shape shape--triangleBlack2"> 
+            <div class="site">{{account.snippets.website-url}}</div>
+          </div><!--triangle triangle--primary-->
+
+        </div><!--container fit-->
+
+      </div><!--bleed-->
+
+    </div><!--page-->
+
+
+    <script>
+      window.showCrop = {{show-crop}}{{^show-crop}}true{{/show-crop}};
+    </script>
+    <script src="js/main.js"></script>   
+    <script src="js/prefixfree.js"></script>
+    <script src="js/placeholder-controller.js"></script>
+    <script src="js/char-limit.js"></script>
+    <script src="js/check-export-mode.js"></script>
+    <script src="js/max-line-check.js"></script>
+    <script src="js/max-height-check.js"></script>
+    <script src="https://outfit-assets-production.s3-accelerate.amazonaws.com/scripts/textfit.0.0.4.min.js" type="text/javascript"></script>
+    <script>
+
+      // Tracking text changes and firing text restriction functions (mutationObserver)
+      const overflowObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          maxLineCheck();
+          maxHeightCheck();
+          charLimit();
+        });
+      });
+
+      overflowObserver.observe(document.body, {
+        attributes: false,
+        characterData: true,
+        childList: true,
+        subtree: true,
+        attributeOldValue: false,
+        characterDataOldValue: true
+      });
+
+      // Calling text size restriction functions once the fonts are loaded
+      document.fonts.ready.then(() => {
+        maxLineCheck();
+        maxHeightCheck();
+      });
+
+      placeholderController();
+      checkCrop();
+      checkExport();
+      charLimit();
+
+      // TextFit function decreases the font of the selected element to make it fit in single line (if needed, uncomment the code bellow)
+      TextFit.fit({
+        selector: '.textFit'
+      });
+
+      // Check if current browser is Firefox
+
+      function firefoxCheck() {
+        if ( navigator.userAgent.includes('Firefox') ) document.body.classList.add('is-firefox');
+      }
+
+      firefoxCheck();
+
+    </script>
+
+
+  </body>
+</html>
