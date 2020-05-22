@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html data-sign="OSM">
+  <head>
+    <title>Template title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="css/minireset.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/placeholder-controller.css">
+
+    <style>
+      @import url("https://outfit-assets-production.s3.amazonaws.com/fonts/Gotham/stylesheet.css"); 
+
+      :root {
+        --green: {{account.colors.green}};
+        --white: {{account.colors.white}};
+        --black: #352733;
+      }
+
+      html {
+        font-family: 'Gotham';
+        font-size: 11pt;
+        color: var(--white);
+        font-weight: 600;
+      }
+
+      h1, h2 {
+        color: var(--white);
+      }
+
+      strong {
+        color: var(--green);
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        background-color: #231f20;
+      }
+
+      .backgroundImage {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-size: cover;
+      }
+
+      .header {
+        position: absolute;
+        z-index: 30;
+      }
+
+      .hoarding .heading,
+      .format--900x600 .heading {
+        position: relative;
+        color: var(--green);
+        text-transform: uppercase;
+        z-index: 1;
+        width: 70%;
+      }
+
+      li {
+        position: relative;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+
+      .billboard li {
+        margin-bottom: 0.3em;
+      }
+
+      li::before {
+        content: '';
+        position: absolute;
+        background-image: url(https://files.outfit.io/media_library_items/63712/strelica.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+
+      .triangle--primary {
+        position: absolute;
+        top: 0;
+        left: 0;
+        /* clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
+        background: #1d1d1b;
+        opacity: 0.9;
+        /*
+        {{^12rnd_background-image--afh}}
+        background: rgba(51,49,50,0);
+        background: -moz-linear-gradient(45deg, rgba(51,49,50,0) 0%, rgba(51,49,50,1) 100%);
+        background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(51,49,50,0)), color-stop(100%, rgba(51,49,50,1)));
+        background: -webkit-linear-gradient(45deg, rgba(51,49,50,0) 0%, rgba(51,49,50,1) 100%);
+        background: -o-linear-gradient(45deg, rgba(51,49,50,0) 0%, rgba(51,49,50,1) 100%);
+        background: -ms-linear-gradient(45deg, rgba(51,49,50,0) 0%, rgba(51,49,50,1) 100%);
+        background: linear-gradient(45deg, rgba(51,49,50,0) 0%, rgba(51,49,50,1) 100%);
+        {{/12rnd_background-image--afh}}
+        */
+      }
+      /*
+      .a-frame .triangle--primary{
+      background: rgba(51,49,50,0);
+      background: -moz-linear-gradient(45deg, rgba(51,49,50,0.1) 0%, rgba(51,49,50,1) 100%);
+      background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(51,49,50,0.1)), color-stop(100%, rgba(51,49,50,1)));
+      background: -webkit-linear-gradient(45deg, rgba(51,49,50,0.1) 0%, rgba(51,49,50,1) 100%);
+      background: -o-linear-gradient(45deg, rgba(51,49,50,0.1) 0%, rgba(51,49,50,1) 100%);
+      background: -ms-linear-gradient(45deg, rgba(51,49,50,0.1) 0%, rgba(51,49,50,1) 100%);
+      background: linear-gradient(45deg, rgba(51,49,50,0.1) 0%, rgba(51,49,50,1) 100%);
+      }
+      */
+
+      .triangle--secondary {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        /*   background: rgba(255, 255, 255, 1);
+        clip-path: polygon(100% 0%, 100% 100%, -0.3% 100%);*/
+      } 
+
+
+      .hoarding .header {
+        width: 154pt;
+        right: 43pt;
+        top: 35pt;
+      }
+
+      .format--900x600 .header {
+        width: 464pt;
+        right: 113pt;
+        top: 98pt;
+      }
+
+      .hoarding .heading {
+        padding: 108.1pt 0pt 25pt 51.1pt;
+        max-height: 295pt;
+        line-height: 1.45em;
+      }
+
+      .format--900x600 .heading {
+        padding: 260.7pt 0pt 54pt 138pt;
+        max-height: 850pt;
+        line-height: 1.45em;
+      }
+
+      .hoarding .heading h1 {
+        font-size: 46pt;
+        font-weight: 500;
+        line-height: 0.95em;
+      }
+
+      .format--900x600 .heading h1 {
+        font-size: 138.6pt;
+        font-weight: 600;
+        line-height: 0.95em;
+        letter-spacing: 1pt;
+      }
+
+
+      .hoarding .heading h2 {
+        font-size: 26pt;
+        font-weight: 500;
+        line-height: 1.2em;
+        letter-spacing: 1pt;
+      }
+
+      .format--900x600 .heading h2 {
+        font-size: 82.6pt;
+        font-weight: 600;
+        line-height: 1.18em;
+        letter-spacing: 1pt;
+      }
+
+      .hoarding .heading__line,
+      .format--900x600 .heading__line {
+        background: var(--green);
+        position: relative;
+        margin-top: -8pt;
+        z-index: 1;
+      }
+
+      .hoarding .heading__line {
+        width: 96.1pt;
+        height: 6.7pt;
+        margin-left: 49pt;
+      }
+
+      .format--900x600 .heading__line {
+        width: 288.1pt;
+        height: 16.3pt;
+        margin-left: 137pt;
+      }
+
+      .hoarding .content {
+        width: 288.5pt;
+        max-height: 153pt;
+        font-size: 19.7pt;
+        text-transform: uppercase;
+      }
+
+      .format--900x600 .content {
+        width: 882.5pt;
+        max-height: 500pt;
+        font-size: 64.7pt;
+        text-transform: uppercase;
+      }
+
+      .hoarding li {
+        padding-top: 9.1pt;
+        padding-left: 26pt;
+        font-size: 19.7pt;
+        letter-spacing: 0.1pt;
+      }
+
+      .format--900x600 li {
+        padding-top: 33.1pt;
+        padding-left: 81pt;
+        font-size: 60pt;
+        letter-spacing: 0.2pt;
+        line-height: 1.1em;
+      }
+
+      .hoarding li::before {
+        width: 18.2pt;
+        height: 15pt;
+        left: 0;
+        top: 13pt;
+      }
+
+      .format--900x600  li::before {
+        width: 54pt;
+        height: 100%;
+        left: 4pt;
+        top: 44pt;
+      }
+
+      .hoarding .social,
+      .format--900x600 .social {
+        display: flex;
+        flex: 1;
+        position: relative;
+        justify-content: flex-end;
+      }
+
+      .hoarding .social__item,
+      .format--900x600 .social__item {
+        display: flex;
+        align-items: center;
+      }
+
+      .hoarding .social__item {
+        height: 22pt;
+      }
+
+      .format--900x600 .social__item {
+        height: 55pt;
+      }
+
+      .hide .hoarding .social__item,
+      .hide .format--900x600 .social__item {
+        flex: unset;
+      }
+
+      .hoarding .social__item:first-child {
+        margin-right: 5pt;
+      }
+
+      .format--900x600 .social__item:first-child {
+        margin-right: 44.2pt;
+      }
+
+      .hoarding .social__icon {
+        width: 17.1pt;
+      }
+
+      .format--900x600 .social__icon {
+        width: 52.1pt;
+        max-width: none;
+      }
+
+      .hoarding .social__label,
+      .format--900x600 .social__label {
+        color: var(--green);
+      }
+
+      .hoarding .social__label {
+        padding-left: 7pt;
+        font-size: 8.9pt;
+      }
+
+      .format--900x600 .social__label {
+        padding-left: 21pt;
+        font-size: 27pt;
+      }
+
+      .hoarding .triangle--primary {
+        width: 360pt;
+        height: 507pt;
+      }
+
+      .format--900x600 .triangle--primary {
+        width: 1261pt;
+        height: 1719pt;
+      }
+
+      .format--900x600 .triangle--secondary {
+        width: 228pt;
+        height: 319pt;
+      }      
+
+      .hoarding .footer,
+      .format--900x600 .footer {
+        display: flex;
+        flex: 1;
+        align-items: flex-end;
+      }
+
+      .hoarding .footer {
+        padding: 0pt 195pt 47.6pt 52.3pt;
+      }
+
+      .format--900x600 .footer {
+        padding: 1pt 630pt 81.7pt 139.3pt;
+      }
+
+      .hoarding .site,
+      .format--900x600 .site {
+        position: absolute;
+        font-weight: 600;
+        color: var(--black);
+      }
+
+      .hoarding .site {
+        right: 51pt;
+        bottom: 48pt;
+        font-size: 17pt;
+      }
+
+      .format--900x600 .site {
+        right: 135pt;
+        bottom: 77pt;
+        font-size: 52.2pt;
+      }
+
+      .a-frame .header {
+        width: 3.79rem;
+        right: 1.11rem;
+        top: 1.23rem;
+      }
+
+      .a-frame .body {
+        margin-bottom: 1.00rem;
+      }
+
+      .a-frame .logo {
+        width: 100%;
+      }
+
+      .hoarding .logo {
+        width: 100%;
+      }
+
+      .a-frame .heading {
+        position: relative;
+        padding: 3.95rem 0rem 0.89rem 1.10rem;
+        max-height: 12.07rem;
+        color: var(--green);
+        text-transform: uppercase;
+        line-height: 1.59em;
+        z-index: 1;
+      }
+
+      .a-frame .heading h1 {
+        font-size: 1.61rem;
+        font-weight: 500;
+      }
+
+      .a-frame .heading h2 {
+        font-size: 0.97rem;
+        font-weight: 500;
+        line-height: 1.2em;
+        letter-spacing: 0.01rem;
+      }
+
+      .a-frame .heading__line {
+        width: 2.37rem;
+        height: 0.13rem;
+        background: var(--green);
+        position: relative;
+        margin-left: 1.12rem;
+      }
+
+      .a-frame .footer {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        align-items: flex-start;
+        padding: 0rem 3.32rem 0.82rem 0rem;
+      }
+
+      .a-frame .content {
+        max-height: 4.89rem;
+        padding-left: 1.97rem;
+        font-size: 0.60rem;
+        text-transform: uppercase;
+      }
+
+      .a-frame li {
+        margin-bottom: 0.40rem;
+        font-size: 0.60rem;
+        letter-spacing: 0.005rem;
+      }
+
+      .a-frame li::before {
+        width: 0.54rem;
+        height: 0.42rem;
+        left: -0.78rem;
+        top: 0.16rem;
+      }
+
+      .a-frame .social {
+        display: flex;
+        flex-direction: column;
+        position: relative; 
+        flex: 1;
+        justify-content: flex-end;
+        padding-left: 1.11rem;
+      }
+
+      .a-frame .social__item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.23rem;
+      }
+
+      .a-frame .social__icon {
+        width: 0.69rem;
+      }
+
+      .a-frame .social__label {
+        padding-left: 0.27rem;
+        font-size: 0.34rem;
+        letter-spacing: 0.005rem;
+        font-weight: 500;
+        color: var(--green);
+      }
+
+      .a-frame .triangle--primary {
+        width: 6.06rem;
+        height: 8.38rem;
+      }
+
+      .a-frame .triangle--secondary {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 6.22rem;
+        height: 8.71rem;
+        /*     background: rgba(255, 255, 255, 1);
+        clip-path: polygon(100% 0%, 100% 100%, 0% 100%);*/
+      }      
+
+      .a-frame .site {
+        position: absolute;
+        right: 1.00rem;
+        bottom: 0.81rem;
+        font-size: 0.54rem;
+        font-weight: 500;
+        color: var(--black);
+      }
+
+      .heading strong{
+        color: var(--green);
+      }
+
+      .format--900x600 .heading strong {
+        font-weight: 600;
+      }
+
+      /*Specific Styling for Billboard*/
+      .billboard .triangle--secondary {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 629pt;
+        height: 879pt;
+        /*  background: rgba(255, 255, 255, 1);
+        clip-path: polygon(100% 0%, 100% 100%, 0% 100%);*/
+      }
+
+      .billboard .triangle--primary {
+        width: 18.48rem;
+        height: 25.38rem;
+        /*  clip-path: polygon(-3% 0%, 100% 0%, 2.2% 100%);*/
+      }
+
+      .billboard .header {
+        width: 5.35rem;
+        right: 1.13rem;
+        top: 0.77rem;
+      }
+
+      .billboard .heading {
+        position: relative;
+        z-index: 1;
+        padding: 1.5rem 26.6rem 0.2rem 1.96rem;
+        max-height: 8.7rem;
+        line-height: 1.8em;
+        text-transform: uppercase;
+      }
+
+      .billboard .heading h1 {
+        font-size: 2.4rem;
+        font-weight: 500;
+        line-height: 0.95em;
+      }
+
+      .billboard .heading h2 {
+        font-size: 1.4rem;
+        font-weight: 500;
+        line-height: 1.2em;
+        letter-spacing: 3pt;
+      }
+
+      .billboard .logo {
+        width: 100%;
+      }
+
+      .billboard .heading__line {
+        width: 4.94rem;
+        height: 0.29rem;
+        background: var(--green);
+        position: relative;
+        margin-left: 1.94rem;
+        margin-top: 0.56rem;
+        z-index: 1;
+      }
+
+      .billboard .footer {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        align-items: flex-start;
+        padding: 0pt 275pt 68.3pt 0pt;
+        position: absolute;
+        top: 4.65rem;
+        right: 0rem;
+      }
+
+      .billboard .footer .content{
+        margin-bottom: 33.5pt;
+        font-size: 0.67rem;
+        letter-spacing: -0.6pt;
+      }
+
+      .billboard li::before {
+        width: 1rem;
+        height: 0.45rem;
+        left: -0.8rem;
+        top: 0.2rem;
+      }
+
+      .billboard .content {
+        width: 11.93rem;
+        max-height: 4rem;
+        font-size: 19.7pt;
+        text-transform: uppercase;
+      }
+
+      .billboard .social{
+        display: none;
+      }
+
+      .billboard .site {
+        position: absolute;
+        right: 1.25rem;
+        bottom: 0.73rem;
+        font-size: 0.496rem;
+        font-weight: 500;
+        color: var(--black);
+      }
+
+      .show .social__label {
+        display: block;
+      }
+
+      .hide .social__label {
+        display: none;
+      }
+
+      .shape {
+        position: absolute;
+        display: none;
+        max-width: unset;
+      }
+
+      .billboard .shape--quadrilateralBlack {
+        display: block;
+        bottom: -115pt;
+        left: -95pt;
+        width: 2853pt;
+        opacity: 0.9;
+        transform: rotate(3deg);
+      }   
+
+      .billboard .shape--triangleWhite {
+        display: block;
+        bottom: -115pt;
+        right: 0;
+        width: 693pt;  
+      }
+
+      .a-frame .shape--rhombGrey {
+        display: block;
+        bottom: auto;
+        top: 0.02rem;
+        width: 17.41rem;
+        left: -11.19rem;
+        transform: rotate(-1deg);    
+        opacity: 0.9;
+      }
+
+      .a-frame .shape--triangleWhite {
+        display: block;
+        bottom: -1.39rem;
+        right: -0.08rem;
+        width: 7.34rem;
+      }
+
+      .hoarding .shape--triangleBlack {
+        display: block;
+        top: -51pt;
+        left: -19pt;
+        width: 463pt;
+        transform: rotate(3.5deg);
+        opacity: 0.9;
+      }
+
+      .format--900x600 .shape--triangleBlack {
+        display: block;
+        top: -51pt;
+        left: -87pt;
+        width: 1300pt;
+        transform: rotate(3.5deg);
+        opacity: 0.9;
+      }
+
+      .hoarding .shape--triangleWhite {
+        display: block;
+        bottom: 0pt;
+        right: 0pt;
+        width: 228pt;
+      }
+
+      .format--900x600 .shape--triangleWhite {
+        display: block;
+        bottom: 0pt;
+        right: 0pt;
+        width: 622pt;
+      }
+
+      .hide {
+        display: none;
+      }
+
+
+      /* ANY OTHER STYLES THAT NEED MUSTACHE.JS CAPABILITIES */
+    </style>
+  </head>
+  <body style="background: white" class="u-placeholder-{{ placeholder-toggle-new }}{{^placeholder-toggle-new}}hide{{/placeholder-toggle-new}} " data-crop="{{show-crop}}">
+    <div class="placeholderMaster" data-opacity="{{ placeholder-opacity }}">
+      {{#placeholder-image-1}}
+      <div class="placeholderMaster__item" data-bg="{{ placeholder-image-1 }}"></div>
+      {{/placeholder-image-1}}
+    </div><!-- end placeholderMaster -->
+    <div class="page {{{12rnd_format--afh}}}">
+
+      <div class="bleed">
+
+        <div class="container fit">
+          <div class="backgroundImage">{{{ 12rnd_background-image--afh }}}</div>
+
+          <img src="https://files.outfit.io/media_library_items/69696/top%2520triangle%2520large.svg" alt="" class="shape shape--quadrilateralBlack"> 
+          <img src="https://files.outfit.io/media_library_items/69682/top%2520triangle%2520partially%2520transparent%2520grey.svg" alt="" class="shape shape--rhombGrey"> 
+          <img src="https://files.outfit.io/media_library_items/69697/top%2520triangle%2520small.svg" alt="" class="shape shape--triangleBlack"> 
+
+          <div class="header">
+            <img class="logo" src="{{account.logos.primary}}" alt="">
+          </div>
+          <!--end header-->
+          <div class="body">
+            {{#12rnd_headline--afh}}
+            <div class="heading" data-max-height="css">{{{ 12rnd_headline--afh }}}</div><!--end heading-->
+            <div class="heading__line"></div><!--end heading__line-->
+            {{/12rnd_headline--afh}}
+          </div>
+          <!--end body-->
+          <div class="footer">
+            {{#12rnd_body-copy--afh}}
+            <div class="content" data-max-height="css">
+              {{{ 12rnd_body-copy--afh }}}
+            </div> <!--end content-->
+            {{/12rnd_body-copy--afh}}
+            <div class="social">
+              <div class="social__item">
+                <img class="social__icon" src="https://files.outfit.io/media_library_items/63027/fb%2520green.svg" alt="">
+                <div class="social__label {{{showHideSocialLinks}}}">/{{team.facebook-link}}{{^team.facebook-link}}12RNDBrisbaneAlbertSt{{/team.facebook-link}}</div>
+                <!--end social__label-->
+              </div>
+              <!--end social__item-->
+              <div class="social__item">
+                <img class="social__icon" src="https://files.outfit.io/media_library_items/63026/insta%2520green.svg" alt="">
+                <div class="social__label {{{showHideSocialLinks}}}">/{{team.instagram-link}}{{^team.instagram-link}}12rndalbertstbrisbane{{/team.instagram-link}}</div>
+                <!--end social__label-->
+              </div>
+              <!--end social__item-->
+            </div>
+            <!--end social-->
+          </div>
+          <!--end footer-->
+          <div class="triangle triangle--primary"></div>
+          <!--end triangle-->
+          <div class="triangle triangle--secondary">
+            <img src="https://files.outfit.io/media_library_items/69671/bottom%2520triangle.svg" alt="" class="shape shape--triangleWhite"> 
+            <div class="site">{{account.snippets.website-url}}</div>
+          </div> <!--end triangle-->
+
+
+
+
+        </div><!--container fit-->
+
+      </div><!--bleed-->
+
+    </div><!--page-->
+
+
+    <script>
+      window.showCrop = {{show-crop}}{{^show-crop}}true{{/show-crop}};
+    </script>
+    <script src="js/main.js"></script>   
+    <script src="js/prefixfree.js"></script>
+    <script src="js/placeholder-controller.js"></script>
+    <script src="js/char-limit.js"></script>
+    <script src="js/check-export-mode.js"></script>
+    <script src="js/max-line-check.js"></script>
+    <script src="js/max-height-check.js"></script>
+    <script src="https://outfit-assets-production.s3-accelerate.amazonaws.com/scripts/textfit.0.0.4.min.js" type="text/javascript"></script>
+    <script>
+
+      // Tracking text changes and firing text restriction functions (mutationObserver)
+      const overflowObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          maxLineCheck();
+          maxHeightCheck();
+          charLimit();
+        });
+      });
+
+      overflowObserver.observe(document.body, {
+        attributes: false,
+        characterData: true,
+        childList: true,
+        subtree: true,
+        attributeOldValue: false,
+        characterDataOldValue: true
+      });
+
+      // Calling text size restriction functions once the fonts are loaded
+      document.fonts.ready.then(() => {
+        maxLineCheck();
+        maxHeightCheck();
+      });
+
+      placeholderController();
+      checkCrop();
+      checkExport();
+      charLimit();
+
+      // TextFit function decreases the font of the selected element to make it fit in single line (if needed, uncomment the code bellow)
+      TextFit.fit({
+        selector: '.textFit'
+      });
+
+    </script>
+
+
+  </body>
+</html>
