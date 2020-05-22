@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      ::-moz-selection { /* Code for Firefox */
+        background: #d13d3d;
+        color: white;
+      } 
+
+      ::selection {
+        background: #d13d3d;
+        color: white;
+      }
+
+      html {
+        background-color: white;
+        height: 100%;
+      }
+
+      body {
+        position: relative;
+       min-height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: 0;
+        background-color: #efefef;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        flex-direction: column;
+
+      }
+
+      .code {
+        max-width: 80em;
+        font-size: 0.4em;
+        line-height: 0.9em;
+        border: 1px solid rgb(235, 235, 235);
+        padding: 2em;
+        background: rgb(246, 246, 246);
+
+        border-radius: 0.5em;
+        color: rgb(154, 148, 150);
+        display: none;
+      }
+      
+      .show-code .code {
+        display: block;
+      }
+
+      .email-sig-container {
+        margin: 3em;
+        display: inline;
+        background-color: white;
+        padding: 3.5em 3em 3em 3em;
+        box-shadow: 0 2px 11px rgba(0,0,0,0.11);
+      }
+
+      button {
+        color: #d13d3d;
+        background-color: white;
+        box-shadow: auto;
+        border: 2px solid #d13d3d;
+        padding: 1.1em;
+        font-size: 1.1em;
+        font-family: 'Open Sans';
+        text-transform: uppercase;
+        font-weight: 400;
+        letter-spacing: 1px;
+        width: 100%;
+        margin-top: 2.8em;
+        transition: ease all 0.3s;
+        -webkit-transition: ease all 0.1s;
+      }
+
+      button:hover {
+        background-color: #d13d3d;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body class="{{{show-code}}}">
+    <div class="email-sig-container">
+
+      <div id="foo">
+        <h3 style="font-family: Arial; font-size: 16px; margin-bottom: 5px; color:#6c6c6c;">{{{name}}}</h3>
+        <p style="font-family: Arial; font-size: 14px; margin: 0; color:#6c6c6c;">{{{title}}}</p>
+        <table style="height: 15px;" width="600">
+          <tbody>
+            <tr style="height: 1px;">
+              <td style="width: 599px; height: 1px;"><hr style="border-top: dotted 1px #c3c2c3;" /></td>
+            </tr>
+          </tbody>
+        </table>
+        <!--This is just a comment above the table...-->
+        <table class="demoTable" style="font-family: Arial; font-size: 14px; width: 600px; height: 91px;" cellpadding="0">
+          <tbody>
+            <tr style="text-align: left; height: 19px;">
+              <td style="width: 320px; height: 19px;"><img src="https://outfit-v2-exports-production.s3-ap-southeast-2.amazonaws.com/media_library_items/f04d0216cdc92543c0ea73b35e463fca/12rnd.png" alt="editors" width="119" height="67" /></td>
+              <td style="text-align: right; padding-right: 10px; width: 42.59375px; height: 19px;">
+                <p style="line-height: 1.6em; color:#707070;"><strong>e:<br />w:<br />p:</strong></p>
+              </td>
+              <td style="width: 399.40625px; height: 19px;">
+                <p style="line-height: 1.6em; color:#707070;"><a href="mailto:{{{email-address}}}" style="color:#6c6c6c; text-decoration: none;">{{{email-address}}}<br /></a><a href="http://www.12round.com.au" style="color:#6c6c6c; text-decoration: none;">{{{account.snippets.website-url}}}</a><br />{{{phone-number}}}</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div><!-- foo -->
+
+
+
+      <button class="btn" data-clipboard-target="#foo">Copy to clipboard</button>
+
+    </div><!--table-container-->
+
+
+
+
+
+
+
+    <div class="code">  
+      <code>
+        &lt;h3 style=&quot;font-family: Arial; font-size: 16px; margin-bottom: 5px; color:#6c6c6c;&quot;&gt;{{{name}}}&lt;/h3&gt;
+        &lt;p style=&quot;font-family: Arial; font-size: 14px; margin: 0; color:#6c6c6c;&quot;&gt;{{{title}}}&lt;/p&gt;
+        &lt;table style=&quot;height: 15px;&quot; width=&quot;600&quot;&gt;
+        &lt;tbody&gt;
+        &lt;tr style=&quot;height: 1px;&quot;&gt;
+        &lt;td style=&quot;width: 599px; height: 1px;&quot;&gt;&lt;hr style=&quot;border-top: dotted 1px #c3c2c3;&quot; /&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;/tbody&gt;
+        &lt;/table&gt;
+        &lt;!--This is just a comment above the table...--&gt;
+        &lt;table class=&quot;demoTable&quot; style=&quot;font-family: Arial; font-size: 14px; width: 600px; height: 91px;&quot; cellpadding=&quot;0&quot;&gt;
+        &lt;tbody&gt;
+        &lt;tr style=&quot;text-align: left; height: 19px;&quot;&gt;
+        &lt;td style=&quot;width: 320px; height: 19px;&quot;&gt;&lt;img src=&quot;https://outfit-v2-exports-production.s3-ap-southeast-2.amazonaws.com/media_library_items/f04d0216cdc92543c0ea73b35e463fca/12rnd.png&quot; alt=&quot;editors&quot; width=&quot;119&quot; height=&quot;67&quot; /&gt;&lt;/td&gt;
+        &lt;td style=&quot;text-align: right; padding-right: 10px; width: 42.59375px; height: 19px;&quot;&gt;
+        &lt;p style=&quot;line-height: 1.6em; color:#707070;&quot;&gt;&lt;strong&gt;e:&lt;br /&gt;w:&lt;br /&gt;p:&lt;/strong&gt;&lt;/p&gt;
+        &lt;/td&gt;
+        &lt;td style=&quot;width: 399.40625px; height: 19px;&quot;&gt;
+        &lt;p style=&quot;line-height: 1.6em; color:#707070;&quot;&gt;&lt;a href=&quot;mailto:{{{email-address}}}&quot; style=&quot;color:#6c6c6c; text-decoration: none;&quot;&gt;{{{email-address}}}&lt;br /&gt;&lt;/a&gt;&lt;a href=&quot;http://www.12round.com.au&quot; style=&quot;color:#6c6c6c; text-decoration: none;&quot;&gt;{{{account.snippets.website-url}}}&lt;/a&gt;&lt;br /&gt;{{{phone-number}}}&lt;/p&gt;
+        &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;/tbody&gt;
+        &lt;/table&gt;
+      </code>
+    </div>
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.0/clipboard.min.js"></script>
+
+    <script>
+
+      var token = document.getElementsByTagName('token-value');
+
+      while(token.length) {
+        var parent = token[ 0 ].parentNode;
+        while( token[ 0 ].firstChild ) {
+          parent.insertBefore(  token[ 0 ].firstChild, token[ 0 ] );
+        }
+        parent.removeChild( token[ 0 ] );
+      }
+
+      new Clipboard('.btn');
+    </script>
+  </body>
+</html>
+
