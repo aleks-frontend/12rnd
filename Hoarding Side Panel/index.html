@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html class="{{{overlay-options}}}">
+  <head>
+    <title>Print Generic</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/stylesheets/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/javascripts/main.js"></script>
+
+
+    <style>
+		
+      
+      
+
+      .outfit-resizable-background {
+        /* Place any Resizable Background Styles here */
+        opacity: 0.65;
+      }
+
+
+      .logoinline { 
+        width: 2.5em;
+        height: 1.4em;
+        /* position: absolute; */
+        margin: -0.31em 0.1em;
+        /* background-color: red; */
+        overflow: visible;
+        display: inline-block;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url('{{{account.logos.primary}}}');
+      }
+      
+      .logo {
+        margin-left: -0.5em;
+        width: 8em;
+        height: 5em;
+        background-image: url('{{{account.logos.primary}}}');  
+        -webkit-background-size: contain;
+        -moz-background-size: contain;
+        -o-background-size: contain;
+        background-size: contain;
+        background-position:center center;
+        background-repeat: no-repeat;
+      }
+      
+      .logo-12rnd {
+        width: 3.5em;
+        height: 2.5em;
+        position: absolute;
+        z-index: 10000;
+        bottom: 1em;
+        right: 1em;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background: url('{{{account.logos.primary}}}');
+      }
+
+      
+      
+       
+    em {
+        color: rgba(109, 196, 33, 1) !important;
+        font-style: normal !important;
+        background-color: white;
+        padding: 0em 0.15em;
+        text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+        
+        color: black !important;
+        font-style: normal !important;
+        padding: 0em 0.15em;
+        text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+      }
+
+      .greyscale em {
+        color: black !important;
+        font-style: normal !important;
+        background-color: white !important;
+        padding: 0em 0.15em;
+        text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+      }
+
+      .greyscale-green em {
+        color: black !important;
+        font-style: normal !important;
+        background-color: rgba(109, 196, 33, 1) !important;
+        padding: 0em 0.15em;
+        text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+      }
+      
+      .phone-no {
+        float: right;
+      }
+      
+      
+    </style>
+  </head>
+  <body class="">
+
+    {{{resizable-background-image}}}
+
+    <div class='container'>
+      <div class='content'>
+
+        {{#starburst}}
+        <div class='star'>
+          <div class='star-copy'>
+            {{{starburst}}}
+          </div>
+        </div>
+        {{/starburst}}
+
+        <div class='header'>
+
+          <div class='h1'>
+            <div class="text-box">
+              <div id="over-text" class="over-text">
+                {{{headline-copy}}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='list'>
+          <div class="text-box">
+            <div id="over-text" class="over-text">
+
+            </div>
+          </div>
+        </div>
+        <div class='footer'>
+          <div class='logo-container'>
+            <div class='logo'></div>
+          </div>
+          <div class='contact-details'>
+            <div class='website'>
+              {{{account.snippets.website-url}}}
+              <div class='triangle'></div>
+            </div>
+            {{#team.email}}
+            <div class='email'>
+              {{{team.email}}}
+              <div class='triangle'></div>
+            </div>
+            {{/team.email}}
+            {{#team.phone}}
+            <div class='phone'>
+               <div class='phone-no'>{{{team.phone}}} </div>
+              <div class='triangle'></div>
+            </div>
+            <div class='triangle'></div>
+            {{/team.phone}}
+          </div>
+        </div>
+      </div>
+      <div class='bg'></div>
+      <div class='bg-img'></div>
+    </div>
+
+
+    <div class='container-sidepanel'>
+
+      <div class='content'>
+        <div class='logo-container'>
+          <div class='logo'>
+          </div>
+        </div>
+
+
+        <div class='footer-sidepanel'>
+          <div class='website'>
+            {{{account.snippets.website-url}}}
+          </div>
+        </div>
+
+      </div>
+
+      <div class='bg-sidepanel'></div>
+
+    </div>
+
+
+
+  </body>
+</html>
