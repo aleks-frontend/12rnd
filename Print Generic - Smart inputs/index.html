@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html class="{{layout-type}}">
+  <head>
+    <title>Print Generic</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/stylesheets/main.css">
+    <style>
+      body * { 
+        color: {{text-color}};
+      }
+
+      body {}
+
+      .hide-crop-marks .document {outline: 0.0in solid white;box-sizing: border-box;}
+
+
+      em {
+        color: rgba(109, 196, 33, 1) !important;
+        font-style: normal !important;
+        background-color: white;
+        padding: 0em 0.15em;
+        text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+
+        color: black !important;
+        font-style: normal !important;
+        padding: 0em 0.15em;
+        text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+      }
+
+      .greyscale em {
+        color: black !important;
+        font-style: normal !important;
+        background-color: white !important;
+        padding: 0em 0.15em;
+        text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+      }
+
+      .greyscale-green em {
+        color: black !important;
+        font-style: normal !important;
+        background-color: rgba(109, 196, 33, 1) !important;
+        padding: 0em 0.15em;
+        text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+      }
+      
+      .hide-triangles {
+        display: none;
+      }
+
+      .resizable-background-image { 
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .document {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+      .overlay-shapes {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-size: contain;
+        background-position: top left;
+        background-repeat: no-repeat;
+        z-index: 1;
+      }
+      .poster-layout .overlay-shapes {
+        background-image: url('https://outfit-v2-exports-production.s3-accelerate.amazonaws.com/media_library_items/0c752d2a84f390b030984e3b5203484b/posterA3PNG.png');
+      }
+      .double-sided-layout .overlay-shapes {
+        top: 50%;
+        background-size: cover;
+        background-position: bottom center;
+        background-image: url('https://outfit-v2-exports-production.s3-accelerate.amazonaws.com/media_library_items/c0fc3ae06b93302437e03d9505c6cd30/dlPNG.png');
+      }
+      
+      .placeholder {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0.3;
+        z-index: 9999;
+      }
+      
+
+      .layout-size--a4 .content {
+        width: 210mm;
+        height: 297mm;
+      }
+      
+      .layout-size--a3 .content {
+        width: 297mm;
+        height: 420mm;
+      }
+      
+      .layout-size--dl-landscape .content {
+        width: 210mm;
+        height: 99mm;
+      }
+      
+    </style>
+  </head>
+  <body class="{{crop-marks}}-crop-marks {{^crop-marks}}show-crop-marks{{/crop-marks}} {{layout-type}} layout-size--{{{ layout-size }}}">
+
+    <div class="overlay-shapes"></div>
+    <div class="page front-page">
+      <img src="https://outfit-v2-exports-production.s3-ap-southeast-2.amazonaws.com/media_library_items/6bb6b23045d9f82ab86b2e3faa6dd78c/placholder.png" class="placeholder" />
+      <div class="resizable-background-image">{{{ resizable-background-image }}}</div>
+      <div class="triangle-container {{#triangle-pattern-visibility}}{{triangle-pattern-visibility}}-triangles{{/triangle-pattern-visibility}}">
+        <div id="triangle1"></div>
+        <div id="triangle2"></div>
+        <div id="triangle3"></div>
+        <div id="triangle4"></div>
+      </div><!--triangle-container-->
+      <div class="background">
+        <div class="background-color" style="background-color: {{background-color}}; opacity: {{background-color-opacity}}{{^background-color-opacity}}0{{/background-color-opacity}}"></div>
+        {{#front-background-image}}
+        <div class="background-image" style="background-image: url('{{front-background-image}}'); opacity: {{front-background-image-opacity}}; background-position: {{front-background-x-position}}{{^front-background-x-position}}50{{/front-background-x-position}}% {{front-background-y-position}}{{^front-background-y-position}}50{{/front-background-y-position}}%"></div>
+        {{/front-background-image}}
+      </div><!--background-->
+
+      <div class="document">
+        <div class="content">
+          <div class="text-content">
+            <div class="headlines-overflow-container">
+              <div class="headlines-overflow">
+                {{#headline}}<div class="h1">{{{headline}}}</div>{{/headline}}
+                {{#subheading}}<div class="h2">{{{subheading}}}</div>{{/subheading}}
+               <!-- {{#sub-subheading}}<div class="h3"><h3>{{{sub-subheading}}}</h3></div>{{/sub-subheading}} -->
+              </div>
+            </div>
+          </div><!--text-content-->
+
+          <div class="footer-lockup">
+            <div class="logo">
+              <?xml version="1.0" encoding="UTF-8" standalone="no"?> <svg class="type1-logo" height="100%" viewBox="0 0 374 211" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="ROUND3"> <g> <path d="M83.189,200.216 C32.782,183.183 5.725,128.512 22.761,78.099 C22.761,78.099 22.768,78.091 22.768,78.087 L22.777,78.059 C38.142,32.588 87.467,8.178 132.939,23.546 C149.173,29.036 162.698,38.86 172.702,51.275 L194.863,51.275 C182.474,30.886 163.133,14.57 138.762,6.332 C83.772,-12.249 24.139,17.261 5.561,72.239 C-13.022,127.226 16.482,186.864 71.472,205.443 C113.669,219.705 158.581,205.614 185.603,173.453 C160.642,201.117 120.734,212.905 83.189,200.216" id="Fill-1" fill="#A8AAA9"></path> <polyline id="Fill-4" fill="#A8AAA9" points="171.673 163.655 171.673 129.498 199.137 129.498 199.158 137.06 197.567 137.06 179.241 137.077 179.241 141.559 198.692 141.559 198.692 149.099 179.241 149.099 179.241 163.613 177.658 163.619 173.27 163.647 171.673 163.655"></polyline> <polygon id="Fill-5" fill="#A8AAA9" points="202.447 163.646 210.011 163.646 210.011 129.498 202.447 129.498"></polygon> <polyline id="Fill-6" fill="#A8AAA9" points="231.809 163.664 224.253 163.664 224.253 137.083 213.146 137.083 213.161 135.483 213.178 131.101 213.187 129.518 242.685 129.518 242.685 137.083 231.809 137.083 231.809 163.664"></polyline> <polyline id="Fill-7" fill="#A8AAA9" points="275.276 163.619 268.445 163.619 267.963 162.985 253.26 143.346 253.26 163.619 245.526 163.619 245.526 129.472 252.1 129.472 252.578 130.1 267.685 150.049 267.685 129.472 275.276 129.472 275.276 163.619"></polyline> <polyline id="Fill-8" fill="#A8AAA9" points="306.107 163.651 278.719 163.651 278.719 129.494 306.107 129.494 306.107 137.083 286.287 137.083 286.287 141.554 305.77 141.554 305.77 149.101 286.287 149.101 286.287 156.04 306.107 156.04 306.107 163.651"></polyline> <path d="M330.452,163.647 L309.229,163.647 L309.229,156.036 L329.624,156.036 C330.779,156.027 331.08,155.737 331.071,154.601 L331.071,150.418 C331.08,150.126 331.046,149.618 330.821,149.391 C330.634,149.205 330.198,149.101 329.624,149.101 L317.169,149.101 C311.858,149.101 308.937,146.147 308.937,140.779 L308.956,137.692 C308.956,132.411 311.882,129.485 317.188,129.472 L338.452,129.472 L338.452,137.083 L317.849,137.083 C316.659,137.083 316.546,137.42 316.546,138.248 L316.546,140.281 C316.546,141.419 316.827,141.595 317.761,141.595 L330.448,141.595 C335.768,141.595 338.697,144.353 338.697,149.347 L338.697,155.389 C338.691,160.696 335.761,163.628 330.452,163.647" id="Fill-9" fill="#A8AAA9"></path> <path d="M362.898,163.647 L341.675,163.647 L341.675,156.04 L362.074,156.04 C362.625,156.036 363.035,155.925 363.228,155.733 C363.483,155.48 363.514,154.915 363.514,154.607 L363.514,150.414 C363.514,150.121 363.483,149.62 363.266,149.396 C363.082,149.209 362.646,149.101 362.074,149.101 L349.608,149.101 C344.301,149.101 341.378,146.148 341.378,140.782 L341.399,137.689 C341.399,132.414 344.318,129.491 349.614,129.472 L370.89,129.472 L370.89,137.083 L350.28,137.083 C349.104,137.083 348.988,137.42 348.988,138.253 L348.988,140.275 C348.988,141.405 349.29,141.595 350.187,141.595 L362.894,141.595 C368.212,141.595 371.142,144.349 371.142,149.347 L371.142,155.392 C371.124,160.696 368.203,163.628 362.898,163.647" id="Fill-10" fill="#A8AAA9"></path> <polyline id="Fill-11" fill="#7AC200" points="292.61 122.851 291.998 122.21 254.178 81.127 254.178 122.851 241.405 122.851 241.405 59.541 252.348 59.541 252.952 60.183 291.536 101.78 291.536 59.541 304.031 59.541 304.031 122.851 292.61 122.851"></polyline> <path d="M322.312,122.897 L322.312,110.361 L356.841,110.361 C357.114,110.376 357.266,110.38 357.42,110.38 C359.203,110.38 360.861,109.825 360.985,105.758 L360.977,76.169 C360.938,73.181 359.903,72.068 357.157,72.068 L319.499,72.073 L319.499,122.897 L307.043,122.897 L307.043,59.578 L358.77,59.578 C368.263,59.795 373.371,64.781 373.551,73.99 L373.435,108.207 C373.247,117.564 368.216,122.634 358.887,122.893 L358.795,122.897 L322.312,122.897" id="Fill-12" fill="#7AC200"></path> <path d="M216.814,122.834 L216.21,122.033 L191.41,89.374 L195.504,89.342 L221.944,89.344 C224.408,89.344 225.324,88.46 225.324,86.084 L225.324,75.446 C225.324,72.988 224.402,72.073 221.916,72.073 L183.803,72.073 L183.803,122.82 L171.31,122.82 L171.31,59.536 L223.116,59.536 C232.568,59.627 237.788,64.876 237.817,74.312 L237.817,86.892 C237.817,96.476 232.599,101.764 223.127,101.791 L218.06,101.791 L233.393,122.834 L216.814,122.834" id="Fill-13" fill="#7AC200"></path> <path d="M163.596,163.664 L72.937,163.664 L72.937,127.998 C72.937,121.136 75.409,115.202 80.269,110.365 C85.125,105.548 91.064,103.098 97.925,103.098 L137.486,103.098 C140.225,103.098 142.323,102.275 144.09,100.507 C145.859,98.74 146.682,96.669 146.682,93.982 L146.682,86.232 C146.682,83.588 145.833,81.455 144.09,79.718 C142.35,77.971 140.186,77.119 137.486,77.119 L76.284,77.119 L76.284,59.536 L140.67,59.536 C147.527,59.536 153.472,61.997 158.325,66.858 C163.188,71.717 165.649,77.658 165.649,84.521 L165.649,95.862 C165.649,102.722 163.184,108.651 158.325,113.48 C153.46,118.314 147.52,120.759 140.67,120.759 L101.101,120.759 C98.401,120.759 96.239,121.607 94.497,123.351 C92.749,125.098 91.904,127.226 91.904,129.877 L91.904,145.024 L163.596,145.024 L163.596,163.664" id="Fill-14" fill="#7AC200"></path> <polygon id="Fill-15" fill="#7AC200" points="50.103 163.664 68.572 163.664 68.572 59.544 50.103 59.544"></polygon> </g> </g> </g> </svg>
+            </div><!--logo-->
+            {{#sub-subheading}}
+            <div class="subheading-content">
+              <div class="subheading"><h3>{{{sub-subheading}}}</h3></div>
+            </div><!--subheading-content-->
+            {{/sub-subheading}}
+          </div><!--footer-lockup-->
+        </div><!--content-->
+      </div><!--document-->
+
+    </div><!--page-->
+
+    <div class="page back-page {{value-props-visibility}} {{^value-props-visibility}}show-value-props{{/value-props-visibility}}">
+      <div class="resizable-background-image">{{{ resizable-background-image }}}</div>
+      <div class="background">
+
+        {{#back-background-image}}
+        <div class="background-image" style="background-image: url('{{back-background-image}}'); opacity: {{back-background-image-opacity}}; background-position: {{back-background-x-position}}{{^back-background-x-position}}50{{/back-background-x-position}}% {{back-background-y-position}}{{^back-background-y-position}}50{{/back-background-y-position}}%"></div>
+        {{/back-background-image}}
+
+        <div class="background-color" style="background-color: {{background-color}} {{^background-color}}#000{{/background-color}};"></div>
+     <div class="document">
+        <div class="content">
+          <div class="text-content">
+            <div class="headline">
+              <div class="headlines-overflow-container">
+                <div class="headlines-overflow">
+                  {{#headline}}<div class="h1">{{{headline}}}</div>{{/headline}}
+                  {{#subheading}}<div class="h2">{{{subheading}}}</div>{{/subheading}}
+                  {{#sub-subheading}}<div class="h3"><h3>{{{sub-subheading}}}</h3></div>{{/sub-subheading}}
+                </div>
+              </div>              
+            </div>
+          </div><!--text-content-->
+          <div class="body-lockup">
+            <div class="body-copy">
+              <div class="body-copy-overflow-container">
+                <div class="body-copy-overflow">
+                  <div>{{{body-copy}}}</div>
+
+                  <div class="list">
+                    {{#collection.discounted-items}}
+                    {{#block.free-list-type}}
+                    <div class="free-list-type js-list">
+                      {{#logo}}<div class="logo" style="background-image: url('{{logo}}')"></div>{{/logo}}
+                      <p>{{{description}}}</p>
+                      <p class="price"><span style="text-decoration: underline">{{{price}}}</span></p>
+                    </div>
+                    {{/block.free-list-type}}
+
+                    {{#block.bargain-list-type}}
+                    <div class="bargain-list-type js-list">
+                      {{#logo}}<div class="logo" style="background-image: url('{{logo}}')"></div>{{/logo}}
+                      <p>{{{description}}}</p>
+                      <p class="price">{{{price}}}</p>
+                    </div>
+                    {{/block.bargain-list-type}}
+
+                    {{#block.no-list-type}}
+                    <div class="no-list-type js-list">
+                      {{#logo}}<div class="logo" style="background-image: url('{{logo}}')"></div>{{/logo}}
+                      <p>{{{description}}}</p>
+                      <p class="price"><span style="text-decoration: underline">{{{price}}}</span></p>
+                    </div>
+                    {{/block.no-list-type}}
+                    {{/collection.discounted-items}}
+                  </div><!--list-->
+
+                  <div class="offer-expiry {{#expiry-visibility}}{{expiry-visibility}}{{/expiry-visibility}} {{^expiry-visibility}}hide-expiry{{/expiry-visibility}}">
+                    <p>Offer expires</p>
+                  </div><!--offer-expiry-->
+                </div><!--body-copy-overflow-->
+              </div><!--body-copy-overflow-container-->
+            </div><!--body-copy-->
+
+            <div class="contact">
+              <div class="logo {{logo-type}} {{^logo-type}}logo-type1{{/logo-type}}">
+                <?xml version="1.0" encoding="UTF-8" standalone="no"?> <svg class="type2-logo" height="100%" viewBox="0 0 346 261" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <path d="M102.961,247.65 C40.573,226.57 7.086,158.904 28.17,96.512 C28.17,96.512 28.181,96.499 28.181,96.496 L28.19,96.462 C47.204,40.185 108.259,9.97 164.542,28.998 C184.63,35.785 201.37,47.945 213.752,63.312 L241.175,63.312 C225.848,38.078 201.907,17.883 171.744,7.685 C103.687,-15.313 29.876,21.211 6.885,89.263 C-16.12,157.317 20.403,231.13 88.462,254.123 C140.683,271.777 196.275,254.334 229.716,214.527 C198.822,248.772 149.437,263.357 102.961,247.65" id="Fill-1" fill="#A8AAA9"></path> <path d="M303.046,202.418 L301.812,200.783 L251.322,134.293 L259.652,134.225 L313.491,134.228 C318.506,134.228 320.372,132.433 320.372,127.596 L320.372,105.934 C320.372,100.925 318.493,99.064 313.428,99.064 L235.831,99.064 L235.831,202.389 L210.39,202.389 L210.39,73.537 L315.88,73.537 C335.126,73.723 345.747,84.409 345.806,103.618 L345.806,129.241 C345.806,148.752 335.186,159.522 315.894,159.568 L305.581,159.568 L336.808,202.418 L303.046,202.418" id="Fill-4" fill="#7AC200"></path> <path d="M202.481,202.418 L90.274,202.418 L90.274,158.268 C90.274,149.778 93.336,142.435 99.347,136.451 C105.359,130.486 112.709,127.452 121.199,127.452 L170.167,127.452 C173.552,127.452 176.148,126.435 178.334,124.244 C180.525,122.058 181.544,119.494 181.544,116.174 L181.544,106.578 C181.544,103.307 180.496,100.663 178.334,98.516 C176.181,96.353 173.51,95.298 170.167,95.298 L94.418,95.298 L94.418,73.537 L174.107,73.537 C182.595,73.537 189.951,76.586 195.956,82.597 C201.977,88.614 205.022,95.971 205.022,104.462 L205.022,118.495 C205.022,126.989 201.966,134.326 195.951,140.306 C189.937,146.285 182.582,149.316 174.107,149.316 L125.13,149.316 C121.79,149.316 119.115,150.363 116.962,152.522 C114.792,154.678 113.748,157.317 113.748,160.593 L113.748,179.342 L202.481,179.342 L202.481,202.418" id="Fill-5" fill="#7AC200"></path> <polygon id="Fill-6" fill="#7AC200" points="62.014 202.418 84.874 202.418 84.874 73.544 62.014 73.544"></polygon> </g> </svg>
+
+                <?xml version="1.0" encoding="UTF-8" standalone="no"?> <svg class="type1-logo" height="100%" viewBox="0 0 374 211" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="ROUND3"> <g> <path d="M83.189,200.216 C32.782,183.183 5.725,128.512 22.761,78.099 C22.761,78.099 22.768,78.091 22.768,78.087 L22.777,78.059 C38.142,32.588 87.467,8.178 132.939,23.546 C149.173,29.036 162.698,38.86 172.702,51.275 L194.863,51.275 C182.474,30.886 163.133,14.57 138.762,6.332 C83.772,-12.249 24.139,17.261 5.561,72.239 C-13.022,127.226 16.482,186.864 71.472,205.443 C113.669,219.705 158.581,205.614 185.603,173.453 C160.642,201.117 120.734,212.905 83.189,200.216" id="Fill-1" fill="#A8AAA9"></path> <polyline id="Fill-4" fill="#A8AAA9" points="171.673 163.655 171.673 129.498 199.137 129.498 199.158 137.06 197.567 137.06 179.241 137.077 179.241 141.559 198.692 141.559 198.692 149.099 179.241 149.099 179.241 163.613 177.658 163.619 173.27 163.647 171.673 163.655"></polyline> <polygon id="Fill-5" fill="#A8AAA9" points="202.447 163.646 210.011 163.646 210.011 129.498 202.447 129.498"></polygon> <polyline id="Fill-6" fill="#A8AAA9" points="231.809 163.664 224.253 163.664 224.253 137.083 213.146 137.083 213.161 135.483 213.178 131.101 213.187 129.518 242.685 129.518 242.685 137.083 231.809 137.083 231.809 163.664"></polyline> <polyline id="Fill-7" fill="#A8AAA9" points="275.276 163.619 268.445 163.619 267.963 162.985 253.26 143.346 253.26 163.619 245.526 163.619 245.526 129.472 252.1 129.472 252.578 130.1 267.685 150.049 267.685 129.472 275.276 129.472 275.276 163.619"></polyline> <polyline id="Fill-8" fill="#A8AAA9" points="306.107 163.651 278.719 163.651 278.719 129.494 306.107 129.494 306.107 137.083 286.287 137.083 286.287 141.554 305.77 141.554 305.77 149.101 286.287 149.101 286.287 156.04 306.107 156.04 306.107 163.651"></polyline> <path d="M330.452,163.647 L309.229,163.647 L309.229,156.036 L329.624,156.036 C330.779,156.027 331.08,155.737 331.071,154.601 L331.071,150.418 C331.08,150.126 331.046,149.618 330.821,149.391 C330.634,149.205 330.198,149.101 329.624,149.101 L317.169,149.101 C311.858,149.101 308.937,146.147 308.937,140.779 L308.956,137.692 C308.956,132.411 311.882,129.485 317.188,129.472 L338.452,129.472 L338.452,137.083 L317.849,137.083 C316.659,137.083 316.546,137.42 316.546,138.248 L316.546,140.281 C316.546,141.419 316.827,141.595 317.761,141.595 L330.448,141.595 C335.768,141.595 338.697,144.353 338.697,149.347 L338.697,155.389 C338.691,160.696 335.761,163.628 330.452,163.647" id="Fill-9" fill="#A8AAA9"></path> <path d="M362.898,163.647 L341.675,163.647 L341.675,156.04 L362.074,156.04 C362.625,156.036 363.035,155.925 363.228,155.733 C363.483,155.48 363.514,154.915 363.514,154.607 L363.514,150.414 C363.514,150.121 363.483,149.62 363.266,149.396 C363.082,149.209 362.646,149.101 362.074,149.101 L349.608,149.101 C344.301,149.101 341.378,146.148 341.378,140.782 L341.399,137.689 C341.399,132.414 344.318,129.491 349.614,129.472 L370.89,129.472 L370.89,137.083 L350.28,137.083 C349.104,137.083 348.988,137.42 348.988,138.253 L348.988,140.275 C348.988,141.405 349.29,141.595 350.187,141.595 L362.894,141.595 C368.212,141.595 371.142,144.349 371.142,149.347 L371.142,155.392 C371.124,160.696 368.203,163.628 362.898,163.647" id="Fill-10" fill="#A8AAA9"></path> <polyline id="Fill-11" fill="#7AC200" points="292.61 122.851 291.998 122.21 254.178 81.127 254.178 122.851 241.405 122.851 241.405 59.541 252.348 59.541 252.952 60.183 291.536 101.78 291.536 59.541 304.031 59.541 304.031 122.851 292.61 122.851"></polyline> <path d="M322.312,122.897 L322.312,110.361 L356.841,110.361 C357.114,110.376 357.266,110.38 357.42,110.38 C359.203,110.38 360.861,109.825 360.985,105.758 L360.977,76.169 C360.938,73.181 359.903,72.068 357.157,72.068 L319.499,72.073 L319.499,122.897 L307.043,122.897 L307.043,59.578 L358.77,59.578 C368.263,59.795 373.371,64.781 373.551,73.99 L373.435,108.207 C373.247,117.564 368.216,122.634 358.887,122.893 L358.795,122.897 L322.312,122.897" id="Fill-12" fill="#7AC200"></path> <path d="M216.814,122.834 L216.21,122.033 L191.41,89.374 L195.504,89.342 L221.944,89.344 C224.408,89.344 225.324,88.46 225.324,86.084 L225.324,75.446 C225.324,72.988 224.402,72.073 221.916,72.073 L183.803,72.073 L183.803,122.82 L171.31,122.82 L171.31,59.536 L223.116,59.536 C232.568,59.627 237.788,64.876 237.817,74.312 L237.817,86.892 C237.817,96.476 232.599,101.764 223.127,101.791 L218.06,101.791 L233.393,122.834 L216.814,122.834" id="Fill-13" fill="#7AC200"></path> <path d="M163.596,163.664 L72.937,163.664 L72.937,127.998 C72.937,121.136 75.409,115.202 80.269,110.365 C85.125,105.548 91.064,103.098 97.925,103.098 L137.486,103.098 C140.225,103.098 142.323,102.275 144.09,100.507 C145.859,98.74 146.682,96.669 146.682,93.982 L146.682,86.232 C146.682,83.588 145.833,81.455 144.09,79.718 C142.35,77.971 140.186,77.119 137.486,77.119 L76.284,77.119 L76.284,59.536 L140.67,59.536 C147.527,59.536 153.472,61.997 158.325,66.858 C163.188,71.717 165.649,77.658 165.649,84.521 L165.649,95.862 C165.649,102.722 163.184,108.651 158.325,113.48 C153.46,118.314 147.52,120.759 140.67,120.759 L101.101,120.759 C98.401,120.759 96.239,121.607 94.497,123.351 C92.749,125.098 91.904,127.226 91.904,129.877 L91.904,145.024 L163.596,145.024 L163.596,163.664" id="Fill-14" fill="#7AC200"></path> <polygon id="Fill-15" fill="#7AC200" points="50.103 163.664 68.572 163.664 68.572 59.544 50.103 59.544"></polygon> </g> </g> </g> </svg>
+              </div><!--logo-->
+
+              <div class="contact-details {{store-location}} {{^store-location}}south-brisbane{{/store-location}}">
+                {{{team.email}}}<br>
+                {{{team.phone}}}
+                {{{team.address}}}
+              </div><!--contact-details-->
+
+            </div>
+          </div><!--body-lockup-->
+          <div class="footer-lockup">
+            <div class="bullet-points">
+              <p>High-intensity<br>Interval Training</p>
+              <p>Suitable for<br>all levels</p>
+              <p>12 Rounds, 45 Minutes,<br>full body results</p>
+              <p>No start times, new<br>round every 3min</p>
+            </div><!--bullet-points-->
+
+            <div class="social-media">
+              <div class="icons">
+                <div class="facebook"></div>
+                <div class="instagram"></div>
+                <div class="twitter"></div>
+              </div><!--icons-->
+              <p>{{{account.snippets.website-url}}}</p>
+            </div><!--social-media-->
+          </div><!--footer-lockup-->
+        </div><!--content-->
+      </div><!--document-->
+
+    </div><!--page-->
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/javascripts/main.js"></script>
+
+    <script>
+      var data = $('.js-list');
+
+      if (data.length > 4) {
+        $('.body-copy').addClass('list-error');
+      } else {
+        $(this).removeClass('list-error');
+      }
+    </script>
+
+    <script>
+      $(document).ready(function() {
+        var $h2 = $('.h2');
+        if ( $h2.length <= 0){
+          $('.text-content').addClass('h1-orphan');
+        } else {
+          $('.text-content').removeClass('h1-orphan');
+        }
+      });
+    </script>
+
+    <script>
+      function loop() {
+        checkHeight($(".double-sided-layout .front-page .headlines-overflow"), 200);
+        checkHeight($(".double-sided-layout .hide-value-props .body-copy-overflow"), 315);
+        checkHeight($(".double-sided-layout .show-value-props .body-copy-overflow"), 220);
+        checkHeight($(".poster-layout .body-copy-overflow"), 290);
+        checkHeight($(".poster-layout .back-page .headlines-overflow"), 460);
+      } setInterval(loop, 2000);
+
+      function checkHeight(element, maxHeight) {
+        var $height = element.height();
+        var $parentHeight = element.parent().height();
+
+        if ($height > $parentHeight) {
+          element.parent().parent().addClass('overflow');
+        } else {
+          element.parent().parent().removeClass('overflow');
+        }
+      }
+    </script>
+  </body>
+</html>
