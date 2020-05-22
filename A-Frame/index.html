@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html data-sign="OS?">
+  <head>
+    <title>Template title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="css/minireset.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/placeholder-controller.css">
+
+    <style>
+      @import url("https://outfit-assets-production.s3.amazonaws.com/fonts/Gotham/stylesheet.css");
+
+      html {
+        font-family: 'Gotham';
+        font-weight: 500 !important;
+        font-size: 11pt;
+        color: {{{account.colors.black}}};
+        word-break: break-word;
+      }
+      
+      /* Helper classes */
+      .u-hide { display: none; }
+      
+      .container {
+        display: flex;
+    	flex-direction: column;
+        background-color: {{{account.colors.black}}};
+      }
+
+      .logo {
+        width: 100%;
+        height: 39%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .logo img {
+        width: 70%;
+      }
+
+      .content {
+        width: 100%;
+        flex: 1;
+        color: {{{account.colors.white}}};
+        padding: 1rem 2rem 0 2rem;
+        text-align: center;
+      }
+
+      .arrow__container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 435pt;
+      }
+
+      .arrow {
+        width: 585pt;
+        height: 348pt;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .arrow--hide-arrow .arrow__container {
+        display: none;
+      }
+
+      .arrow--left-arrow .arrow {
+        background-image: url("https://files.outfit.io/media_library_items/67617/right-arrow.svg");
+      }
+
+      .arrow--right-arrow .arrow {
+        background-image: url("https://files.outfit.io/media_library_items/67618/left-arrow.svg");
+      }
+
+      strong{
+        font-weight: 700;
+      }
+
+      .tinymce_style--dark{
+        color: {{{account.colors.green}}};
+      }
+
+      .tinymce_style--light{
+        color: {{{account.colors.white}}};
+      }
+
+      h1, h2, h3, h4, h5, h6{
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        font-size: 1.22rem;
+        line-height: 1;
+      }
+
+      h2 {
+        font-size: 1rem;
+        line-height: 1;
+      }
+
+      h3 {
+        font-size: 1rem;
+        line-height: 1;
+      }
+
+      h4 {
+        font-size: 1rem;
+        line-height: 1;
+      }
+
+      h5 {
+        font-size: 1rem;
+        line-height: 1;
+      }
+
+      h6 {
+        font-size: 1.2rem;
+        line-height: 1;
+      }
+
+      ul {
+        font-size: 0.6rem;
+        line-height: 1.3;
+        text-transform: uppercase;
+      }
+
+      li:before {
+        content: "•";
+        padding-right: 0.5em;
+        color: #73b944;
+      }
+
+      li {
+        line-height: 1em;
+        margin-bottom: 0.3em;
+        list-style-position: inside;
+        text-indent: -1em;
+        padding-left: 1em;
+      }
+
+      em {
+        background-color: {{{account.colors.white}}};
+        color: {{{account.colors.black}}} !important;
+        font-style: normal;
+        padding: 0em 0.15rem;
+        text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+      }
+
+      .footer {
+        width: 100%;
+        height: 10.5%;
+      }
+
+      .footer .websiteUrl{
+        background-image: url(https://files.outfit.io/media_library_items/67636/12rnd-website.svg);
+        margin-left: 50%;
+        width: 50%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: auto 106%;
+        background-position-x: right;
+      }
+      
+      .footer .websiteUrl p{
+        color: {{{account.colors.white}}};
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        padding-top: 1.05rem;
+        padding-left: 1rem;
+      }
+      
+      /* ANY OTHER STYLES THAT NEED MUSTACHE.JS CAPABILITIES */
+    </style>
+  </head>
+  <body style="background: white" data-crop="{{show-crop}}" class="arrow--{{{arrow}}}{{^arrow}}hide{{/arrow}}">
+    <div class="placeholderMaster" data-opacity="{{ placeholder-opacity }}">
+      <div class="placeholderMaster__item" data-bg="{{ placeholder-image-1 }}"></div>
+    </div><!-- end placeholderMaster -->
+    <div class="page">
+
+      <div class="bleed">
+
+        <div class="container fit">
+          <div class="logo"><img src="{{{account.logos.primary}}}"/></div><!--logo-->
+          <div class="content">
+            <div class="content__inner" data-max-height="dynamic">
+              {{{a-frame-subheading}}}
+              
+              {{#arrow}}
+              <div class="arrow__container">
+                <div class="arrow"></div><!--arrow-->
+              </div><!--arrow__container-->
+              {{/arrow}}
+              
+            </div><!--content__inner-->
+          </div><!--content-->
+          <div class="footer">
+            <div class="websiteUrl">
+              <p>{{{account.snippets.website-url}}}</p>
+            </div><!--websiteUrl-->
+          </div><!--footer-->
+        </div><!--container fit-->
+
+      </div><!--bleed-->
+
+    </div><!--page-->
+    <div class="page">
+
+      <div class="bleed">
+
+        <div class="container fit">
+
+          <div class="logo"><img src="{{{account.logos.primary}}}"/></div><!--logo-->
+          <div class="content">
+            <div class="content__inner" data-max-height="dynamic">
+              {{{a-frame-subheading}}}
+              <div class="arrow__container">
+                <div class="arrow"></div><!--arrow-->
+              </div><!--arrow__container-->
+            </div><!--content__inner-->
+          </div><!--content-->
+          <div class="footer">
+            <div class="websiteUrl">
+              <p>{{{account.snippets.website-url}}}</p>
+            </div><!--websiteUrl-->
+          </div><!--footer-->
+
+        </div><!--container fit-->
+
+      </div><!--bleed-->
+
+    </div><!--page-->
+
+    <script>
+      window.showCrop = {{show-crop}}{{^show-crop}}true{{/show-crop}};
+    </script>
+    <script src="js/main.js"></script>   
+    <script src="js/prefixfree.js"></script>
+    <script src="js/placeholder-controller.js"></script>
+    <script src="js/char-limit.js"></script>
+    <script src="js/check-export-mode.js"></script>
+    <script src="js/max-line-check.js"></script>
+    <script src="js/max-height-check.js"></script>
+    <script src="js/hide-empty-titles.js"></script>
+    <script src="js/dynamic-inject.js"></script>
+    <script src="js/text-fit-min.js"></script>
+    <script src="https://outfit-assets-production.s3-accelerate.amazonaws.com/scripts/textfit.0.0.4.min.js" type="text/javascript"></script>
+    <script>
+      {{ #placeholder-toggle-new }}document.body.classList.add("u-placeholder-{{ placeholder-toggle-new }}{{^placeholder-toggle-new}}hide{{/placeholder-toggle-new}}"); {{ /placeholder-toggle-new }}
+      {{ #placeholder-validation }}document.body.classList.add("placeholder__validation--{{placeholder-validation}}"){{ /placeholder-validation }}
+    </script>
+    <script>
+      
+      console.clear();
+
+      // Tracking text changes and firing text restriction functions (mutationObserver)
+      const overflowObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          maxLineCheck();
+          maxHeightCheck();
+          charLimit();
+          hideEmptyTitles();
+        });
+      });
+      
+      const injectObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          injectDynamicContent();
+        });
+      });      
+      
+      const injectSources = document.querySelectorAll('[data-target-id]');
+
+      overflowObserver.observe(document.body, {
+        attributes: false,
+        characterData: true,
+        childList: true,
+        subtree: true,
+        attributeOldValue: false,
+        characterDataOldValue: true
+      });
+      
+      if ( injectSources.length > 0 ) {
+        injectSources.forEach(src => {
+          injectObserver.observe(src, {
+            attributes: false,
+            characterData: true,
+            childList: true,
+            subtree: true,
+            attributeOldValue: false,
+            characterDataOldValue: true
+          });            
+        });
+      }    
+
+      // Calling text size restriction functions once the fonts are loaded
+      document.fonts.ready.then(() => {
+        maxLineCheck();
+        maxHeightCheck();
+        injectDynamicContent();
+        hideEmptyTitles();
+      });
+
+      placeholderController();
+      checkCrop();
+      checkExport();
+      charLimit();
+
+      // TextFit function decreases the font of the selected element to make it fit in single line (if needed, uncomment the code bellow)
+      TextFit.fit({
+        selector: '.textFit'
+      });
+
+
+    </script>
+
+
+  </body>
+</html>
