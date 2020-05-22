@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>A-Frame</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/stylesheets/main.css">
+    <style>
+      body * { 
+      }
+
+      body {}
+
+      /* OVERFLOW STYLES */
+
+      .overflow {
+        border: 1px dashed red;
+        position: relative; }
+      .overflow h2, .overflow p, .overflow h6, .overflow li { color: red !important; }
+      .overflow::before {
+        content: '+';
+        position: absolute;
+        z-index: 5;
+        top: 5px;
+        right: 5px;
+        height: 15px;
+        width: 15px;
+        border: 1px solid red;
+        color: red;
+        padding: 2px 2px 2px 3px;
+        box-sizing: border-box;
+        font-size: 13px;
+        text-align: center;
+        line-height: 8px;
+        background-color: white;
+        text-align: center; }
+      .overflow:hover:before {
+        background-color: red;
+        color: white; }
+      .overflow:after {
+        display: none; }
+      .overflow:hover:after {
+        display: block;
+        content: 'There is overset content in this column. Please remove it';
+        position: absolute;
+        top: 25px;
+        right: 5px;
+        background-color: black;
+        color: white;
+        border-radius: 2px;
+        padding: 5px;
+        box-sizing: border-box;
+        font-size: 1em;
+        font-weight: 400;
+        line-height: 1.1em;
+        text-align: right;
+        width: 15em;
+      }
+
+      .text-container-overflow {
+        max-height: 12em;
+        height: 12em;
+        overflow: hidden;
+      }
+
+      em {
+        color: {{{account.colors.green}}} !important;
+        font-style: normal !important;
+        background-color: white;
+        padding: 0em 0.15em;
+        text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+
+        color: black !important;
+        font-style: normal !important;
+        padding: 0em 0.15em;
+        text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+      }
+
+      .greyscale em {
+        color: black !important;
+        font-style: normal !important;
+        background-color: white !important;
+        padding: 0em 0.15em;
+        text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+      }
+
+      .greyscale-green em {
+        color: black !important;
+        font-style: normal !important;
+        background-color: {{{account.colors.green}}} !important;
+        padding: 0em 0.15em;
+        text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+      }
+
+
+      .tinymce_style--light {
+        color: white !important;
+      }
+
+      .tinymce_style--dark {
+        color: {{{account.colors.green}}} !important;
+      }
+
+
+      .document {outline: 0.25in solid white;box-sizing: border-box;}
+
+      .hide-crop-marks .document {outline: 0.0in solid white;box-sizing: border-box;}
+
+      body.hide-crop-marks {font-size: 95.3%;}
+
+      @import url("https://outfit-assets-production.s3.amazonaws.com/fonts/Gotham/stylesheet.css");
+      html {
+        -webkit-font-smoothing: antialiased;
+        color: brand-color;
+        background-color: #000;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      .container {
+        width: 100%;
+        height: 100%;
+      }
+
+      .content {
+        padding: 0.5em;
+      }
+
+      h1 { font-size: 1.1em; }
+      h2 { font-size: 1.1em; }
+
+      ul { font-size: 0.5em;
+
+        line-height: 1.3em; }
+
+
+      ul {
+        list-style: none; /* Remove list bullets */
+        padding: 0;
+        margin: 0;
+      }
+
+      li { 
+        padding-left: 16px; 
+        line-height: 1em;
+        margin-bottom: 0.3em;
+        list-style-position: inside;
+        text-indent: -1em;
+        padding-left: 1em;
+      }
+
+      li:before {
+        content: "•"; /* Insert content that looks like bullets */
+        padding-right: 0.5em;
+        color: {{{account.colors.green}}}; /* Or a color you prefer */
+      }
+
+      .logo-top {
+        padding-top: 1em;
+        height: 35%;
+        width: 100%;
+      }
+
+      .text-container {
+        height: 45%;
+        width: 100%;
+      }
+
+      .headline {
+        padding-top: 0.3em;
+        height: 30%;
+        width: 100%;
+        text-align: center;
+        font-size: 1.3em;
+        color: #65914F;
+        font-weight: bold;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        color: {{{account.colors.green}}};
+        line-height: 1em;
+      }
+
+      .h2 {
+        line-height: 1em;
+        font-size: 0.56em;
+        color: white;
+      }
+
+      .copy {
+        height: 20%;
+        width: 100%;
+      }
+
+      .call-to-action {
+        color: white;
+        font-size:0.75em;
+        height: 1em;
+        width: auto;
+        left: 0;
+        right: 0;
+        bottom: 1em;
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
+
+      .logo-container {
+        position: relative;
+        height: 100%;
+      }
+
+      .logo svg {
+        height: 100%;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .logo {
+        margin-left: auto;
+        margin-right: auto;
+        width: 10.5em;
+        height: 100%;
+        background-image: url("{{{account.logos.primary}}}");
+        -webkit-background-size: contain;
+        -moz-background-size: contain;
+        -o-background-size: contain;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+
+      .left-arrow {
+        background-image: url("https://files.outfit.io/media_library_items/67617/right-arrow.svg");
+      }
+
+      .right-arrow {
+        background-image: url("https://files.outfit.io/media_library_items/67618/left-arrow.svg");
+      }
+
+      .page2 .right-arrow {
+        background-image: url("https://files.outfit.io/media_library_items/67618/left-arrow.svg");
+      }
+
+      .page2 .left-arrow {
+        background-image: url("https://files.outfit.io/media_library_items/67617/right-arrow.svg");
+      }
+
+      .triangle {
+        background-image: url("https://files.outfit.io/media_library_items/67636/12rnd-website.svg");
+        bottom: 0;
+        right: 0;
+        height: 2.5em;
+        width: 7.4em;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        background-size: cover;
+        z-index: 1;
+      }
+      .website-url {
+
+        bottom: 0.4em;
+        right: 0.5em;
+        height: 1.5em;
+        text-align: right;
+        position: absolute;
+        z-index: 2;
+        width: 7.9em;
+        font-size: 0.75em;
+        color: #ffffff;
+        font-family: 'Gotham';
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+
+
+    </style>
+  </head>
+  <body class="{{crop-marks}}-crop-marks {{^crop-marks}}show-crop-marks{{/crop-marks}}">
+
+
+    <div class="page front-page">
+
+      <div class="document">
+        <div class="content">
+
+          <div class='container'>
+            <div class='logo-top'>
+              <div class='logo-container'>
+                <div class='logo'></div>
+              </div>
+            </div>
+
+            <div class="text-container-overflow">
+              <div id="over-text" class="over-text">
+                <div class='headline'>
+                  {{{a-frame-subheading}}}
+                </div>
+                <div class='copy'></div>
+
+                <div class='arrows {{{arrow}}}'>
+                </div> 
+              </div>
+            </div>
+          </div>
+          <!--<div class='call-to-action'>
+{{{account.snippets.website-url}}}
+</div>-->
+        </div><!--content-->
+        <div class="triangle"></div>
+        <div class='website-url'>
+          {{{account.snippets.website-url}}}
+        </div>            
+      </div><!--document-->
+    </div><!--page-->
+
+    <div class="page front-page page2">
+
+      <div class="document">
+        <div class="content">
+
+
+          <div class='container'>
+            <div class='logo-top'>
+              <div class='logo-container'>
+                <div class='logo'></div>
+              </div>
+            </div>
+
+            <div class="text-container-overflow">
+              <div id="over-text" class="over-text">
+                <div class='headline'>
+                  {{{a-frame-subheading}}}
+                </div>
+                <div class='copy'></div>
+                <div class='arrows {{{arrow}}}'>
+                </div> 
+              </div>
+            </div>
+          </div>
+          <!--<div class='call-to-action'>
+{{{account.snippets.website-url}}}
+</div>-->
+        </div><!--content-->
+        <div class="triangle"></div>
+        <div class='website-url'>
+          {{{account.snippets.website-url}}}
+        </div>            
+      </div><!--document-->
+    </div><!--page-->
+    <script>
+
+      function loop() {
+        checkHeight(document.getElementsByClassName('over-text'));
+
+        // Add any other text boxes you want to check the overflows on with the
+        // eg. checkHeight(document.getElementsByClassName('CLASS NAME'));
+      } setInterval(loop, 500);
+
+      function checkHeight(element) {
+        for (i = 0 ; i < element.length ; i++ ) {
+          var currentElement = element[i];
+          var height         = currentElement.offsetHeight;
+          var parent         = currentElement.parentNode;
+          var parentHeight   = parent.offsetHeight;
+
+          if (height > parentHeight) {
+            parent.classList.add('overflow');
+          } else {
+            parent.classList.remove('overflow');
+          }
+
+          if ((currentElement).parentNode.classList.contains('overflow')) {
+            document.body.classList.add('overflow-true');
+          } else {
+            document.body.classList.remove('overflow-true'); 
+          }
+
+        }
+      }
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/javascripts/main.js"></script>
+  </body>
+</html>
