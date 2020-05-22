@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html class="{{crop-marks}}-crop-marks {{^crop-marks}}show-crop-marks{{/crop-marks}}">
+  <head>
+    <title>Pull up banner</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/stylesheets/main.css">
+
+    <style type="text/css">
+      .outfit-resizable-background {
+        /* Place any Resizable Background Styles here */
+        opacity: 0.65;
+        opacity: {{{background-opacity}}};
+        z-index: -1;
+      }
+
+
+
+
+
+
+
+      .document {outline: 0.25in solid white;box-sizing: border-box;}
+
+      .hide-crop-marks .document {outline: 0.0in solid white;box-sizing: border-box;}
+
+      body.hide-crop-marks { font-size: 51%;}
+
+      @import url("https://outfit-assets-production.s3.amazonaws.com/fonts/Gotham/stylesheet.css");
+      html {
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Gotham', helvetica, arial, sans-serif;
+        color: brand-color;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        font-weight: 600;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+
+   em {
+        color: rgba(109, 196, 33, 1) !important;
+        font-style: normal !important;
+        background-color: white;
+        padding: 0em 0.15em;
+        text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+        
+        color: black !important;
+        font-style: normal !important;
+        padding: 0em 0.15em;
+        text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+      }
+
+      .greyscale em {
+        color: black !important;
+        font-style: normal !important;
+        background-color: white !important;
+        padding: 0em 0.15em;
+        text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+      }
+
+      .greyscale-green em {
+        color: black !important;
+        font-style: normal !important;
+        background-color: rgba(109, 196, 33, 1) !important;
+        padding: 0em 0.15em;
+        text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+      }
+      
+
+
+    </style>
+
+  </head>
+  <body class="{{crop-marks}}-crop-marks {{^crop-marks}}show-crop-marks{{/crop-marks}}">
+    {{{ resizable-background-image }}}
+
+
+
+    <div class="background"></div><!--background-->
+
+
+
+
+
+    <div class='page'>
+
+      <div class='document'>
+        <div class='content'>
+
+          <div class='flex-container'>
+            <div class='content-container'>
+              <div class='header-container'>
+                <div class='logo'></div>
+              </div>
+            </div>
+            <div class='copy-container'>
+              <div class='subheading'>
+                {{{banner-headline}}}
+              </div>
+              <div class='row'>
+                {{#team.email}}
+                <div class='left'>
+                  <div class='triangle'></div>
+                  {{{team.email}}}
+                </div>
+                {{/team.email}}
+
+                
+        
+                
+				{{#team.phone}}
+                <div class='right'>
+                  <div class='triangle'></div>
+                  {{{team.phone}}}
+                </div>
+                {{/team.phone}}
+              </div>
+            </div>
+            <div class='footer'></div>
+            <div class='top-bg'></div>
+          </div>
+
+
+        </div><!--content-->
+      </div><!--document-->
+
+    </div><!--page-->
+
+
+
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/javascripts/main.js"></script>
+  </body>
+</html>
