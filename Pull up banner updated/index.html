@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html class="{{crop-marks}}-crop-marks {{^crop-marks}}show-crop-marks{{/crop-marks}}">
+  <head>
+    <title>Pull up banner</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/stylesheets/main.css">
+
+    <style type="text/css">
+      .outfit-resizable-background {
+        /* Place any Resizable Background Styles here */
+        opacity: 0.65;
+        opacity: {{{background-opacity}}};
+      }
+
+      .hide-crop-marks .copy-container {
+        margin: 0;
+        width: calc(100%);
+      }
+
+      .copy-container {
+        margin: 0.25in;
+        width: calc(100% - 0.5in);
+      }
+
+      .document {outline: 0.25in solid white;box-sizing: border-box;}
+
+      .hide-crop-marks .document {outline: 0.0in solid white;box-sizing: border-box;}
+
+      body.hide-crop-marks { font-size: 40%;}
+
+      @import url("https://outfit-assets-production.s3.amazonaws.com/fonts/Gotham/stylesheet.css");
+      html {
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Gotham', helvetica, arial, sans-serif;
+        color: brand-color;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        font-weight: 600;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      .hide-crop-marks .content {
+        padding: 0.23in;
+      }
+
+      .content {
+        padding: 0in;
+      }
+
+      .hide-crop-marks .top-right-shape {
+        position: absolute;
+        top: 0in;
+        right: 0in;
+        bottom: 0in;
+        left: 0in;
+      }
+      
+            
+      .logo {
+        width: 100%;
+        height: 100%;
+        margin-left: -0.5em;
+        background-image: url('{{{account.logos.primary}}}');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        margin-top: 1em;
+      }
+      .image-wrapper{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right:0;
+        width: 100%;
+ 
+      }
+
+    </style>
+  </head>
+  <body class="{{crop-marks}}-crop-marks {{^crop-marks}}show-crop-marks{{/crop-marks}}">
+    <div class="image-wrapper">
+    {{{ resizable-background-image }}}
+    </div>
+    <div class='page'>
+      <div class='document'>
+        <div class='content'>
+
+        </div><!--content-->
+      </div><!--document-->
+
+      <div class='flex-container'>
+        <div class='copy-container'>
+          <div class='subheading'>
+            {{{banner-headline}}}
+          </div>
+          <div class='row'>
+            {{{banner-copy}}}
+          </div>
+
+          <div class='header-container'>
+            <div class='logo'></div>
+          </div>
+          <div class='website'>
+            {{{account.snippets.website-url}}}
+          </div>
+        </div>
+      </div>
+      <div class='top-right-shape'></div>
+      <div class="background"></div><!--background-->
+    </div><!--page-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/javascripts/main.js"></script>
+  </body>
+</html>
