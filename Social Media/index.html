@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="assets/stylesheets/main.css">
+
+    <!-- 
+{{{layout-style}}}
+{{{theme-colour}}}
+{{{main-headline}}}
+{{{secondary-headline}}}
+{{{resizable-background-image}}}
+{{{image-colour}}}
+{{{headline-font-size}}}
+{{{overlay-size}}}
+{{{logo-one}}}
+{{{logo-two}}}
+{{{logo-three}}} 
+-->
+
+    <style>
+      .greyscale .tinymce_style--dark {color: rgba(109, 196, 33, 1) !important;}
+
+      .tinymce_style--light {color: white !important;}
+
+      
+
+      .center {
+        font-size: 0.5em;
+        font-size: {{{headline-font-size}}}em;
+      }
+
+      .text-container { 
+        font-size: 0.5em;
+        font-size: {{{headline-font-size}}}em;
+      }
+
+      .inner {
+        width: calc(10em + {{{overlay-size}}}em);
+      }
+
+      .container.one .inner {
+        width: calc(10em + {{{overlay-size}}}em);
+      }
+
+      .container.three .inner {
+        width: calc(15em + {{{overlay-size}}}em);
+      }
+
+      .container.five .inner {
+        width: calc(5em + {{{overlay-size}}}em);
+      }
+
+      .text { padding: 3.5em 2em; }
+      .text { padding: {{{overlay-size}}}em 2em; }
+
+      .container.six.fixed { display: none; }
+      .container.seven.fixed { display: none; }
+      .container.eight.fixed { display: none; }
+      .container.nine.fixed { display: none; }
+      .container.fifteen.fixed { display: none; }
+
+      .flexible { display: none; }
+
+      .container.six.flexible { display: block; }
+      .container.seven.flexible { display: block; }
+      .container.eight.flexible { display: block; }
+      .container.nine.flexible { display: block; }
+      .container.fifteen.flexible { display: block; }
+
+
+      .logo-one {
+        margin: 0em 0.8em;
+        width: 5.2em;
+        height: 2.8em;
+        background-image: url("{{{logo-one}}}");
+        -webkit-background-size: contain;
+        -moz-background-size: contain;
+        -o-background-size: contain;
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
+
+      .logo-two {
+        margin: 0em 0.8em;
+        width: 5.2em;
+        height: 2.8em;
+        background-image: url("{{{logo-two}}}");
+        -webkit-background-size: contain;
+        -moz-background-size: contain;
+        -o-background-size: contain;
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
+
+      .logo-three {
+        margin: 0em 0.8em;
+        width: 5.2em;
+        height: 2.8em;
+        background-image: url("{{{logo-three}}}");
+        -webkit-background-size: contain;
+        -moz-background-size: contain;
+        -o-background-size: contain;
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+      }      
+
+      .outfit-resizable-background img {
+        /* Place any Resizable Background Styles here */
+        {{{image-colour}}}
+      }
+
+
+      .outfit-resizable-background {
+        /* Place any Resizable Background Styles here */
+        {{{image-colour}}}
+      }
+
+
+      .left-photo {
+        width: 50%;
+        height: 100%;
+        background-image: url("{{{left-photo}}}");
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-position: center center;
+        background-position-x: {{{left-photo-position}}}px;
+      }
+
+      .right-photo {
+        width: 50%;
+        height: 100%;  
+        background-image: url("{{{right-photo}}}");
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-position: center center;
+        background-position-x: {{{right-photo-position}}}px;
+      }
+
+
+      .greyscale-before-after {
+        -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(100%);
+      }
+      
+      .center { text-align: center; }
+
+      {{#text-align}} .center { text-align: {{{text-align}}}; } {{/text-align}}
+      
+      .logo-12rnd {
+        width: 3.5em;
+        height: 2.5em;
+        position: absolute;
+        z-index: 10000;
+        bottom: 1em;
+        right: 1em;
+        background: url('{{{account.logos.primary}}}');
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+      
+      
+      .one .secondary-headline,
+      .two .secondary-headline,
+      .three .secondary-headline,
+      .four .secondary-headline,
+      .five .secondary-headline {
+        display: block;
+        margin-top: 0.75rem;
+      }
+    </style>
+  </head>
+  <body>
+
+    {{{resizable-background-image}}}
+
+    <div class='container {{{layout-style}}} {{{layout-nutrition}}} {{{layout-general}}} {{{theme-colour}}} {{{layout-featured}}} fixed'>
+      <div class='logo-bg {{{12-round-logo}}}'>
+        <div class='logo-12rnd'></div>
+      </div>
+      <div class='center'>
+        <div class="text-box">
+          <div id="over-text" class="over-text">
+            <h1>{{{main-headline}}}</h1>
+            {{#secondary-headline}}<h2 class='secondary-headline'>{{{secondary-headline}}}</h2>{{/secondary-headline}}
+          </div>
+        </div>
+      </div>
+      <!--<div class='bg'></div>-->
+      <div class='overlay-container'>
+        <div class='square'>
+          <div class='inner'></div>
+          <div class='inner margin'></div>
+        </div>
+      </div>
+    </div>
+
+    <div class='container {{{layout-style}}} {{{layout-nutrition}}} {{{layout-general}}} {{{theme-colour}}} {{{layout-featured}}} flexible'>
+      <div class='logo-bg {{{12-round-logo}}}'>
+        <div class='logo-12rnd'></div>
+      </div>
+      <div class='text-container'>
+        <div class='text'>
+          <div class="text-box">
+            <div id="over-text" class="over-text">
+              <h1>{{{main-headline}}}</h1>
+              {{#secondary-headline}}<h2>{{{secondary-headline}}}</h2>{{/secondary-headline}}
+            </div>
+          </div>
+        </div>
+        <div class='logo-container'>
+          {{#logo-one}}<div class='logo-one'></div>{{/logo-one}}
+          {{#logo-two}}<div class='logo-two'></div>{{/logo-two}}
+          {{#logo-three}}<div class='logo-three'></div>{{/logo-three}}
+        </div>
+      </div>
+
+      <div class='bg-before-after'>
+        <div class='left-photo {{{left-photo-greyscale}}}'></div>
+        <div class='right-photo {{{right-photo-greyscale}}}'></div>
+      </div>
+
+      <!--<div class='bg'></div>-->
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/javascripts/main.js"></script>
+
+  </body>
+</html>
