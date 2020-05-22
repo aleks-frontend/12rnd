@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html data-sign="OSM">
+  <head>
+    <title>Template title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="css/minireset.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/placeholder-controller.css">
+
+    <style>
+      @import url("https://outfit-assets-production.s3.amazonaws.com/fonts/Gotham/stylesheet.css"); 
+
+      :root {
+        --green: {{account.colors.green}};
+        --black: #352733;
+        --white: #fff;
+      }
+
+      html {
+        font-family: 'Gotham';
+        font-size: 11pt;
+        color: var(--white);
+      }
+
+      .headerText {
+        font-family: 'Gotham';
+        position: relative;
+
+        font-weight: 600;
+        color: {{account.colors.white}};
+        text-transform: uppercase;
+
+        z-index: 1;
+        color: #000000;
+      }
+
+      .headerText::after {
+        content: '';
+        position: absolute;
+        bottom: -9px;
+        left: 72pt;
+        width: 97.1pt;
+        height: 6.5pt;
+        background-color: var(--green);
+      }
+
+      .headerText::after {
+        left: 60pt;
+        width: 105pt;
+      }
+
+      .headerText strong {
+        color: {{account.colors.green}};
+      }
+
+      .facebook-post .headerText {
+        padding: 74.3pt 0pt 20pt 59.5pt;
+        width: 400pt;
+        max-height: 310pt;
+      }
+
+      .instagram .headerText {
+        width: 255pt;
+        padding: 54.9pt 0pt 16pt 41.4pt;
+        max-height: 222pt;
+      }
+
+      .instagram .headerText::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 41pt;
+        width: 73pt;
+        height: 4.5pt;
+        background-color: var(--green);
+      }
+
+      .heading {
+        font-size: 61.8pt;
+        letter-spacing: 0.3pt;
+      }
+
+      .heading h1 {
+        font-size: 1em;
+        line-height: 1em;
+      }
+
+      .heading h2 {
+        font-size: 0.8em;
+        line-height: 1em;
+      }
+
+      .heading h3 {
+        font-size: 0.6em;
+        line-height: 1em;
+      }
+
+      .instagram .heading {
+        font-size: 42.2pt;
+        line-height: 1em;
+        letter-spacing: 0.6pt;
+      }
+
+      .instagram .heading h1 {
+        font-size: 1em;
+      }
+
+      .instagram .heading h2 {
+        font-size: 0.8em;
+      }
+
+      .instagram .heading h3 {
+        font-size: 0.6em;
+      }
+
+      .location {
+        font-size: 30.8pt;
+        line-height: 1em;
+        color: var(--green);
+        margin-bottom: 5pt;
+      }     
+
+      .instagram .location {
+        font-size: 20.7pt;
+        line-height: 1em;
+        color: var(--green);
+        margin-bottom: 4pt;
+        letter-spacing: 0.4pt;
+      }
+
+      .backgroundImage {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-size: cover;
+        z-index: -1;
+      }
+
+      .logo {
+        z-index: 30;
+        width: 4.58rem;
+        position: absolute;
+        right: 52pt;
+        top: 44pt;
+      }
+
+      /*
+      .triangle--primary {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 529pt;
+      height: 100%;
+      clip-path: polygon(0% 0%, 100% 0%, 17% 100%, 0% 100%);
+      background-color: #ffffff;
+      background-blend-mode: normal;
+      }
+
+      .triangle--secondary {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 126pt;
+      height: 176pt;
+      background: #000000;
+      clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
+      z-index: 100;
+      }      
+
+      .instagram .triangle--primary {
+      width: 370pt;
+      clip-path: polygon(0% 0%, 100% 0%, 0.5% 100%, 0% 100%);
+      }
+
+      .instagram .triangle--secondary {
+      width: 105pt;
+      height: 148pt;
+      }
+
+      */
+
+      .instagram .logo {
+        display: none;
+      }
+
+      .shape {
+        position: absolute;    
+        max-width: unset;
+      }
+
+      .instagram .shape--triangleWhite {
+        top: 0pt;
+        left: 0pt;
+        width: 12.65rem;
+      }    
+
+      .facebook-post .shape--triangleWhite {
+        top: 0pt;
+        left: 0pt;
+        width: 12.35rem;
+      }
+
+      .instagram .shape--triangleBlack {
+        bottom: 0;
+        right: 0;
+        width: 3.55rem;
+      }    
+
+      .facebook-post .shape--triangleBlack {
+        bottom: 0;
+        right: 0;
+        width: 2.85rem;
+      }
+
+
+      /* ANY OTHER STYLES THAT NEED MUSTACHE.JS CAPABILITIES */
+    </style>
+  </head>
+  <body style="background: white" class="u-placeholder-{{ placeholder-toggle-new }}{{^placeholder-toggle-new}}hide{{/placeholder-toggle-new}}" data-crop="{{show-crop}}">
+    <div class="placeholderMaster" data-opacity="{{ placeholder-opacity }}">
+      {{#placeholder-image-1}}
+      <div class="placeholderMaster__item" data-bg="{{ placeholder-image-1 }}"></div>
+      {{/placeholder-image-1}}
+    </div><!-- end placeholderMaster -->
+    <div class="page {{{12rnd_format--smgg}}}">
+
+      <div class="bleed">
+
+        <div class="container fit">
+          <!--   <div class="triangle triangle--primary"></div>
+          <div class="triangle triangle--secondary"></div>
+-->
+          <img src="https://files.outfit.io/media_library_items/69683/top%2520triangle%2520white.svg" alt="" class="shape shape--triangleWhite"> 
+          <img src="https://files.outfit.io/media_library_items/69703/bottom%2520triangle.svg" alt="" class="shape shape--triangleBlack"> 
+
+          {{#12rnd_headline--smgg}}
+          <div class="headerText" data-max-height="css">
+
+            <div class="location">{{team.name}}{{^team.name}}Location Here{{/team.name}}</div><!--location-->
+            <div class="heading">{{{12rnd_headline--smgg}}}</div><!--heading-->
+
+          </div><!-- end heading-->
+
+          {{/12rnd_headline--smgg}}
+          <div class="backgroundImage ">{{{12rnd_background-image--smg}}}</div><!-- end backgroundImage-->
+          <img class="logo" src="{{account.logos.primary}}"><!-- end logo-->
+        </div><!--container fit-->
+
+      </div><!--bleed-->
+
+    </div><!--page-->
+
+
+    <script>
+      window.showCrop = {{show-crop}}{{^show-crop}}true{{/show-crop}};
+    </script>
+    <script src="js/main.js"></script>   
+    <script src="js/prefixfree.js"></script>
+    <script src="js/placeholder-controller.js"></script>
+    <script src="js/char-limit.js"></script>
+    <script src="js/check-export-mode.js"></script>
+    <script src="js/max-line-check.js"></script>
+    <script src="js/max-height-check.js"></script>
+    <script src="https://outfit-assets-production.s3-accelerate.amazonaws.com/scripts/textfit.0.0.4.min.js" type="text/javascript"></script>
+    <script>
+
+      // Tracking text changes and firing text restriction functions (mutationObserver)
+      const overflowObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          maxLineCheck();
+          maxHeightCheck();
+          charLimit();
+        });
+      });
+
+      overflowObserver.observe(document.body, {
+        attributes: false,
+        characterData: true,
+        childList: true,
+        subtree: true,
+        attributeOldValue: false,
+        characterDataOldValue: true
+      });
+
+      // Calling text size restriction functions once the fonts are loaded
+      document.fonts.ready.then(() => {
+        maxLineCheck();
+        maxHeightCheck();
+      });
+
+      placeholderController();
+      checkCrop();
+      checkExport();
+      charLimit();
+
+      // TextFit function decreases the font of the selected element to make it fit in single line (if needed, uncomment the code bellow)
+      TextFit.fit({
+        selector: '.textFit'
+      });
+
+    </script>
+
+
+  </body>
+</html>
