@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html data-sign="OSM">
+  <head>
+    <title>Template title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="css/minireset.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/placeholder-controller.css">
+
+    <style>
+      @import url("https://outfit-assets-production.s3.amazonaws.com/fonts/Gotham/stylesheet.css"); 
+
+      :root {
+        --green: {{account.colors.green}};
+        --light-grey: #352733;
+        --dark-grey: rgba(55, 53, 53, 1);
+        --white: {{account.colors.white}};
+      }
+
+      html {
+        font-family: 'Gotham';
+        font-size: 0.26rem;
+        color: var(--white);
+        font-weight: 600;
+      }
+
+      strong {
+        color: var(--green);
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .backgroundImage {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-size: cover;
+      }
+
+      .header {
+        height: 2.42rem;
+      }
+
+      .logo {
+        position: absolute;
+        top: 0.98rem;
+        right: 0.9rem;
+        width: 2.7rem;
+      }
+
+      .body {
+        flex: 1;
+        padding: 0rem 1.87rem 0rem 1.21rem;
+        z-index: 1;
+      }
+
+      .subHeading {
+        margin-bottom: 0.12rem;
+        font-size: 0.93rem;
+        font-weight: 500;
+        line-height: 1em;
+        color: var(--green);
+        text-transform: uppercase;
+        letter-spacing: -0.1pt;
+      }
+
+      .heading {
+        position: relative;
+        max-height: 4.67rem;
+        font-size: 0.47rem;
+        text-transform: uppercase;
+        line-height: 4.1em;
+      }
+
+      .heading::after {
+        content: '';
+        position: absolute;
+        bottom: -0.79rem;
+        left: 0rem;
+        width: 3.17rem;
+        height: 0.17rem;
+        background-color: var(--green);
+      }
+
+      .heading h1,
+      .heading h2,
+      .heading h3 {
+        font-weight: 500;
+        letter-spacing: 0.5pt;
+        line-height: 1em;
+      }
+
+      .heading h1 {
+        font-size: 1.86rem;
+      }
+
+      .heading h2 {
+        font-size: 1.49rem;
+      }
+
+      .heading h3 {
+        font-size: 1.12rem;
+      }
+
+      .footer {
+        padding: 0rem 2.97rem 0.93rem 1.21rem;
+        text-transform: uppercase;
+        z-index: 1;
+      }
+
+      /*.price {
+        font-weight: 500;
+        font-size: 1.10rem;
+        line-height: 0.9em;
+      }
+
+      .paymentTerm {
+        font-size: 0.66rem;
+        font-weight: 500;
+        letter-spacing: -0.1pt;
+        line-height: 1.6em;
+      }*/
+
+      .programDetails {
+        max-height: 4.4rem; /*3.4*/
+        font-weight: 500;
+        letter-spacing: 0.2pt;
+        line-height: 0.9em;
+        margin-bottom: 0.175rem;
+      }
+      
+      .programDetails h1{
+        font-size: 1.10rem;
+        line-height: 1.2em;
+      }
+      
+      .programDetails h2{
+        font-size: 0.65rem;
+      }
+
+      .variation-2 .programDetails{
+        max-height: 4.6rem;
+      }
+
+      .social {
+        display: flex;
+        height: 0.79rem;
+    	margin-top: 0.175rem;      
+      }
+
+      .social__item {
+        display: flex;
+        margin-right: 0.39rem;
+      }
+
+      .social__icon {
+        width: 0.53rem;
+        height: 100%;
+        margin-right: 0.24rem;
+      }
+
+      .social__label {
+        font-size: 0.26rem;
+        letter-spacing: 0.6pt;
+        font-weight: 500;
+        color: var(--green);
+        align-self: center;
+        text-transform: none;
+      }
+
+      .site {
+        position: absolute;
+        right: 1.17rem;
+        bottom: 1.12rem;
+        font-size: 0.295rem;
+        font-weight: 500;
+        color: var(--light-grey);
+      }
+
+      .triangle--primary {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 10.35rem;
+        height: 14.57rem;
+        /*  clip-path: polygon(0% 0%, 100% 0%, -0.5% 100%);*/
+        z-index: 0;
+      }
+
+      .triangle--secondary {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 4.51rem;
+        height: 6.31rem;
+        /*  clip-path: polygon(100% 0%, 100% 100%, 0% 100%);*/
+      }   
+
+
+      /*  
+      .triangle--primary.white {
+      background-color: rgba(255, 255, 255, 1);
+      }
+
+      .triangle--primary.grey {
+      background-color: rgba(46, 44, 45, 1);
+      }
+
+      .triangle--primary.light-grey {
+      display: none;
+      }
+
+      .triangle--secondary.white {
+      background-color: rgba(255, 255, 255, 1);
+      }
+
+      .triangle--secondary.dark-grey {
+      background-color: rgba(46, 44, 45, 1);
+      }
+
+      .triangle--secondary.light-grey {
+      background-color: rgba(200, 202, 204, 1);
+      }
+
+      */
+
+      .variation-2 .programDetails strong {
+        color: var(--green);
+        background: var(--white);
+        padding: 0.18rem 0.24rem;
+        margin-top: 0.16rem;
+        margin-left: -0.18rem;
+
+        display: inline-block;
+
+        /*display: table;*/
+      }
+
+      .variation-2 .header {
+        height: auto;
+      }
+
+      .variation-2 .logo {
+        top: 0.73rem;
+        right: 0.82rem;
+        width: 2.75rem;
+      }
+
+      .variation-2 .body {
+        padding-top: 1.53rem;
+        padding-left: 1.26rem;
+      }
+
+      .variation-2 .subHeading {
+        font-size: 0.71rem;
+        letter-spacing: 0.1pt;
+        margin-bottom: 0.06rem;
+      }
+
+      .variation-2 .heading {
+        max-height: 3.6rem;
+        padding-bottom: 0.58rem;
+        color: var(--dark-grey);
+      }
+
+      .variation-2 .heading::after {
+        width: 2.48rem;
+        height: 0.15rem;
+        left: -0.03rem;
+        bottom: -0.05rem;
+      }
+
+      .variation-2 .heading h1 {
+        font-size: 1.44rem;
+        letter-spacing: 0.3pt;
+      }
+
+      .variation-2 .price {
+        margin-bottom: 0.12rem;
+        color: var(--dark-grey);
+        line-height: 1.1em;
+      }
+
+      .variation-2 .paymentTerm {
+        color: var(--dark-grey);
+        line-height: 1em;
+      }
+
+      .variation-2 .programDetails {
+        color: var(--dark-grey);
+        /*line-height: 1.15em;*/
+      }
+
+      @media (min-width: 1100px) {
+        .variation-2 .programDetails {
+          max-height: 280pt;
+        }
+      } 
+
+      .variation-2 .footer {
+        padding: 0pt 2.97rem 0.75rem 1.28rem;
+        z-index: 1;
+      }
+
+      .variation-2 .social {
+        color: var(--dark-grey);
+        margin-top: 0.21rem;
+        margin-left: -0.23rem;
+      }
+
+      .variation-2 .social__icon {
+        margin-right: 0.22rem;
+      }
+
+      .variation-2 .social__label {
+        font-size: 0.255rem;
+      }
+
+      .variation-2 .triangle--primary {
+        width: 9.53rem;
+        height: 13.38rem;
+      }
+
+      .variation-2 .triangle--secondary {
+        width: 4.39rem;
+        height: 6.24rem;
+      }
+
+      .variation-2 .site {
+        right: 1.10rem;
+        bottom: 1.07rem;
+        font-size: 0.30rem;
+        color: var(--white);
+      }
+
+      .variation-3 .programDetails strong {
+        color: var(--green);
+      }
+
+      .variation-3 .logo {
+        top: 0.79rem;
+        right: 0.83rem;
+        width: 2.79rem;
+      }
+
+      .variation-3 .body {
+        display: flex;
+        align-items: flex-end;
+      }
+
+      .variation-3 .body {
+        padding-left: 1rem;
+      }
+
+      .variation-3 .subHeading {
+        display: none;
+      }
+
+      .variation-3 .heading {
+        padding-bottom: 1.56rem;
+        max-height: 8.88rem;
+      }
+
+      .variation-3 .heading::after {
+        bottom: 0.8rem;
+        width: 2.31rem;
+        height: 0.14rem;
+      }
+
+      .variation-3 .heading h1 {
+        font-size: 1.8rem;
+        letter-spacing: 0.2pt;
+      }
+
+      .variation-3 .footer {
+        padding: 0pt 2.75rem 0.76rem 1.05rem;
+      }
+
+      .variation-3 .programDetails {
+        /*line-height: 1.45em;*/
+        letter-spacing: 0.5pt;
+      }
+
+      .variation-3 .social__item {
+        margin-right: 0.38rem;
+      }
+
+      .variation-3 .social__label {
+        letter-spacing: 0.4pt;
+      }
+
+      .variation-3 .triangle--secondary {
+        width: 4.39rem;
+        height: 6.14rem;
+      }
+
+      .variation-3 .site {
+        right: 1.14rem;
+        bottom: 0.98rem;
+        font-size: 0.29rem;
+        letter-spacing: 0.2pt;
+      }
+
+      .tinymce_style--light{
+        color: var(--white);
+      }
+
+      .tinymce_style--dark{
+        color: var(--dark-grey);
+      }
+
+      .shape {
+        position: absolute;
+        display: none;
+        max-width: unset;
+      }
+
+      .shape--triangleWhite2.white {
+        display: block;
+        top: -0.327rem;
+        left: -0.584rem;
+        width: 10.370rem;
+      }
+
+      .shape--trianglegDarkGrey2.grey {
+        display: block;
+        top: -0.327rem;
+        left: -0.514rem;
+        width: 10.423rem;
+        transform: rotate(3.5deg);
+        opacity: 0.9;
+      }
+
+      .shape--triangleWhite.white  {
+        display: block;
+        bottom: 0pt;
+        right: 0pt;
+        width: 4.508rem;
+      } 
+
+      .shape--triangleDarkGrey.dark-grey  {
+        display: block;
+        bottom: 0pt;
+        right: 0pt;
+        width: 4.508rem;
+        color: white;
+      }  
+
+      .shape--triangleLightGrey.light-grey  {
+        display: block;
+        bottom: 0pt;
+        right: 0pt;
+        width: 4.508rem;
+      }  
+      
+      .triangle--secondary--dark-grey .site{
+        color: white;
+      }
+      
+      .social__item.white-style .social__icon.green	{	display: none;					}
+      .social__item.white-style .social__label		{	color: var(--white); 			}
+      .social__item.green-style .social__label		{	color: var(--green);		 	}
+      .social__item.green-style .social__icon.white	{	display: none;					}
+      
+      .contact {
+      	font-size: 10.2pt;
+      }
+
+      .contact {
+        text-transform: uppercase;
+        font-size: 0.26rem;
+        line-height: 1.52em;
+      }
+
+      .contact__label {
+      	color: var(--green);
+      }
+
+      .contact__value--secondary {
+      	text-transform: none;	
+      }
+      
+      .contactContainer.hide-contact{
+        display: none;
+      }
+      
+      .hide  {
+        display: none;
+      }
+
+
+
+      /* ANY OTHER STYLES THAT NEED MUSTACHE.JS CAPABILITIES */
+    </style>
+  </head>
+  <body style="background: white" class="u-placeholder-{{ placeholder-toggle-new }}{{^placeholder-toggle-new}}hide{{/placeholder-toggle-new}}" data-crop="{{show-crop}}">
+    <div class="placeholderMaster" data-opacity="{{ placeholder-opacity }}">
+      {{#placeholder-image-1}}
+      <div class="placeholderMaster__item" data-bg="{{ placeholder-image-1 }}"></div>
+      {{/placeholder-image-1}}
+    </div><!-- end placeholderMaster -->
+    <div class="page {{{12rnd_layout--p}}}">
+
+      <div class="bleed">
+
+        <div class="container fit">
+
+          <div class="backgroundImage">{{{ 12rnd_background-image--p }}}</div>
+          <div class="header">
+            <img class="logo" src="{{account.logos.primary}}"><!--logo-->
+          </div><!--header-->
+          <div class="body">
+            <div class="subHeading">{{team.name}}{{^team.name}}Team Name Here{{/team.name}}</div><!--subHeading-->
+            <div class="heading" data-max-height="css">{{{ 12rnd_headline--p }}}</div><!--heading-->
+          </div><!--body-->
+          <div class="footer">
+            <!--<div class="price" data-max-line="1">${{{ 12rnd_price--p }}}</div><!--price-->
+            <!--<div class="paymentTerm" data-max-line="1">{{{ 12rnd_payment-term--p }}}</div><!--paymentTerm-->
+            <div class="programDetails" data-max-height="css">{{{ 12rnd_further-program-details--p }}}</div><!--programDetails-->
+            <div class="contactContainer {{{contact-show-hide}}}-contact {{^contact-show-hide}}hide{{/contact-show-hide}}-contact">
+              <div class="contact">
+                <div class="contact__label">email:</div><!--end contact__label-->
+                <div class="contact__value">{{{team.email}}}</div><!--end contact__value-->
+              </div><!--end contact-->
+              <div class="contact">
+                  <div class="contact__label">phone:</div><!--end contact__label-->
+                  <div class="contact__value">{{{team.phone}}}</div><!--end contact__value-->
+              </div>
+            </div>
+            <div class="social ">
+              <div class="social__item {{{social-style}}}-style {{^social-style}}green{{/social-style}}-style">
+                <img class="social__icon green" src="https://files.outfit.io/media_library_items/63027/fb%2520green.svg" alt="">
+                <img class="social__icon white" src="https://files.outfit.io/media_library_items/81470/fb%2520white.svg" alt="">
+                <div class="social__label {{{showHideSocialLinks}}}">/{{team.facebook-link}}{{^team.facebook-link}}Facebook Link Goes Here{{/team.facebook-link}}</div>
+              </div><!--social__item-->
+              <div class="social__item {{{social-style}}}-style {{^social-style}}green{{/social-style}}-style">
+                <img class="social__icon green" src="https://files.outfit.io/media_library_items/63026/insta%2520green.svg" alt=""><!--end social__icon-->
+                <img class="social__icon white" src="https://files.outfit.io/media_library_items/81469/insta%2520white.svg" alt="">
+                <div class="social__label {{{showHideSocialLinks}}}">@{{team.instagram-link}}{{^team.instagram-link}}Instagram Link Goes Here{{/team.instagram-link}}</div> <!--end social__label-->
+              </div><!--social__item-->
+              <!--end social__item-->
+            </div><!--social-->
+          </div><!--footer-->
+          <img src="https://files.outfit.io/media_library_items/69683/top%2520triangle%2520white.svg" alt="" class="shape shape--triangleWhite2 {{{ 12rnd_triangle-colour--p }}}"> 
+          <img src="https://files.outfit.io/media_library_items/69697/top%2520triangle%2520small.svg" alt="" class="shape shape--trianglegDarkGrey2 {{{ 12rnd_triangle-colour--p }}}"> 
+          <div class="triangle triangle--secondary triangle--secondary--{{{ 12rnd_url-container-background-colour--p }}}">
+            <img src="https://files.outfit.io/media_library_items/69671/bottom%2520triangle.svg" alt="" class="shape shape--triangleWhite {{{ 12rnd_url-container-background-colour--p }}}"> 
+            <img src="https://files.outfit.io/media_library_items/69684/grey%2520bottom%2520triangle.svg" alt="" class="shape shape--triangleLightGrey {{{ 12rnd_url-container-background-colour--p }}}"> 
+            <img src="https://files.outfit.io/media_library_items/69680/black%2520bottom%2520triangle.svg" alt="" class="shape shape--triangleDarkGrey {{{ 12rnd_url-container-background-colour--p }}}"> 
+            <div class="site">{{account.snippets.website-url}}</div>
+          </div><!--triangle-->
+
+        </div><!--container fit-->
+
+      </div><!--bleed-->
+
+    </div><!--page-->
+
+
+    <script>
+      window.showCrop = {{show-crop}}{{^show-crop}}true{{/show-crop}};
+    </script>
+    <script src="js/main.js"></script>   
+    <script src="js/prefixfree.js"></script>
+    <script src="js/placeholder-controller.js"></script>
+    <script src="js/char-limit.js"></script>
+    <script src="js/check-export-mode.js"></script>
+    <script src="js/max-line-check.js"></script>
+    <script src="js/max-height-check.js"></script>
+    <script src="https://outfit-assets-production.s3-accelerate.amazonaws.com/scripts/textfit.0.0.4.min.js" type="text/javascript"></script>
+    <script>
+
+      // Tracking text changes and firing text restriction functions (mutationObserver)
+      const overflowObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          maxLineCheck();
+          maxHeightCheck();
+          charLimit();
+        });
+      });
+
+      overflowObserver.observe(document.body, {
+        attributes: false,
+        characterData: true,
+        childList: true,
+        subtree: true,
+        attributeOldValue: false,
+        characterDataOldValue: true
+      });
+
+      // Calling text size restriction functions once the fonts are loaded
+      document.fonts.ready.then(() => {
+        maxLineCheck();
+        maxHeightCheck();
+      });
+
+      placeholderController();
+      checkCrop();
+      checkExport();
+      charLimit();
+
+      // TextFit function decreases the font of the selected element to make it fit in single line (if needed, uncomment the code bellow)
+      TextFit.fit({
+        selector: '.textFit'
+      });
+
+    </script>
+
+
+  </body>
+</html>
