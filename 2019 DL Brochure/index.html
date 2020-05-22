@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html data-sign="OSM">
+  <head>
+    <title>Template title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="css/minireset.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/placeholder-controller.css">
+
+    <style>
+      @import url("https://outfit-assets-production.s3.amazonaws.com/fonts/Gotham/stylesheet.css"); 
+
+      :root {
+        --green: {{account.colors.green}};
+        --light-grey: #352733;
+        --dark-grey: rgba(35, 31, 32, 1);
+        --white: {{account.colors.white}};
+        --black: {{account.colors.black}};
+      }
+
+      .light  {
+        --dynamic-background-color: var(--white);
+        --dynamic-back-text-color: var(--dark-grey);        
+      }
+
+      .dark {
+        --dynamic-background-color: var(--dark-grey);
+        --dynamic-back-text-color: var(--white);
+      }
+
+      html {
+        font-family: 'Gotham';
+        font-weight: 600;
+        font-size: 0.26rem;
+        color: var(--white);
+      }
+
+      .tinymce_style--light {
+        color: var(--white);
+      }
+
+      .tinymce_style--dark {
+        color: var(--dark-grey);
+      }
+
+      strong {
+        color: var(--green) !important;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .back-layout-1 .container {
+        background: var(--dynamic-background-color);
+      }
+
+      .back-layout-2 .container {
+        background: var(--dynamic-background-color);
+      }
+
+      .backgroundImage {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+
+      .header {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        align-items: flex-start;
+        position: relative;
+        height: 105pt;
+        padding: 30pt 36pt 0 32pt;
+        z-index: 1;
+      }
+
+      .front-2 .header {
+        justify-content: flex-end;
+        right: -0.25rem;
+        top: 0.03rem;
+      }
+
+      .header--back {
+        display: none;
+      }
+
+      .back-layout-1 .header--back {
+        display: flex;;
+        height: 230pt;
+        justify-content: flex-end;
+        padding: 28pt 31pt 0 32pt;
+      }
+
+      .back-layout-2 .header--back {
+        display: flex;
+        height: 100pt;
+      }
+
+      .logo {
+        width: 102.8pt;
+        z-index: 1;
+      }
+
+      .body {
+        flex: 1;
+        z-index: 1;
+        padding: 0pt 35pt 0pt;
+      }
+
+      .front-2 .body {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+
+      .body--secondary {
+        padding: 13.6pt 25.6pt 0pt 34.6pt;
+      }
+
+      .subheading {
+        font-size: 19.7pt;
+        font-weight: 500;
+        line-height: 1.2em;
+        color: var(--green);
+        text-transform: uppercase;
+        letter-spacing: 0.1pt;
+      }
+
+      .front-2 .subheading {
+        display: none;
+      }
+
+      .subheading--secondary {
+        position: absolute;
+        bottom: 26.5pt;
+        left: 34.5pt;
+        right: 34.5pt;
+        font-size: 18.4pt;
+        display: none;
+      }
+
+      .back-layout-1 .subheading--secondary {
+        display: block;
+      }
+
+      .heading {
+        position: relative;
+        text-transform: uppercase;
+        font-size: 40.1pt;
+        max-height: 180pt;
+      }
+
+      .heading h1 {
+        font-size: 1em;
+        line-height: 1em;
+      }
+
+      .heading h2 {
+        font-size: 0.8em;
+        line-height: 1em;
+      }
+
+      .heading h3 {
+        font-size: 0.6em;
+        line-height: 1em;
+      }
+
+      .heading__line {
+        margin-top: 12pt;
+        width: 68pt;
+        height: 4.3pt;
+        background-color: var(--green);
+      }
+
+      .heading--secondary {
+        margin-bottom: 44.9pt;
+        font-size: 37pt;
+        letter-spacing: -0.4pt;
+      }
+
+      .heading--secondary::after {
+        bottom: -20pt;
+      }
+
+      .back-layout-2 .heading {
+        display: none;
+      }
+
+      .front-2 .heading {
+        display: flex;
+        align-items: flex-end;
+        line-height: 1em;
+        font-size: 45.4pt;
+        max-height: 300px;
+      }
+
+      .footer {
+        padding: 0pt 70pt 23.2pt 34.7pt;
+        text-transform: uppercase;
+        z-index: 1;
+      }
+
+      .front-3 .footer {
+        padding-left: 36pt;
+      }
+
+      .front-2 .footer {
+        padding: 15pt 70pt 23.2pt 36pt;
+      }
+
+      .footer--secondary {
+        text-transform: none;
+      }
+
+      .back-layout-2 .footer--secondary {
+        padding: 0pt 70pt 24.3pt 34.7pt;
+      }
+
+      .price {
+        font-weight: 500;
+        font-size: 33.1pt;
+        line-height: 1.25em;
+      }
+
+      .front-2 .price {
+        margin-bottom: 4.6pt;
+        line-height: 1.1em;
+        font-size: 33.2pt;
+      }
+
+      .paymentTerm {
+        font-size: 19.1pt;
+        font-weight: 500;
+        letter-spacing: 0.5pt;
+        line-height: 1.2em;
+      }
+
+      .front-2 .paymentTerm {
+        line-height: 1em;
+        font-size: 19.6pt;
+        letter-spacing: 0.2pt;
+      }
+
+      .programDetails {
+        max-height: 50pt;
+        font-size: 19.65pt;
+        font-weight: 500;
+        letter-spacing: 0.1pt;
+        line-height: 1.05em;
+      }
+
+      .front-2 .programDetails {
+        line-height: 1.1em;
+        font-size: 19.5pt;
+        letter-spacing: 0.3px;
+      }
+
+      .savings {
+        margin-top: 5pt;
+        max-height: 37pt;
+        color: var(--green);
+        font-size: 19.8pt;
+      }
+
+      .front-3 .savings {
+        margin-top: 7.2pt;
+        margin-left: -5pt;
+        background: var(--white);
+        padding: 4.3pt 6.4pt 4.3pt 5.7pt;
+        display: inline-block;
+        font-size: 19.2pt;
+      }
+
+      .front-2 .savings {
+        font-size: 19.5pt;
+        margin-top: 5pt;
+        letter-spacing: 0.2pt;
+      }
+
+      .social {
+        display: flex;
+        margin-top: 14.35pt;
+        flex-direction: column;
+        height: 33pt;
+      }
+
+      .social--secondary {
+        margin-top: 9.7pt;
+      }
+
+      .back-layout-2 .social--secondary {
+        margin-top: 17pt;
+        flex-direction: row;
+        height: auto;
+      }
+
+      .front-2 .social {
+        color: var(--dark-grey);
+        margin-top: 14.3pt;
+        margin-left: -1.8pt;
+      }
+
+      .front-3 .social {
+        margin-top: 5pt;
+        margin-left: -1.7pt;
+      }
+
+      .social__item {
+        display: flex;
+        margin-bottom: 4.1pt;
+      }
+
+      .back-layout-2 .social__item {
+        display: flex;
+        align-items: flex-end;
+      }
+
+      .social__icon {
+        width: 12.1pt;
+        height: 12.1pt;
+        margin-right: 5pt;
+      }
+
+      .front-2 .social__icon {
+        width: 12.8pt;
+        margin-right: 4.3pt;
+      }
+
+      .back-layout-2 .social__icon {
+        width: 15pt;
+        height: 15pt;
+      }
+
+      .social__label {
+        font-size: 6.26pt;
+        letter-spacing: 0pt;
+        font-weight: 500;
+        color: var(--green);
+        align-self: center;
+        text-transform: none;
+      }
+      
+      .social__label.hide {
+        display: none;
+      }
+
+      .back-layout-2 .social__label {
+        display: none;
+      }
+
+      .front-2 .social__label {
+        font-size: 6.3pt;
+      }
+
+      .site {
+        position: absolute;
+        right: 27pt;
+        bottom: 25.5pt;
+        font-size: 9.8pt;
+        font-weight: 500;
+        color: var(--light-grey);
+      }
+
+      .front-2 .site {
+        right: 27.4pt;
+        bottom: 25.4pt;
+        font-size: 9.8pt;
+        color: var(--dark-grey);
+      }
+
+      .front-3 .site {
+        color: var(--white);
+      }
+
+      .light .site {
+        color: var(--white);
+      }
+
+      .triangle--primary {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 296pt;
+        height: 417pt;
+        clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
+        z-index: 0;
+      }
+
+      .triangle--secondary {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 130pt;
+        height: 181pt;
+      }  
+
+      .light .triangle--secondary {
+        /*background-color: var(--dark-grey);*/
+      }
+
+      .front-2 .triangle--secondary {
+        width: 130pt;
+        height: 182pt;
+      }
+
+      .page--secondary {
+        color: var(--dynamic-back-text-color);
+      }
+
+      .page--secondary .triangle--secondary {
+        width: 130pt;
+        height: 182pt;
+        /*background: var(--white);*/
+      }
+
+      .page--secondary.light .triangle--secondary {
+        /*background: var(--dark-grey);*/
+      }
+
+      .triangle--primary.white {
+        background-color: rgba(255, 255, 255, 1);
+      }
+
+      .triangle--primary.grey {
+        background-color: rgba(35, 31, 32, 0.8);
+      }
+
+      .triangle--primary.light-grey {
+        display: none;
+      }
+
+      .triangle--secondary.white {
+        background-color: rgba(255, 255, 255, 1);
+      }
+
+      .triangle--secondary.dark-grey {
+        background-color: rgba(46, 44, 45, 1);
+      }
+
+      .triangle--secondary.light-grey {
+        background-color: rgba(200, 202, 204, 1);
+      }
+
+      .front-3 .heading,
+      .front-3 .price,
+      .front-3 .paymentTerm, 
+      .front-3 .programDetails { 
+        color: var(--dark-grey);
+      }
+
+      .hero {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+      }
+
+      .content {
+        text-transform: uppercase;
+        font-size: 10pt;
+        position: relative;
+        display:none;
+      }
+
+      .back-layout-2 .content {
+        display: block;
+      }
+
+      .content__line {
+        width: 68pt;
+        height: 4.3pt;
+        background-color: var(--green);
+        margin-bottom: 22.2pt;
+        margin-top: 18pt;
+      }
+
+      .back-layout-1 .content__line {
+        margin-top: -30pt;
+        margin-bottom: 25.2pt;
+      }
+
+      .back-layout-2 .heading + .content__line {
+        display: none;
+      }
+
+      .content p {
+        font-size: 13.4pt;
+        line-height: 1.3em;
+        margin-bottom: 0.3em;
+      }
+
+      .content p:last-child {
+        margin-bottom: 0;
+      }
+
+      .content ul {
+        list-style: none;
+        padding-left: 20pt;
+      }
+
+      .content li {
+        margin-bottom: 6pt;
+        font-size: 49.5pt;
+        letter-spacing: 0.4pt;
+        position: relative;
+        font-size: 13.4pt;
+        line-height: 1.3em;
+      }
+
+      .content li::before {
+        content: '';
+        width: 12pt;
+        height: 12pt;
+        left: -17.3pt;
+        top: 4pt;
+        position: absolute;
+        background-image: url(https://files.outfit.io/media_library_items/63712/strelica.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+
+      .openHours__heading {
+        font-size: 10pt;
+        text-transform: uppercase;
+        color: var(--green);
+        margin-bottom: 4pt;
+      }
+
+      .openHours__table {
+        font-size: 10pt;
+      }
+
+      .openHours {
+        font-family: 'Gotham';
+        font-weight: 400;
+      }
+
+      .openHours__row {
+        height: 19pt;
+      }
+
+      .openHours__label {
+        padding-right: 4pt;
+      }
+
+      .contact,
+      .address {
+        font-size: 10.2pt;
+      }
+
+      .contact {
+        text-transform: uppercase;
+        font-size: 10.2pt;
+        line-height: 1.52em;
+      }
+
+      .contact__label {
+        color: var(--green);
+      }
+
+      .contact__value--secondary {
+        text-transform: none;	
+      }
+
+      .address {
+        font-family: 'Gotham';
+        margin-top: 6.6pt;
+        line-height: 1.5em;
+        font-size: 10pt;
+      }
+
+      .phoneNumber {
+        font-family: 'Gotham';
+        line-height: 1.5em;
+        font-size: 10pt;
+      }
+
+      .light-grey .site, .white .site{
+        color: {{{account.colors.black}}};
+      }
+
+      .dark-grey .site{
+        color: {{{account.colors.white}}};
+      }
+
+      .back-url-triangle--light-grey{
+        background-color: var(--light-grey);
+      }
+
+      .back-url-triangle--white{
+        background-color: var(--white);
+      }
+
+      .back-url-triangle--dark-grey{
+        background-color: var(--dark-grey);
+      }
+
+      .back-url-triangle--light-grey{
+        background-color: rgba(200, 202, 204, 1);
+      }
+
+      .back-url-triangle--light-grey .site{
+        color: var(--black);
+      }
+
+      .back-url-triangle--white{
+        background-color: var(--white);
+      }
+
+      .back-url-triangle--white .site{
+        color: var(--black);
+      }
+
+      .back-url-triangle--dark-grey{
+        background-color: var(--dark-grey);
+        color: var(--white);
+      }
+
+      .back-url-triangle--dark-grey .site{
+        color: var(--white);
+      }
+      
+      .shape {
+        position: absolute;
+        display: none;
+        max-width: unset;
+      }
+      
+      .shape--triangleBlack,
+      .shape--triangleWhite2 {
+        display: none;
+        top: -252pt;
+        left: -10pt;
+        width: 455pt;
+        transform: rotate(3.5deg);
+        opacity: 0.9;
+      }     
+      
+      .shape--triangleWhite2 {
+        top: -208pt;
+        transform: rotate(0.1deg);
+      }
+      
+      .front-3 .shape--triangleWhite2 {
+        display: block;        
+      }
+      
+      .front-1 .shape--triangleBlack {
+        display: block;
+      }
+      
+      .shape--trinagleBottom {
+        display: none;
+      }
+      
+      .front-1 .shape--triangleWhite,
+      .page--secondary.dark .shape--triangleWhite,      
+      .front-2 .shape--triangleLightGrey,
+      .front-3 .shape--triangleDarkGrey,
+      .page--secondary.light .shape--triangleDarkGrey {
+        display: block;
+      }      
+      
+      .shape--triangleWhite,
+      .shape--triangleLightGrey,
+      .shape--triangleDarkGrey {
+        bottom: 0pt;
+        right: 0pt;
+        width: 4.608rem;
+      }  
+      
+      .topTriangles--white .shape--triangleBlack, .topTriangles--grey .shape--triangleWhite2, .topTriangles--hidden{
+        display: none;
+      }
+      
+      .topTriangles--white .shape--triangleWhite2, .topTriangles--grey .shape--triangleBlack{
+        display: block;
+      }
+      
+      .triangle--secondary--white .shape--trinagleBottom.shape--triangleLightGrey, .triangle--secondary--white .shape--trinagleBottom.shape--triangleDarkGrey,
+      .triangle--secondary--dark-grey .shape--trinagleBottom.shape--triangleWhite, .triangle--secondary--dark-grey .shape--trinagleBottom.shape--triangleLightGrey,
+      .triangle--secondary--light-grey .shape--trinagleBottom.shape--triangleWhite, .triangle--secondary--light-grey .shape--trinagleBottom.shape--triangleDarkGrey
+      {
+        display: none;
+      }
+      
+      .triangle--secondary--white .shape--trinagleBottom.shape--triangleWhite, .triangle--secondary--dark-grey .shape--trinagleBottom.shape--triangleDarkGrey, .triangle--secondary--light-grey .shape--trinagleBottom.shape--triangleLightGrey
+      {
+        display: block;
+      }
+      
+      .triangle--secondary--dark-grey .site{
+        color: #ffffff;
+      }
+      
+            
+      
+
+      
+      
+
+      /* ANY OTHER STYLES THAT NEED MUSTACHE.JS CAPABILITIES */
+    </style>
+  </head>
+  <body style="background: white" class="u-placeholder-{{ placeholder-toggle-new }}{{^placeholder-toggle-new}}hide{{/placeholder-toggle-new}}" data-crop="{{show-crop}}">
+    <div class="placeholderMaster" data-opacity="{{ placeholder-opacity }}">
+      {{#placeholder-image-1}}
+      <div class="placeholderMaster__item" data-bg="{{ placeholder-image-1 }}"></div>
+      {{/placeholder-image-1}}
+    </div><!-- end placeholderMaster -->
+    <div class="placeholderMaster" data-opacity="{{ placeholder-opacity }}">
+      {{#placeholder-image-2}}
+      <div class="placeholderMaster__item" data-bg="{{ placeholder-image-2 }}"></div>
+      {{/placeholder-image-2}}
+    </div><!-- end placeholderMaster -->
+
+    <div class="page {{{12rnd_front-layout--b}}}">
+
+      <div class="bleed">
+
+        <div class="container fit">
+
+          <div class="backgroundImage">{{{ 12rnd_background-image--b }}}</div>
+          <div class="topTriangles--{{{12rnd_triangle-colour--b}}} {{^12rnd_triangle-colour--b}}topTriangles--grey{{/12rnd_triangle-colour--b}}">
+            <img src="https://files.outfit.io/media_library_items/69697/top%2520triangle%2520small.svg" alt="" class="shape shape--triangleBlack">    
+            <img src="https://files.outfit.io/media_library_items/69683/top%2520triangle%2520white.svg" alt="" class="shape shape--triangleWhite2"> 
+          </div>
+          <div class="header">
+            <img class="logo" src="{{account.logos.primary}}"><!--logo-->
+          </div><!--header-->
+          <div class="body">
+            <div class="subheading">{{team.name}}{{^team.name}}Location Here{{/team.name}}</div><!--subheading-->
+            <div class="heading" data-max-height="css">{{{ 12rnd_headline--b }}}</div><!--heading-->
+            <div class="heading__line"></div>
+          </div><!--body-->
+          <div class="footer">
+            <div class="price" data-max-line="1">${{{ 12rnd_price--b }}}</div><!--price-->
+            <div class="paymentTerm" data-max-line="1">{{{ 12rnd_payment-term--b }}}</div><!--paymentTerm-->
+            <div class="programDetails" data-max-height="css">{{{ 12rnd_program-benefit--b }}}</div><!--programDetails-->
+            {{#12rnd_savings--b}}
+            <div class="savings" data-max-height="css">{{{ 12rnd_savings--b }}}</div><!--savings-->
+            {{/12rnd_savings--b}}
+            <div class="social">
+              <div class="social__item">
+                <img class="social__icon" src="https://files.outfit.io/media_library_items/63027/fb%2520green.svg" alt="">
+                <div class="social__label {{{showHideSocialLinks}}}">/{{team.facebook-link}}{{^team.facebook-link}}Facbook Link Here{{/team.facebook-link}}</div>
+              </div><!--social__item-->
+              <div class="social__item">
+                <img class="social__icon" src="https://files.outfit.io/media_library_items/63026/insta%2520green.svg" alt=""><!--end social__icon-->
+                <div class="social__label {{{showHideSocialLinks}}}">@{{team.instagram-link}}{{^team.instagram-link}}Instagram Link Here{{/team.instagram-link}}</div> <!--end social__label-->
+              </div><!--social__item-->
+              <!--end social__item-->
+            </div><!--social-->
+          </div><!--footer-->
+<!--           <div class="triangle triangle--primary {{{ 12rnd_triangle-colour--b }}}"></div><!--triangle--> 
+          <div class="triangle triangle--secondary triangle--secondary--{{{12rnd_url-container-background-colour--p}}} {{^12rnd_url-container-background-colour--p}}{{/12rnd_url-container-background-colour--p}}">
+            <img src="https://files.outfit.io/media_library_items/69671/bottom%2520triangle.svg" alt="" class="shape shape--trinagleBottom shape--triangleWhite"> 
+            <img src="https://files.outfit.io/media_library_items/69684/grey%2520bottom%2520triangle.svg" alt="" class="shape shape--trinagleBottom shape--triangleLightGrey"> 
+            <img src="https://files.outfit.io/media_library_items/69680/black%2520bottom%2520triangle.svg" alt="" class="shape shape--trinagleBottom shape--triangleDarkGrey">             
+            <div class="site">{{account.snippets.website-url}}</div>
+          </div><!--triangle-->
+
+        </div><!--container fit-->
+
+      </div><!--bleed-->
+
+    </div><!--page-->
+
+
+    <div class="page page--secondary {{{12rnd_back-layout--b}}}{{^12rnd_back-layout--b}}back-layout-1{{/12rnd_back-layout--b}} {{{12rnd_back-colour-theme--b}}}{{^12rnd_back-colour-theme--b}}dark{{/12rnd_back-colour-theme--b}}">
+
+      <div class="bleed">
+
+        <div class="container fit">
+
+          <div class="header header--back">
+            <img class="logo" src="{{account.logos.primary}}" alt=""><!--end logo-->
+            <div class="hero">{{{12rnd_feature-image--b}}}</div><!--end logo-->
+            <div class="subheading subheading--secondary">{{team.name}}{{^team.name}}Location Here{{/team.name}}</div><!--end logo-->
+          </div><!--end header-->
+          <div class="body body--secondary">
+            {{#12rnd_body-copy--b}}<div class="content" data-max-height="250">{{{12rnd_body-copy--b}}}</div><div class="content__line"></div>{{/12rnd_body-copy--b}}
+            {{#12rnd_headline-2--b}} <div class="heading heading--secondary" data-max-line="1">{{{12rnd_headline-2--b}}}</div><div class="content__line"></div><!--end heading-->{{/12rnd_headline-2--b}}
+            {{#12rnd_spreadsheet-heading--b}}<div class="openHours__heading" data-max-line="1">{{{12rnd_spreadsheet-heading--b}}}</div><!--end openHours__heading-->{{/12rnd_spreadsheet-heading--b}}
+            <table class="openHours__table">
+              {{#spreadsheet.12rnd_hours--b}}
+              <tr class="openHours__row">  
+                <td class="openHours__label">{{{12rnd_day--b}}}</td><!--end openHours__label-->
+                <td class="openHours">{{{12rnd_opening-hours--b}}}</td><!--end openHours-->          
+              </tr><!--end openHours__row-->
+              {{/spreadsheet.12rnd_hours--b}}        
+            </table><!--end table-->
+          </div><!--end body-->
+          <div class="footer footer--secondary">
+            <div class="contact">
+              <div class="contact__label">email:</div><!--end contact__label-->
+              <div class="contact__value">{{{team.email}}}</div><!--end contact__value-->
+            </div><!--end contact-->
+            <div class="contact">
+            	<div class="contact__label">phone:</div><!--end contact__label-->
+              	<div class="contact__value">{{{team.phone}}}</div><!--end contact__value-->
+            </div>
+            <div class="address"><p>{{{team.address}}} {{{team.state}}} {{{team.postcode}}}</p>{{^team.address}}Team Address Here<br>over 2 lines{{/team.address}}</div><!--end address-->
+            <div class="social social--secondary">
+              <div class="social__item">
+                <img class="social__icon" src="https://files.outfit.io/media_library_items/63027/fb%2520green.svg" alt=""><!--end social__icon-->
+                <div class="social__label {{{showHideSocialLinks}}}">/{{team.facebook-link}}{{^team.facebook-link}}Facbook Link Here{{/team.facebook-link}}</div> <!--end social__label-->
+              </div><!--social__item-->
+              <div class="social__item">
+                <img class="social__icon" src="https://files.outfit.io/media_library_items/63026/insta%2520green.svg" alt=""><!--end social__icon-->
+                <div class="social__label {{{showHideSocialLinks}}}">@{{team.instagram-link}}{{^team.instagram-link}}Instagram Link Here{{/team.instagram-link}}</div> <!--end social__label-->
+              </div><!--social__item-->
+            </div><!--social-->
+          </div><!--end footer-->
+          <div class="triangle--secondary triangle--secondary--{{{12rnd_url-container-background-colour--p}}}">
+            <img src="https://files.outfit.io/media_library_items/69671/bottom%2520triangle.svg" alt="" class="shape shape--trinagleBottom shape--triangleWhite"> 
+            <img src="https://files.outfit.io/media_library_items/69684/grey%2520bottom%2520triangle.svg" alt="" class="shape shape--trinagleBottom shape--triangleLightGrey"> 
+            <img src="https://files.outfit.io/media_library_items/69680/black%2520bottom%2520triangle.svg" alt="" class="shape shape--trinagleBottom shape--triangleDarkGrey">                                   
+            <div class="site">{{account.snippets.website-url}}</div>
+          </div><!--end triangle--secondary-->
+
+        </div><!--container fit-->
+
+      </div><!--bleed-->
+
+    </div><!--page-->
+
+
+    <script>
+      window.showCrop = {{show-crop}}{{^show-crop}}true{{/show-crop}};
+    </script>
+    <script src="js/main.js"></script>   
+    <script src="js/prefixfree.js"></script>
+    <script src="js/placeholder-controller.js"></script>
+    <script src="js/char-limit.js"></script>
+    <script src="js/check-export-mode.js"></script>
+    <script src="js/max-line-check.js"></script>
+    <script src="js/max-height-check.js"></script>
+    <script src="https://outfit-assets-production.s3-accelerate.amazonaws.com/scripts/textfit.0.0.4.min.js" type="text/javascript"></script>
+    <script>
+
+      // Tracking text changes and firing text restriction functions (mutationObserver)
+      const overflowObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          maxLineCheck();
+          maxHeightCheck();
+          charLimit();
+        });
+      });
+
+      overflowObserver.observe(document.body, {
+        attributes: false,
+        characterData: true,
+        childList: true,
+        subtree: true,
+        attributeOldValue: false,
+        characterDataOldValue: true
+      });
+
+      // Calling text size restriction functions once the fonts are loaded
+      document.fonts.ready.then(() => {
+        maxLineCheck();
+        maxHeightCheck();
+      });
+
+      placeholderController();
+      checkCrop();
+      checkExport();
+      charLimit();
+
+      // TextFit function decreases the font of the selected element to make it fit in single line (if needed, uncomment the code bellow)
+      TextFit.fit({
+        selector: '.textFit'
+      });
+
+    </script>
+
+
+  </body>
+</html>
