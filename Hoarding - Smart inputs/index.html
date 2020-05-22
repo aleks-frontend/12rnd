@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html class="{{{overlay-options}}}" lang="en">
+  <head>
+    <title>Print Generic</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/stylesheets/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="assets/javascripts/main.js"></script>
+  </head>
+  <body class="">
+
+    {{{resizable-background-image}}}
+
+    <div class='container'>
+      <div class='content'>
+
+        {{#starburst}}
+        <div class='star'>
+          <div class='star-copy'>
+            {{{starburst}}}
+          </div>
+        </div>
+        {{/starburst}}
+
+        <div class='header'>
+
+          <div class='h1'>
+            <div class="text-box">
+              <div class="over-text">
+                {{{headline-copy}}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='list'>
+          <div class="text-box">
+            <div class="over-text">
+              {{ #collection.value-props }}
+
+              <div class='h2 inlinelogo'>
+                {{{value-props}}}
+              </div>
+
+              {{ /collection.value-props }}
+            </div>
+          </div>
+        </div>
+        <div class='footer'>
+          <div class='logo-container'>
+            <div class='logo'></div>
+          </div>
+          <div class='contact-details'>
+            <div class='website'>
+              {{{account.snippets.website-url}}}
+              <div class='triangle'></div>
+            </div>
+            {{#team.email}}
+            <div class='email'>
+              {{{team.email}}}
+              <div class='triangle'></div>
+            </div>
+            {{/team.email}}
+            {{#team.phone}}
+            <div class='phone'>
+               <div class='phone-no'>{{{team.phone}}} </div>
+              <div class='triangle'></div>
+            </div>
+            <div class='triangle'></div>
+            {{/team.phone}}
+          </div>
+        </div>
+      </div>
+      <div class='bg'></div>
+      <div class='bg-img'></div>
+    </div>
+
+
+    <div class='container-sidepanel'>
+
+      <div class='content'>
+        <div class='logo-container'>
+          <div class='logo'>
+          </div>
+        </div>
+
+
+        <div class='footer-sidepanel'>
+          <div class='website'>
+            {{{account.snippets.website-url}}}
+          </div>
+        </div>
+
+      </div>
+
+      <div class='bg-sidepanel'></div>
+
+    </div>
+
+
+
+  </body>
+</html>
