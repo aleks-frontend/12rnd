@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="assets/stylesheets/main.css">
+
+    <style>
+
+      .outfit-resizable-background img {
+        /* Place any Resizable Background Styles here */
+      }
+
+
+      .outfit-resizable-background {
+        /* Place any Resizable Background Styles here */
+      }
+
+
+      html { 
+        background: url({{{background-image}}}) no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-color: black;
+        width: 100%;
+        height: 100%;
+      }
+      
+      
+      .logo {
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  height: 100%;
+  background-image: url('{{{account.logos.primary}}}');
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+
+    </style>
+  </head>
+  <body>
+
+
+    <div class='landscape landscape-container'>
+      <div class='left-col'>
+        <div class='title'>
+          opening
+          <br>
+          hours
+        </div>
+        <div class='logo-container'>
+          <div class='logo'></div>
+        </div>
+      </div>
+      <div class='right-col'>
+
+
+        {{ #spreadsheet.opening-hours }}
+        <div class="day">
+          <span style="color:#8AC900;">{{{day}}}</span>&nbsp {{{time}}}
+        </div>
+        {{ /spreadsheet.opening-hours }}
+
+
+
+      </div>
+      <div class='contact-details-landscape'>
+        <div class='triangle'></div>
+        <div class='email'>
+          {{{team.email}}}
+        </div>
+        <div class='triangle'></div>
+        <div class='phone'>
+          {{{team.phone}}}
+        </div>
+        <div class='triangle'></div>
+
+        <div class='phone'>
+          {{{account.snippets.website-url}}}
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <div class='container'>
+      <div class='title'>
+        opening hours
+      </div>
+      <div class='days'>
+
+
+
+        {{ #spreadsheet.opening-hours }}
+        <div class="day">
+          <span style="color:#8AC900;">{{{day}}}</span>&nbsp {{{time}}}
+        </div>
+        {{ /spreadsheet.opening-hours }}
+
+
+
+      </div>
+      <div class='logo-container'>
+        <div class='logo'></div>
+      </div>
+      <div class='contact-details'>
+        <div class='triangle'></div>
+        <div class='email'>
+          {{{team.email}}}
+        </div>
+        <div class='triangle'></div>
+        <div class='phone'>
+          {{{team.phone}}}
+        </div>
+
+
+
+      </div>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/javascripts/main.js"></script>
+
+  </body>
+</html>
