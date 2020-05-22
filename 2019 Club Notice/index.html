@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html data-sign="OSM">
+  <head>
+    <title>Template title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="css/minireset.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/placeholder-controller.css">
+
+    <style>
+      @import url("https://outfit-assets-production.s3.amazonaws.com/fonts/Gotham/stylesheet.css"); 
+
+      :root {
+        --green: {{account.colors.green}};
+        --light-black: #352733;
+        --dark-black: rgba(55, 53, 53, 1);
+        --white: #fff;
+      }
+
+      html {
+        font-family: 'Gotham';
+        color: {{{account.colors.black}}};
+      }
+
+      strong {
+        color: var(--green);
+      }
+
+      .container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .backgroundImage {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-size: cover;
+      }
+
+      .logo {
+        position: absolute;
+        top: 0.89rem;
+        right: 0.87rem;
+        width: 2.84rem;
+      }
+
+      .content{
+        display: flex;
+        flex-direction: column;
+        margin-top: 1.65rem;
+        margin-left: 1.05rem;
+        width: 100%;
+      }
+
+      .header{
+        width: 6rem;
+        margin-bottom: 1.76rem;
+      }
+
+      .header_text{
+        font-family: 'Gotham';
+        font-weight: 600;
+        text-transform: uppercase;
+        line-height: 0.98rem;
+        margin-bottom: 0.66rem;
+      }
+
+      .header_text h1{
+        font-size: 1.18rem;
+        letter-spacing: 0.01rem;
+      }
+
+      .header_text h2{
+        font-size: 0.71rem;
+      }
+
+      .header_text b{
+        color: {{account.colors.green}};
+        font-weight: 600;
+      }
+
+      .header_divider{
+        background-color: {{account.colors.green}};
+        height: 0.15rem;
+        width: 2.44rem;
+      }
+
+      .overflowHeight{
+        max-height: 11rem;
+      }
+
+      .body .copy_heading{
+        margin-bottom: 0.38rem;
+        line-height: 0.7rem;
+        width: 8rem;
+      }
+
+      .body .copy_heading{
+        font-family: 'Gotham';
+        font-weight: 600;
+        text-transform: uppercase;
+        color: {{account.colors.green}};
+      }
+      
+      .body .copy_heading h2{
+        font-size: 0.53rem;
+      }
+      
+      .body .copy_heading h3{
+        font-size: 0.47rem;
+      }
+      
+      .body .copy_heading h4{
+        font-size: 0.40rem;
+      }
+
+      .body_copy{
+        font-weight: 400;
+        font-size: 0.32rem;
+        width: 12.2rem;
+        letter-spacing: 0.005rem;
+        line-height: 0.51rem;
+        overflow: hidden;
+      }
+      
+      .body_copy p{
+        font-size: {{{font-slider-100-140}}}%;
+        line-height: {{{font-slider-100-140}}}%;
+      }
+      
+      .body_copy.layout--dual{
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+        -webkit-column-gap: 0.57rem;
+        -moz-column-gap: 0.57rem;
+        column-gap: 0.57rem;
+      }
+
+      .triangle{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 3.63rem;
+        height: 5.1rem;
+        /* clip-path: polygon(100% 0%, 100% 100%, 0% 100%);
+        background-color: #231f20;*/
+      }
+
+      .url{
+        position: relative;
+        font-family: 'Gotham';
+        font-weight: 600;
+        color: {{{account.colors.white}}};
+        font-size: 0.258rem;
+      }
+
+      .triangle_content{
+        width: 3.3rem;
+        height: 1.3rem;
+        position: relative;
+        top: 3.95rem;
+        right: -1.04rem;
+      }
+
+      .shape {
+        position: absolute;    
+        max-width: unset;
+      }
+
+      .shape--triangleBlack {
+        bottom: 0;
+        right: 0;
+        width: 4.45rem;
+      }    
+
+
+      /* ANY OTHER STYLES THAT NEED MUSTACHE.JS CAPABILITIES */
+    </style>
+  </head>
+  <body style="background: white" class="u-placeholder-{{ placeholder-toggle-new }}{{^placeholder-toggle-new}}hide{{/placeholder-toggle-new}}" data-crop="{{show-crop}}">
+    <div class="placeholderMaster" data-opacity="{{ placeholder-opacity }}">
+      {{#placeholder-image-1}}
+      <div class="placeholderMaster__item" data-bg="{{ placeholder-image-1 }}"></div>
+      {{/placeholder-image-1}}
+    </div><!-- end placeholderMaster -->
+    <div class="page">
+
+      <div class="bleed">
+
+        <div class="container fit">
+          <div class="logo_container">
+            <img class="logo" src="{{account.logos.primary}}"><!--logo-->
+          </div>
+
+          <div class="content">
+            <div class="header">
+              <div class="header_text" data-max-line="2">
+                {{{headline__h1h2b}}}
+              </div>
+              <div class="header_divider"></div>
+            </div>
+            <div class="body">
+              <div class="copy_heading" data-max-line="1">
+                {{{copy_heading}}}
+              </div>
+              <div class="overflowHeight"  data-max-height="css">
+                <div class="body_copy layout--{{{col-layout}}} {{^col-layout}}layout--dual{{/col-layout}}">
+                  {{{body_copy__p}}}
+                </div>
+              </div>
+            </div>           
+          </div>
+
+          <div class="triangle triangle--primary">
+            <div class="triangle_content">
+              <img src="https://files.outfit.io/media_library_items/69703/bottom%2520triangle.svg" alt="" class="shape shape--triangleBlack"> 
+              <div class="url">
+                <p>{{{account.snippets.website-url}}}</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div><!--container fit-->
+
+      </div><!--bleed-->
+
+    </div><!--page-->
+
+
+    <script>
+      window.showCrop = {{show-crop}}{{^show-crop}}true{{/show-crop}};
+    </script>
+    <script src="js/main.js"></script>   
+    <script src="js/prefixfree.js"></script>
+    <script src="js/placeholder-controller.js"></script>
+    <script src="js/char-limit.js"></script>
+    <script src="js/check-export-mode.js"></script>
+    <script src="js/max-line-check.js"></script>
+    <script src="js/max-height-check.js"></script>
+    <script src="https://outfit-assets-production.s3-accelerate.amazonaws.com/scripts/textfit.0.0.4.min.js" type="text/javascript"></script>
+    <script>
+
+      // Tracking text changes and firing text restriction functions (mutationObserver)
+      const overflowObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          maxLineCheck();
+          maxHeightCheck();
+          charLimit();
+        });
+      });
+
+      overflowObserver.observe(document.body, {
+        attributes: false,
+        characterData: true,
+        childList: true,
+        subtree: true,
+        attributeOldValue: false,
+        characterDataOldValue: true
+      });
+
+      // Calling text size restriction functions once the fonts are loaded
+      document.fonts.ready.then(() => {
+        maxLineCheck();
+        maxHeightCheck();
+      });
+
+      placeholderController();
+      checkCrop();
+      checkExport();
+      charLimit();
+
+      // TextFit function decreases the font of the selected element to make it fit in single line (if needed, uncomment the code bellow)
+      TextFit.fit({
+        selector: '.textFit'
+      });
+
+    </script>
+
+
+  </body>
+</html>
